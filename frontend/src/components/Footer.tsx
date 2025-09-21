@@ -22,7 +22,9 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-xl font-bold">Arjun Iyengar</h3>
-                <p className="text-sm text-gray-400">Hematology Oncology Medical Center</p>
+                <p className="text-sm text-gray-400">
+                  Hematology Oncology Medical Center
+                </p>
               </div>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
@@ -72,7 +74,8 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
               <p className="text-gray-400 text-sm">
-                © 2024 Arjun Iyengar Hematology Oncology Medical Center. All rights reserved.
+                © 2024 Arjun Iyengar Hematology Oncology Medical Center. All
+                rights reserved.
               </p>
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
@@ -87,12 +90,6 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
                 Terms of Service
-              </Link>
-              <Link
-                href="/sitemap"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Site Map
               </Link>
             </div>
           </div>
