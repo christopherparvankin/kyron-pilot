@@ -198,9 +198,19 @@ export default async function AboutPage() {
                     className="group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6"
                   >
                     <div className="text-center">
-                      {provider.image && (
+                      {provider.image ? (
+                        <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+                          <img
+                            src={urlFor(provider.image).width(96).height(96).url()}
+                            alt={provider.image.alt || provider.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
                         <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-200 overflow-hidden">
-                          {/* Image would be implemented with urlFor */}
+                          <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                            <Users className="w-12 h-12 text-blue-600" />
+                          </div>
                         </div>
                       )}
                       <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600">
