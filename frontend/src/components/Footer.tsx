@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
@@ -32,82 +32,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* For Patients */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-white">
-              For Patients
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/patients"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2"
-                >
-                  <User className="w-4 h-4" />
-                  <span>Overview</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/appointment"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2"
-                >
-                  <Calendar className="w-4 h-4" />
-                  <span>Appointments</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Treatments & Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-white">
-              Treatments & Services
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/services"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2"
-                >
-                  <Stethoscope className="w-4 h-4" />
-                  <span>Overview</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services?category=medical-oncology"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Medical Oncology
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services?category=hematology"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Hematology
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services?category=radiation-oncology"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Radiation Oncology
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/clinical-trials"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Clinical Trials
-                </Link>
-              </li>
-            </ul>
-          </div>
 
           {/* Contact Info */}
           <div>
