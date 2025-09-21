@@ -1,20 +1,20 @@
-"use client";
-
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Phone, MapPin, User, CreditCard } from "lucide-react";
+import { Menu, X, Phone, MapPin } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
+    { name: "For Patients", href: "/patients" },
     { name: "Treatments & Services", href: "/services" },
     { name: "Physicians & Locations", href: "/providers" },
+    { name: "Cancer Types", href: "/cancer-types" },
     { name: "About Us", href: "/about" },
   ];
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-white shadow-lg">
       {/* Top Bar */}
       <div className="bg-blue-900 text-white py-2">
         <div className="container mx-auto px-4">
@@ -30,7 +30,12 @@ export default function Header() {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              {/* Removed Patient Portal and Pay My Bill links */}
+              <Link href="/patient-portal" className="hover:text-blue-200">
+                Patient Portal
+              </Link>
+              <Link href="/pay-bill" className="hover:text-blue-200">
+                Pay My Bill
+              </Link>
             </div>
           </div>
         </div>
@@ -58,10 +63,9 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors relative group"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
@@ -72,7 +76,7 @@ export default function Header() {
               href="/appointment"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
-              Request an Appointment
+              Request Appointment
             </Link>
           </div>
 
@@ -108,7 +112,7 @@ export default function Header() {
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-blue-700 transition-colors mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Request an Appointment
+                Request Appointment
               </Link>
             </nav>
           </div>

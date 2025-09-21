@@ -112,7 +112,7 @@ export default async function ProviderPage({ params }: ProviderPageProps) {
                           >
                             {specialty
                               .replace("-", " ")
-                              .replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                              .replace(/\b\w/g, (l) => l.toUpperCase())}
                           </span>
                         )
                       )}

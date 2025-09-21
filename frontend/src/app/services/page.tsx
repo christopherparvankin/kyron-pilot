@@ -79,7 +79,7 @@ export default async function ServicesPage() {
                       categoryTitles[category] ||
                       category
                         .replace("-", " ")
-                        .replace(/\b\w/g, (l: string) => l.toUpperCase());
+                        .replace(/\b\w/g, (l) => l.toUpperCase());
 
                     return (
                       <div key={category} className="bg-gray-50 rounded-lg p-8">

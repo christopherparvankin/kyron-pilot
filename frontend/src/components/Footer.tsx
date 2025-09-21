@@ -67,24 +67,6 @@ export default function Footer() {
                   <span>Appointments</span>
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/patient-portal"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2"
-                >
-                  <User className="w-4 h-4" />
-                  <span>Patient Portal</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/pay-bill"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2"
-                >
-                  <CreditCard className="w-4 h-4" />
-                  <span>Pay My Bill</span>
-                </Link>
-              </li>
             </ul>
           </div>
 

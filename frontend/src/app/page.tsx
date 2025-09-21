@@ -113,9 +113,9 @@ export default async function Home() {
                 className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transition-colors"
               >
                 <Heart className="w-12 h-12 text-white mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Patient Portal</h3>
+                <h3 className="text-xl font-semibold mb-2">About Us</h3>
                 <p className="text-blue-100 text-sm">
-                  Access your health records
+                  Learn more about our practice
                 </p>
               </Link>
             </div>
@@ -211,9 +211,9 @@ export default async function Home() {
                     )}
                     {service.category && (
                       <span className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
-                            {service.category
-                              .replace("-", " ")
-                              .replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                        {service.category
+                          .replace("-", " ")
+                          .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                       </span>
                     )}
                   </Link>
