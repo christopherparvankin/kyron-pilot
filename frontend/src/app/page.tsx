@@ -211,9 +211,9 @@ export default async function Home() {
                     )}
                     {service.category && (
                       <span className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
-                        {service.category
-                          .replace("-", " ")
-                          .replace(/\b\w/g, (l) => l.toUpperCase())}
+                            {service.category
+                              .replace("-", " ")
+                              .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                       </span>
                     )}
                   </Link>
@@ -321,7 +321,7 @@ export default async function Home() {
                                 >
                                   {specialty
                                     .replace("-", " ")
-                                    .replace(/\b\w/g, (l) => l.toUpperCase())}
+                                    .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                                 </span>
                               ))}
                           </div>

@@ -223,7 +223,7 @@ export default async function AboutPage() {
                                 >
                                   {specialty
                                     .replace("-", " ")
-                                    .replace(/\b\w/g, (l) => l.toUpperCase())}
+                                    .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                                 </span>
                               ))}
                           </div>

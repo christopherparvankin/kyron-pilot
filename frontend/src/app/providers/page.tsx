@@ -91,7 +91,7 @@ export default async function ProvidersPage() {
                                   >
                                     {specialty
                                       .replace("-", " ")
-                                      .replace(/\b\w/g, (l) => l.toUpperCase())}
+                                      .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                                   </span>
                                 ))}
                               {provider.specialties.length > 3 && (
@@ -211,7 +211,7 @@ export default async function ProvidersPage() {
                               >
                                 {specialty
                                   .replace("-", " ")
-                                  .replace(/\b\w/g, (l) => l.toUpperCase())}
+                                  .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                               </span>
                             ))}
                         </div>

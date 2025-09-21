@@ -17,14 +17,15 @@ import {
 } from "lucide-react";
 
 interface ProviderPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function ProviderPage({ params }: ProviderPageProps) {
+  const { slug } = await params;
   const provider = await client.fetch(queries.getProviderBySlug, {
-    slug: params.slug,
+    slug: slug,
   });
 
   if (!provider) {
@@ -111,7 +112,7 @@ export default async function ProviderPage({ params }: ProviderPageProps) {
                           >
                             {specialty
                               .replace("-", " ")
-                              .replace(/\b\w/g, (l) => l.toUpperCase())}
+                              .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                           </span>
                         )
                       )}

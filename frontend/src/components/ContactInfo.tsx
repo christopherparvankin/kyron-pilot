@@ -3,7 +3,7 @@ import { queries } from "@/lib/queries";
 import { formatPhoneNumber } from "@/lib/contactUtils";
 
 export default async function ContactInfo() {
-  const contactInfo = await client.fetch(queries.getContactInfo);
+  const contactInfo = await client.fetch(queries.contactInfo);
 
   if (!contactInfo) {
     // Fallback to hardcoded values if no contact info is found
