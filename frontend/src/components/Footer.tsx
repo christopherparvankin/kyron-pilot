@@ -18,11 +18,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">NY</span>
+                <span className="text-white font-bold text-xl">AI</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold">NY Oncologists</h3>
-                <p className="text-sm text-gray-400">Advanced Cancer Care</p>
+                <h3 className="text-xl font-bold">Arjun Iyengar</h3>
+                <p className="text-sm text-gray-400">Hematology Oncology Medical Center</p>
               </div>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
@@ -31,7 +31,6 @@ export default function Footer() {
               expertise, and cutting-edge technology.
             </p>
           </div>
-
 
           {/* Contact Info */}
           <div>
@@ -73,7 +72,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
               <p className="text-gray-400 text-sm">
-                © 2024 NY Oncologists. All rights reserved.
+                © 2024 Arjun Iyengar Hematology Oncology Medical Center. All rights reserved.
               </p>
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">

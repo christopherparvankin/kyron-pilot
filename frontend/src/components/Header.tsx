@@ -42,13 +42,13 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">NY</span>
+              <span className="text-white font-bold text-xl">AI</span>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                NY Oncologists
+                Arjun Iyengar
               </h1>
-              <p className="text-sm text-gray-600">Advanced Cancer Care</p>
+              <p className="text-sm text-gray-600">Hematology Oncology Medical Center</p>
             </div>
           </Link>
 
