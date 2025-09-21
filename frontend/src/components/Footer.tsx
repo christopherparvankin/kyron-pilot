@@ -30,17 +30,6 @@ export default function Footer() {
               support throughout New York. Together, we fight cancer with hope,
               expertise, and cutting-edge technology.
             </p>
-            <div className="flex space-x-4">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">Q</span>
-              </div>
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">ACR</span>
-              </div>
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">PET</span>
-              </div>
-            </div>
           </div>
 
           {/* For Patients */}
@@ -162,13 +151,6 @@ export default function Footer() {
               <p className="text-gray-400 text-sm">
                 © 2024 NY Oncologists. All rights reserved.
               </p>
-              <div className="flex items-center space-x-4 text-sm text-gray-500">
-                <span>Qopi certified</span>
-                <span>•</span>
-                <span>ACR PET</span>
-                <span>•</span>
-                <span>ACR Computed</span>
-              </div>
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link
