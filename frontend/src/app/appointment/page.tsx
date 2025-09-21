@@ -337,6 +337,14 @@ export default async function AppointmentPage() {
                     <Calendar className="mr-2 w-5 h-5" />
                     Request Appointment
                   </button>
+                  
+                  {/* Disclaimer */}
+                  <div className="mt-6 p-4 bg-gray-50 rounded-lg border-l-4 border-blue-200">
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      <strong>Important:</strong> This request form is not a medical record and should not contain sensitive health information. 
+                      Please do not include detailed medical history, symptoms, or personal health details in your message.
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>
