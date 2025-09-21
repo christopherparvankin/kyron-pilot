@@ -15,7 +15,9 @@ export default function PrivacyPolicyPage() {
               Your privacy and data protection are our top priorities
             </p>
             <p className="text-lg text-blue-200 max-w-3xl mx-auto">
-              We are committed to protecting your personal information and ensuring transparency in how we collect, use, and safeguard your data.
+              We are committed to protecting your personal information and
+              ensuring transparency in how we collect, use, and safeguard your
+              data.
             </p>
           </div>
         </div>
@@ -28,10 +30,12 @@ export default function PrivacyPolicyPage() {
             <div className="prose prose-lg max-w-none">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
                 <p className="text-blue-800 font-medium">
-                  <strong>Last Updated:</strong> December 2024
+                  <strong>Last Updated:</strong> September 2025
                 </p>
                 <p className="text-blue-700 mt-2">
-                  This Privacy Policy describes how Arjun Iyengar Hematology Oncology Medical Center collects, uses, and protects your information when you visit our website or use our services.
+                  This Privacy Policy describes how Arjun Iyengar Hematology
+                  Oncology Medical Center collects, uses, and protects your
+                  information when you visit our website or use our services.
                 </p>
               </div>
 
@@ -39,20 +43,29 @@ export default function PrivacyPolicyPage() {
                 <Shield className="w-8 h-8 text-blue-600 mr-3" />
                 Information We Collect
               </h2>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Personal Information</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    Personal Information
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Name, email address, and phone number when you contact us</li>
+                    <li>
+                      Name, email address, and phone number when you contact us
+                    </li>
                     <li>Appointment scheduling information</li>
-                    <li>Medical history and health information (only when provided by you)</li>
+                    <li>
+                      Medical history and health information (only when provided
+                      by you)
+                    </li>
                     <li>Insurance and billing information</li>
                   </ul>
                 </div>
 
                 <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Website Usage Information</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    Website Usage Information
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-700">
                     <li>IP address and browser information</li>
                     <li>Pages visited and time spent on our website</li>
@@ -66,31 +79,43 @@ export default function PrivacyPolicyPage() {
                 <Eye className="w-8 h-8 text-blue-600 mr-3" />
                 How We Use Your Information
               </h2>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-3"></div>
-                  <p className="text-gray-700">To schedule and manage your medical appointments</p>
+                  <p className="text-gray-700">
+                    To schedule and manage your medical appointments
+                  </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-3"></div>
-                  <p className="text-gray-700">To provide medical care and treatment services</p>
+                  <p className="text-gray-700">
+                    To provide medical care and treatment services
+                  </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-3"></div>
-                  <p className="text-gray-700">To communicate with you about your care</p>
+                  <p className="text-gray-700">
+                    To communicate with you about your care
+                  </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-3"></div>
-                  <p className="text-gray-700">To process insurance claims and billing</p>
+                  <p className="text-gray-700">
+                    To process insurance claims and billing
+                  </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-3"></div>
-                  <p className="text-gray-700">To improve our website and services</p>
+                  <p className="text-gray-700">
+                    To improve our website and services
+                  </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-3"></div>
-                  <p className="text-gray-700">To comply with legal and regulatory requirements</p>
+                  <p className="text-gray-700">
+                    To comply with legal and regulatory requirements
+                  </p>
                 </div>
               </div>
 
@@ -98,11 +123,15 @@ export default function PrivacyPolicyPage() {
                 <Lock className="w-8 h-8 text-blue-600 mr-3" />
                 Information Protection
               </h2>
-              
+
               <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-semibold text-green-800 mb-4">Security Measures</h3>
+                <h3 className="text-xl font-semibold text-green-800 mb-4">
+                  Security Measures
+                </h3>
                 <ul className="list-disc list-inside space-y-2 text-green-700">
-                  <li>Encryption of sensitive data both in transit and at rest</li>
+                  <li>
+                    Encryption of sensitive data both in transit and at rest
+                  </li>
                   <li>Secure servers and databases with restricted access</li>
                   <li>Regular security audits and updates</li>
                   <li>Staff training on data protection and privacy</li>
@@ -110,12 +139,16 @@ export default function PrivacyPolicyPage() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Information Sharing</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Information Sharing
+              </h2>
+
               <p className="text-gray-700 mb-4">
-                We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+                We do not sell, trade, or rent your personal information to
+                third parties. We may share your information only in the
+                following circumstances:
               </p>
-              
+
               <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
                 <li>With your explicit consent</li>
                 <li>With healthcare providers involved in your care</li>
@@ -124,38 +157,65 @@ export default function PrivacyPolicyPage() {
                 <li>To protect our rights or the safety of others</li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Your Rights</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Your Rights
+              </h2>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-3">Access & Correction</h3>
-                  <p className="text-blue-700">Request access to your personal information and correct any inaccuracies</p>
+                  <h3 className="text-lg font-semibold text-blue-900 mb-3">
+                    Access & Correction
+                  </h3>
+                  <p className="text-blue-700">
+                    Request access to your personal information and correct any
+                    inaccuracies
+                  </p>
                 </div>
                 <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-3">Data Portability</h3>
-                  <p className="text-blue-700">Request a copy of your data in a portable format</p>
+                  <h3 className="text-lg font-semibold text-blue-900 mb-3">
+                    Data Portability
+                  </h3>
+                  <p className="text-blue-700">
+                    Request a copy of your data in a portable format
+                  </p>
                 </div>
                 <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-3">Restriction</h3>
-                  <p className="text-blue-700">Request restriction of processing in certain circumstances</p>
+                  <h3 className="text-lg font-semibold text-blue-900 mb-3">
+                    Restriction
+                  </h3>
+                  <p className="text-blue-700">
+                    Request restriction of processing in certain circumstances
+                  </p>
                 </div>
                 <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-3">Deletion</h3>
-                  <p className="text-blue-700">Request deletion of your personal information (subject to legal requirements)</p>
+                  <h3 className="text-lg font-semibold text-blue-900 mb-3">
+                    Deletion
+                  </h3>
+                  <p className="text-blue-700">
+                    Request deletion of your personal information (subject to
+                    legal requirements)
+                  </p>
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Cookies and Tracking</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Cookies and Tracking
+              </h2>
+
               <p className="text-gray-700 mb-4">
-                Our website uses cookies and similar technologies to improve your browsing experience and analyze website traffic. You can control cookie settings through your browser preferences.
+                Our website uses cookies and similar technologies to improve
+                your browsing experience and analyze website traffic. You can
+                control cookie settings through your browser preferences.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Us</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Contact Us
+              </h2>
+
               <div className="bg-gray-50 p-6 rounded-lg mb-8">
                 <p className="text-gray-700 mb-4">
-                  If you have questions about this Privacy Policy or how we handle your personal information, please contact us:
+                  If you have questions about this Privacy Policy or how we
+                  handle your personal information, please contact us:
                 </p>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
@@ -164,15 +224,21 @@ export default function PrivacyPolicyPage() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-blue-600" />
-                    <span className="text-gray-700">privacy@arjuniyengar.com</span>
+                    <span className="text-gray-700">
+                      privacy@arjuniyengar.com
+                    </span>
                   </div>
                 </div>
               </div>
 
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-yellow-800 mb-3">Policy Updates</h3>
+                <h3 className="text-lg font-semibold text-yellow-800 mb-3">
+                  Policy Updates
+                </h3>
                 <p className="text-yellow-700">
-                  We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on our website and updating the "Last Updated" date.
+                  We may update this Privacy Policy from time to time. We will
+                  notify you of any significant changes by posting the new
+                  policy on our website and updating the "Last Updated" date.
                 </p>
               </div>
             </div>
