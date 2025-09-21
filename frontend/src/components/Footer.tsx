@@ -74,7 +74,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
               <p className="text-gray-400 text-sm">
-                © 2024 Arjun Iyengar Hematology Oncology Medical Center. All
+                © 2025 Arjun Iyengar Hematology Oncology Medical Center. All
                 rights reserved.
               </p>
             </div>
