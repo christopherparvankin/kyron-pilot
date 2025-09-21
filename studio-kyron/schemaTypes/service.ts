@@ -64,10 +64,12 @@ export default defineType({
       type: "string",
       options: {
         list: [
-          { title: "Diagnostic", value: "diagnostic" },
-          { title: "Treatment", value: "treatment" },
-          { title: "Screening", value: "screening" },
-          { title: "Management", value: "management" },
+          { title: "Medical Oncology", value: "medical-oncology" },
+          { title: "Hematology", value: "hematology" },
+          { title: "Gynecologic Oncology", value: "gynecologic-oncology" },
+          { title: "Radiation Oncology", value: "radiation-oncology" },
+          { title: "Cancer Treatment", value: "cancer-treatment" },
+          { title: "Patient Services", value: "patient-services" },
         ],
       },
     }),
