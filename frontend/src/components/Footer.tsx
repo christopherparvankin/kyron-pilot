@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-soft-600 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-xl">AI</span>
               </div>
               <div>
@@ -41,21 +41,21 @@ export default function Footer() {
             </h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-blue-400 mt-1" />
+                <Phone className="w-5 h-5 text-soft-400 mt-1" />
                 <div>
                   <p className="text-gray-400">(555) 123-4567</p>
                   <p className="text-gray-500 text-sm">Call for appointments</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-blue-400 mt-1" />
+                <Mail className="w-5 h-5 text-soft-400 mt-1" />
                 <div>
                   <p className="text-gray-400">info@nyoncologists.com</p>
                   <p className="text-gray-500 text-sm">Email us anytime</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-blue-400 mt-1" />
+                <MapPin className="w-5 h-5 text-soft-400 mt-1" />
                 <div>
                   <p className="text-gray-400">Multiple NY Locations</p>
                   <p className="text-gray-500 text-sm">

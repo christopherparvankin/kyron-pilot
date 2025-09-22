@@ -33,7 +33,7 @@ export default async function ProvidersPage() {
   // Handle empty providers array
   if (!providers || providers.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">No Providers Found</h1>
           <p className="text-gray-600 mb-8">
@@ -41,7 +41,7 @@ export default async function ProvidersPage() {
           </p>
           <Link
             href="/"
-            className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            className="bg-soft-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-soft-700 transition-colors"
           >
             Return Home
           </Link>
@@ -80,18 +80,18 @@ export default async function ProvidersPage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-soft-300/20 to-primary-300/20"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Users className="w-4 h-4" />
               <span>Expert Team</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">
                 Our Physicians
               </span>
             </h1>
@@ -103,14 +103,14 @@ export default async function ProvidersPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/appointment"
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-soft-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-soft-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 <Calendar className="mr-2 w-5 h-5" />
                 Schedule Consultation
               </Link>
               <Link
                 href="/services"
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-soft-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-soft-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 <Heart className="mr-2 w-5 h-5" />
                 Learn About Services
@@ -147,14 +147,14 @@ export default async function ProvidersPage() {
                       />
                     </div>
                   ) : (
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <User className="w-16 h-16 text-blue-600" />
+                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-soft-100 to-soft-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <User className="w-16 h-16 text-soft-600" />
                     </div>
                   )}
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-soft-600 transition-colors">
                     {provider.name}
                   </h3>
-                  <p className="text-blue-600 font-medium mb-4">
+                  <p className="text-soft-600 font-medium mb-4">
                     {provider.title}
                   </p>
 
@@ -164,7 +164,7 @@ export default async function ProvidersPage() {
                         {provider.specialties.slice(0, 3).map((specialty: string, specialtyIndex: number) => (
                           <span
                             key={specialtyIndex}
-                            className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                            className="inline-block bg-soft-100 text-soft-800 text-xs px-2 py-1 rounded-full"
                           >
                             {specialty}
                           </span>
@@ -178,7 +178,7 @@ export default async function ProvidersPage() {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                  <div className="flex items-center justify-center text-soft-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
                     <span>View Profile</span>
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </div>
@@ -190,7 +190,7 @@ export default async function ProvidersPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-500 to-primary-500">
         <div className="container mx-auto">
           <div className="text-center text-white mb-16">
             <h2 className="text-4xl font-bold mb-4">Why Choose Our Physicians?</h2>

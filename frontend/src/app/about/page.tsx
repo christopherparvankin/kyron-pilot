@@ -41,25 +41,25 @@ export default async function AboutPage() {
       title: "50+ Years Experience",
       description: "Decades of expertise in cancer care",
       icon: Award,
-      color: "from-blue-500 to-blue-700"
+      color: "from-soft-500 to-soft-700"
     },
     {
       title: "400+ Years Combined",
       description: "Total team experience in oncology",
       icon: Users,
-      color: "from-green-500 to-green-700"
+      color: "from-primary-500 to-primary-700"
     },
     {
       title: "Latest Treatments",
       description: "Access to cutting-edge therapies",
       icon: Target,
-      color: "from-purple-500 to-purple-700"
+      color: "from-soft-400 to-soft-600"
     },
     {
       title: "Multidisciplinary Team",
       description: "Comprehensive care approach",
       icon: Heart,
-      color: "from-orange-500 to-orange-700"
+      color: "from-primary-400 to-primary-600"
     }
   ];
 
@@ -84,18 +84,18 @@ export default async function AboutPage() {
   // Server component - no client-side state needed
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-soft-300/20 to-primary-300/20"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Heart className="w-4 h-4" />
               <span>Leading Cancer Care</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">
                 About
               </span>
               <br />
@@ -132,7 +132,7 @@ export default async function AboutPage() {
       </section>
 
       {/* About Content */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-500 to-primary-500">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -176,7 +176,7 @@ export default async function AboutPage() {
                     "Comprehensive support for patients and families"
                   ].map((item, index) => (
                     <li key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                      <CheckCircle className="w-6 h-6 text-primary-400 mt-1 flex-shrink-0" />
                       <span className="text-white opacity-90">{item}</span>
                     </li>
                   ))}
@@ -212,7 +212,7 @@ export default async function AboutPage() {
                   `}>
                     <IconComponent className="w-10 h-10 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-soft-600 transition-colors">
                     {feature.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -226,7 +226,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-500 to-primary-500">
         <div className="container mx-auto">
           <div className="text-center text-white mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Impact</h2>
@@ -282,17 +282,17 @@ export default async function AboutPage() {
                       />
                     </div>
                   ) : (
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <User className="w-12 h-12 text-blue-600" />
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-soft-100 to-soft-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <User className="w-12 h-12 text-soft-600" />
                     </div>
                   )}
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-soft-600 transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-blue-600 font-medium mb-3">
+                  <p className="text-soft-600 font-medium mb-3">
                     {member.title}
                   </p>
-                  <span className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
+                  <span className="inline-block bg-soft-100 text-soft-800 text-sm px-3 py-1 rounded-full">
                     {member.specialty}
                   </span>
                 </div>

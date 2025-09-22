@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50 w-full border-b-2 border-gray-200">
       {/* Top Bar */}
-      <div className="bg-blue-900 text-white py-2">
+      <div className="bg-soft-800 text-white py-2">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-6">
@@ -40,7 +40,7 @@ export default function Header() {
         <div className="flex items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 flex-shrink-0">
-            <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-soft-600 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-xl">AI</span>
             </div>
             <div>
@@ -60,10 +60,10 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors relative group"
+                className="text-gray-700 hover:text-soft-600 font-medium transition-colors relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-soft-600 transition-all group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
@@ -75,7 +75,7 @@ export default function Header() {
           <div className="flex items-center space-x-4 flex-shrink-0">
             <Link
               href="/appointment"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              className="bg-soft-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-soft-700 transition-colors"
             >
               Request an Appointment
             </Link>
@@ -102,7 +102,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                  className="text-gray-700 hover:text-soft-600 font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}

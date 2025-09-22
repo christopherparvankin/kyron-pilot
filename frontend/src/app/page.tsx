@@ -35,7 +35,7 @@ export default function Home() {
       description: "Meet our expert oncologists",
       icon: Users,
       href: "/providers",
-      color: "from-blue-500 to-blue-700"
+      color: "from-soft-500 to-soft-700"
     },
     {
       id: 2,
@@ -51,7 +51,7 @@ export default function Home() {
       description: "Cutting-edge care innovations",
       icon: Sparkles,
       href: "/innovations",
-      color: "from-purple-500 to-purple-700"
+      color: "from-primary-500 to-primary-700"
     },
     {
       id: 4,
@@ -69,7 +69,7 @@ export default function Home() {
       description: "Comprehensive guidance throughout your care journey",
       icon: Navigation,
       href: "/innovations/patient-navigation",
-      color: "from-blue-500 to-blue-700"
+      color: "from-soft-500 to-soft-700"
     },
     {
       title: "Telehealth Services",
@@ -83,7 +83,7 @@ export default function Home() {
       description: "State-of-the-art treatment facility",
       icon: Syringe,
       href: "/innovations/infusion-center",
-      color: "from-purple-500 to-purple-700"
+      color: "from-primary-500 to-primary-700"
     },
     {
       title: "In-House Pharmacy",
@@ -130,18 +130,18 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <main className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-soft-300/20 to-primary-300/20"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-6xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Sparkles className="w-4 h-4" />
               <span>Leading Cancer Care</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">
                 Together
               </span>
               <br />
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Link
                 href="/appointment"
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-soft-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-soft-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 Request an Appointment
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -203,7 +203,7 @@ export default function Home() {
                       `}>
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-soft-600 transition-colors">
                         {card.title}
                       </h3>
                       <p className="text-gray-600 text-sm">
@@ -224,12 +224,12 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
                   <Heart className="w-4 h-4" />
                   <span>50+ Years of Excellence</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">NY Oncologists</span>
+                  About <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">NY Oncologists</span>
                 </h2>
                 <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
                   <p>
@@ -247,7 +247,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 shadow-xl">
+              <div className="bg-gradient-to-br from-cream-100 to-soft-50 rounded-2xl p-8 shadow-xl">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Our Mission
                 </h3>
@@ -266,7 +266,7 @@ export default function Home() {
                     "Community-based care"
                   ].map((item, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-blue-600" />
+                      <CheckCircle className="w-5 h-5 text-soft-600" />
                       <span className="text-gray-700">{item}</span>
                     </div>
                   ))}
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-500 to-primary-500">
         <div className="container mx-auto">
           <div className="text-center text-white mb-16">
             <h2 className="text-4xl font-bold mb-4">Why Choose Us?</h2>
@@ -365,7 +365,7 @@ export default function Home() {
 
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-700 to-primary-700">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-6">

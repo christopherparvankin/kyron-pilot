@@ -116,18 +116,18 @@ export default function LocationsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-soft-300/20 to-primary-300/20"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <MapPin className="w-4 h-4" />
               <span>Convenient Care</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">
                 Our Locations
               </span>
             </h1>
@@ -158,11 +158,11 @@ export default function LocationsPage() {
                 onMouseLeave={() => setHoveredLocation(null)}
               >
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-br from-soft-500 to-soft-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-soft-600 transition-colors">
                       {location.name}
                     </h3>
                     <div className="text-gray-600">
@@ -178,12 +178,12 @@ export default function LocationsPage() {
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-blue-600" />
+                    <Phone className="w-5 h-5 text-soft-600" />
                     <div>
                       <p className="font-medium text-gray-900">Phone</p>
                       <a
                         href={`tel:${location.phone}`}
-                        className="text-blue-600 hover:text-blue-700 transition-colors"
+                        className="text-soft-600 hover:text-soft-700 transition-colors"
                       >
                         {location.phone}
                       </a>
@@ -192,7 +192,7 @@ export default function LocationsPage() {
 
                   {location.fax && (
                     <div className="flex items-center space-x-3">
-                      <Phone className="w-5 h-5 text-blue-600" />
+                      <Phone className="w-5 h-5 text-soft-600" />
                       <div>
                         <p className="font-medium text-gray-900">Fax</p>
                         <span className="text-gray-600">
@@ -203,12 +203,12 @@ export default function LocationsPage() {
                   )}
 
                   <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-blue-600" />
+                    <Mail className="w-5 h-5 text-soft-600" />
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
                       <a
                         href={`mailto:${location.email}`}
-                        className="text-blue-600 hover:text-blue-700 transition-colors"
+                        className="text-soft-600 hover:text-soft-700 transition-colors"
                       >
                         {location.email}
                       </a>
@@ -216,7 +216,7 @@ export default function LocationsPage() {
                   </div>
 
                   <div className="flex items-start space-x-3">
-                    <Clock className="w-5 h-5 text-blue-600 mt-1" />
+                    <Clock className="w-5 h-5 text-soft-600 mt-1" />
                     <div>
                       <p className="font-medium text-gray-900 mb-2">Office Hours</p>
                       <div className="text-gray-600">
@@ -238,7 +238,7 @@ export default function LocationsPage() {
                     {location.features.map((feature, featureIndex) => (
                       <span
                         key={featureIndex}
-                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-soft-100 text-soft-800"
                       >
                         <CheckCircle className="w-3 h-3 mr-1" />
                         {feature}
@@ -272,7 +272,7 @@ export default function LocationsPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-500 to-primary-500">
         <div className="container mx-auto">
           <div className="text-center text-white mb-16">
             <h2 className="text-4xl font-bold mb-4">Why Multiple Locations?</h2>
@@ -333,7 +333,7 @@ export default function LocationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-700 to-primary-700">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-6">
