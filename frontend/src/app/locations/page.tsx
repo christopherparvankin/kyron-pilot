@@ -33,6 +33,7 @@ export default function LocationsPage() {
         zipCode: "10001"
       },
       phone: "(555) 123-4567",
+      fax: "(555) 123-4568",
       email: "manhattan@nyoncologists.com",
       hours: [
         { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
@@ -51,6 +52,7 @@ export default function LocationsPage() {
         zipCode: "11201"
       },
       phone: "(555) 123-4568",
+      fax: "(555) 123-4569",
       email: "brooklyn@nyoncologists.com",
       hours: [
         { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
@@ -69,6 +71,7 @@ export default function LocationsPage() {
         zipCode: "11375"
       },
       phone: "(555) 123-4569",
+      fax: "(555) 123-4570",
       email: "queens@nyoncologists.com",
       hours: [
         { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
@@ -87,6 +90,7 @@ export default function LocationsPage() {
         zipCode: "10451"
       },
       phone: "(555) 123-4570",
+      fax: "(555) 123-4571",
       email: "bronx@nyoncologists.com",
       hours: [
         { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
@@ -94,6 +98,44 @@ export default function LocationsPage() {
         { day: "Sunday", open: "", close: "", closed: true }
       ],
       features: ["Community Focus", "Financial Assistance", "Support Groups"]
+    },
+    {
+      id: 5,
+      name: "Bayonne Clinic",
+      address: {
+        street: "27 E 29th St",
+        city: "Bayonne",
+        state: "NJ",
+        zipCode: "07002"
+      },
+      phone: "201-858-1211",
+      fax: "201-858-4171",
+      email: "bayonne@nyoncologists.com",
+      hours: [
+        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
+        { day: "Saturday", open: "9:00 AM", close: "1:00 PM", closed: false },
+        { day: "Sunday", open: "", close: "", closed: true }
+      ],
+      features: ["Full Services", "Free Parking", "Wheelchair Accessible"]
+    },
+    {
+      id: 6,
+      name: "West Orange Clinic",
+      address: {
+        street: "393 Northfield Ave",
+        city: "West Orange",
+        state: "NJ",
+        zipCode: "07052"
+      },
+      phone: "973-457-8728",
+      fax: "973-457-8729",
+      email: "westorange@nyoncologists.com",
+      hours: [
+        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
+        { day: "Saturday", open: "9:00 AM", close: "1:00 PM", closed: false },
+        { day: "Sunday", open: "", close: "", closed: true }
+      ],
+      features: ["Oncology Services", "Free Parking", "Multilingual Staff"]
     }
   ];
 
@@ -102,7 +144,7 @@ export default function LocationsPage() {
       title: "Convenience",
       description: "Multiple locations mean shorter travel times and easier access to care",
       icon: MapPin,
-      stats: "5+ Locations"
+      stats: "6+ Locations"
     },
     {
       title: "Flexible Scheduling",
@@ -183,7 +225,7 @@ export default function LocationsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {locations.map((location, index) => (
               <div
                 key={location.id}
@@ -223,6 +265,18 @@ export default function LocationsPage() {
                       </a>
                     </div>
                   </div>
+
+                  {location.fax && (
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-blue-600" />
+                      <div>
+                        <p className="font-medium text-gray-900">Fax</p>
+                        <span className="text-gray-600">
+                          {location.fax}
+                        </span>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-blue-600" />

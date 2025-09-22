@@ -112,6 +112,20 @@ export default async function LocationPage({ params }: LocationPageProps) {
                     </div>
                   )}
 
+                  {location.fax && (
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-blue-600" />
+                      <div>
+                        <h3 className="text-lg font-medium text-gray-900">
+                          Fax
+                        </h3>
+                        <span className="text-gray-600">
+                          {location.fax}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
                   {location.email && (
                     <div className="flex items-center space-x-3">
                       <Mail className="w-5 h-5 text-blue-600" />
@@ -171,7 +185,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
                     href={`https://maps.google.com/?q=${location.address?.street}, ${location.address?.city}, ${location.address?.state} ${location.address?.zipCode}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-gray-600 text-white py-3 px-6 rounded-md font-medium hover:bg-gray-700 transition-colors inline-block text-center flex items-center justify-center space-x-2"
+                    className="w-full bg-gray-600 text-white py-3 px-6 rounded-md font-medium hover:bg-gray-700 transition-colors flex items-center justify-center space-x-2"
                   >
                     <Navigation className="w-4 h-4" />
                     <span>Get Directions</span>

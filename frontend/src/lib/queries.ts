@@ -34,6 +34,7 @@ export const queries = {
     slug,
     address,
     phone,
+    fax,
     email,
     hours
   }`,
