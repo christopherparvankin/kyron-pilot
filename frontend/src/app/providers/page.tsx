@@ -110,7 +110,7 @@ export default async function ProvidersPage() {
               </Link>
               <Link
                 href="/services"
-                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 <Heart className="mr-2 w-5 h-5" />
                 Learn About Services
@@ -211,7 +211,15 @@ export default async function ProvidersPage() {
                     <IconComponent className="w-10 h-10 text-white" />
                   </div>
                   <div className="text-3xl font-bold mb-2">{feature.stats}</div>
-                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  {feature.title === "Multiple Locations" ? (
+                    <Link href="/locations">
+                      <h3 className="text-xl font-bold mb-4 hover:text-blue-200 transition-colors cursor-pointer">
+                        {feature.title}
+                      </h3>
+                    </Link>
+                  ) : (
+                    <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  )}
                   <p className="opacity-90">{feature.description}</p>
                 </div>
               );
@@ -220,57 +228,6 @@ export default async function ProvidersPage() {
         </div>
       </section>
 
-      {/* Leadership Team */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Leadership Team</h2>
-            <p className="text-xl text-gray-600">
-              Experienced leaders in cancer care
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {providers.slice(0, 4).map((provider: any, index: number) => (
-              <Link
-                key={provider._id}
-                href={`/providers/${provider.slug.current}`}
-                className="bg-gray-50 rounded-2xl p-6 text-center group hover:bg-white hover:shadow-lg transition-all duration-300 block"
-              >
-                {provider.image ? (
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
-                    <img
-                      src={urlFor(provider.image).width(96).height(96).url()}
-                      alt={provider.image.alt || provider.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <User className="w-12 h-12 text-blue-600" />
-                  </div>
-                )}
-                <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
-                  {provider.name}
-                </h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">
-                  {provider.title}
-                </p>
-                <div className="flex flex-wrap gap-1 justify-center">
-                  {provider.specialties?.slice(0, 2).map((specialty: string, specialtyIndex: number) => (
-                    <span
-                      key={specialtyIndex}
-                      className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
-                    >
-                      {specialty}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Choose Our Physicians */}
       <section className="py-20 px-4 bg-gray-50">
@@ -386,10 +343,17 @@ export default async function ProvidersPage() {
               </Link>
               <Link
                 href="/services"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 <Heart className="mr-2 w-5 h-5" />
                 Learn About Services
+              </Link>
+              <Link
+                href="/locations"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+              >
+                <MapPin className="mr-2 w-5 h-5" />
+                View Locations
               </Link>
             </div>
           </div>

@@ -18,12 +18,14 @@ import {
   Shield,
   Award,
   Users,
-  Clock3
+  Clock3,
+  X
 } from "lucide-react";
 
 export default function AppointmentPage() {
   const [hoveredContact, setHoveredContact] = useState<number | null>(null);
   const [activeFeature, setActiveFeature] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -156,7 +158,19 @@ export default function AppointmentPage() {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
-    alert('Appointment request submitted! We will contact you within 24 hours.');
+    setIsSubmitted(true);
+    
+    // Reset form after successful submission
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      preferredProvider: '',
+      preferredLocation: '',
+      appointmentType: '',
+      message: ''
+    });
   };
 
   return (
@@ -184,6 +198,29 @@ export default function AppointmentPage() {
           </div>
         </div>
       </section>
+
+      {/* Success Message */}
+      {isSubmitted && (
+        <section className="py-8 px-4 bg-green-50 border-b border-green-200">
+          <div className="container mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg flex items-center">
+                <CheckCircle className="w-6 h-6 mr-3 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-lg">Appointment request submitted!</p>
+                  <p className="text-sm">We will contact you within 24 hours.</p>
+                </div>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="ml-auto text-green-600 hover:text-green-800 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Contact Methods */}
       <section className="py-20 px-4 bg-white">
@@ -233,38 +270,6 @@ export default function AppointmentPage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="container mx-auto">
-          <div className="text-center text-white mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Choose Our Scheduling?</h2>
-            <p className="text-xl opacity-90">
-              Fast, convenient, and patient-centered appointment scheduling
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <div 
-                  key={index} 
-                  className={`text-center group ${
-                    activeFeature === index ? 'transform scale-105' : ''
-                  } transition-all duration-500`}
-                >
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-10 h-10 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold mb-2">{feature.stats}</div>
-                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                  <p className="opacity-90">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Appointment Form */}
       <section className="py-20 px-4 bg-white">

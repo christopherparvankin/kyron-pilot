@@ -81,17 +81,17 @@ export default function InnovationsPage() {
               with advanced technology, personalized support, and compassionate care.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 bg-red-50 px-4 py-2 rounded-full border border-red-200">
                 <Heart className="w-4 h-4 text-red-500" />
-                <span>Patient-Centered</span>
+                <span className="text-red-700 font-medium">Patient-Centered</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-full border border-blue-200">
                 <Shield className="w-4 h-4 text-blue-500" />
-                <span>Evidence-Based</span>
+                <span className="text-blue-700 font-medium">Evidence-Based</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-full border border-green-200">
                 <Clock className="w-4 h-4 text-green-500" />
-                <span>24/7 Support</span>
+                <span className="text-green-700 font-medium">24/7 Support</span>
               </div>
             </div>
           </div>

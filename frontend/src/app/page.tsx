@@ -161,10 +161,20 @@ export default function Home() {
               </Link>
               <Link
                 href="/providers"
-                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="px-8 py-4 rounded-lg font-semibold transform hover:scale-105 inline-flex items-center justify-center"
+                style={{
+                  backgroundColor: '#2563eb !important',
+                  color: 'white !important',
+                  border: 'none !important',
+                  outline: 'none !important',
+                  textDecoration: 'none !important',
+                  display: 'inline-flex !important',
+                  alignItems: 'center !important',
+                  justifyContent: 'center !important'
+                }}
               >
                 Find a Physician
-                <Users className="ml-2 w-5 h-5" />
+                <Users className="ml-2 w-5 h-5" style={{color: 'white !important'}} />
               </Link>
             </div>
 
@@ -375,9 +385,19 @@ export default function Home() {
               </Link>
               <Link
                 href="/providers"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="px-8 py-4 rounded-lg font-semibold transform hover:scale-105 inline-flex items-center justify-center"
+                style={{
+                  backgroundColor: '#2563eb !important',
+                  color: 'white !important',
+                  border: 'none !important',
+                  outline: 'none !important',
+                  textDecoration: 'none !important',
+                  display: 'inline-flex !important',
+                  alignItems: 'center !important',
+                  justifyContent: 'center !important'
+                }}
               >
-                <Users className="mr-2 w-5 h-5" />
+                <Users className="mr-2 w-5 h-5" style={{color: 'white !important'}} />
                 Find a Physician
               </Link>
             </div>

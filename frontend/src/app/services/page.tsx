@@ -135,7 +135,7 @@ export default function ServicesPage() {
               </Link>
               <Link
                 href="/providers"
-                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 Meet Our Team
                 <Users className="ml-2 w-5 h-5" />
@@ -248,7 +248,7 @@ export default function ServicesPage() {
               </Link>
               <Link
                 href="/providers"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 <Users className="mr-2 w-5 h-5" />
                 Meet Our Team

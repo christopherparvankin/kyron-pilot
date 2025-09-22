@@ -1,6 +1,6 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { client } from "@/lib/sanity";
+import { queries } from "@/lib/queries";
+import { urlFor } from "@/lib/sanity";
 import Link from "next/link";
 import {
   MapPin,
@@ -22,9 +22,19 @@ import {
   User
 } from "lucide-react";
 
-export default function AboutPage() {
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
-  const [activeStat, setActiveStat] = useState(0);
+export default async function AboutPage() {
+  // Fetch data from Sanity CMS
+  let providers;
+  let aboutContent;
+  
+  try {
+    providers = await client.fetch(queries.providers);
+    aboutContent = await client.fetch(queries.about);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    providers = [];
+    aboutContent = null;
+  }
 
   const features = [
     {
@@ -60,57 +70,18 @@ export default function AboutPage() {
     { number: "5+", label: "Convenient Locations", icon: MapPin }
   ];
 
-  const teamMembers = [
-    {
-      name: "Dr. Sarah Johnson",
-      title: "Chief Medical Officer",
-      specialty: "Medical Oncology",
-      image: null
-    },
-    {
-      name: "Dr. Michael Chen",
-      title: "Director of Hematology",
-      specialty: "Hematology",
-      image: null
-    },
-    {
-      name: "Dr. Lisa Rodriguez",
-      title: "Radiation Oncology Chief",
-      specialty: "Radiation Oncology",
-      image: null
-    },
-    {
-      name: "Dr. David Thompson",
-      title: "Gynecologic Oncology",
-      specialty: "Gynecologic Oncology",
-      image: null
-    }
-  ];
+  // Use providers from Sanity CMS, limit to 4 for display
+  const teamMembers = providers.slice(0, 4).map((provider: any) => ({
+    name: provider.name,
+    title: provider.title,
+    specialty: provider.specialties?.[0] || "Oncology",
+    image: provider.image,
+    slug: provider.slug?.current,
+    bio: provider.bio
+  }));
 
-  const testimonials = [
-    {
-      name: "Margaret S.",
-      quote: "The team at NY Oncologists provided exceptional care during my treatment. Their expertise and compassion made all the difference.",
-      rating: 5
-    },
-    {
-      name: "Robert K.",
-      quote: "I felt supported every step of the way. The multidisciplinary approach ensured I received the best possible care.",
-      rating: 5
-    },
-    {
-      name: "Patricia M.",
-      quote: "The latest treatments and personalized care plan gave me hope and confidence in my recovery journey.",
-      rating: 5
-    }
-  ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStat((prev) => (prev + 1) % stats.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // Server component - no client-side state needed
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
@@ -128,7 +99,7 @@ export default function AboutPage() {
                 About
               </span>
               <br />
-              <span className="text-gray-700">NY Oncologists</span>
+              <span className="text-gray-700">Arjun Iyengar Hematology Oncology Medical Center</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Leading cancer care with innovative treatments and compassionate support 
@@ -167,12 +138,12 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="text-white">
                 <h2 className="text-4xl font-bold mb-6">
-                  About NY Oncologists
+                  About Arjun Iyengar Hematology Oncology Medical Center
                 </h2>
                 <div className="space-y-6 text-lg leading-relaxed opacity-90">
                   <p>
                     For over 50 years, we have been at the leading-edge of cancer care. 
-                    When you are a patient at NY Oncologists, you can expect innovative 
+                    When you are a patient at Arjun Iyengar Hematology Oncology Medical Center, you can expect innovative 
                     cancer care tailored to you using the latest treatments and technologies 
                     available, including clinical trials.
                   </p>
@@ -193,7 +164,7 @@ export default function AboutPage() {
 
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-white mb-6">
-                  Why Choose NY Oncologists?
+                  Why Choose Arjun Iyengar Hematology Oncology Medical Center?
                 </h3>
                 <ul className="space-y-4">
                   {[
@@ -233,13 +204,11 @@ export default function AboutPage() {
                 <div
                   key={index}
                   className="text-center group"
-                  onMouseEnter={() => setHoveredFeature(index)}
-                  onMouseLeave={() => setHoveredFeature(null)}
                 >
                   <div className={`
                     w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${feature.color}
                     flex items-center justify-center group-hover:scale-110 transition-transform duration-300
-                    ${hoveredFeature === index ? 'shadow-2xl' : 'shadow-lg'}
+                    shadow-lg group-hover:shadow-2xl
                   `}>
                     <IconComponent className="w-10 h-10 text-white" />
                   </div>
@@ -272,9 +241,7 @@ export default function AboutPage() {
               return (
                 <div 
                   key={index} 
-                  className={`text-center group ${
-                    activeStat === index ? 'transform scale-105' : ''
-                  } transition-all duration-500`}
+                  className="text-center group transition-all duration-500"
                 >
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <IconComponent className="w-10 h-10 text-white" />
@@ -299,12 +266,26 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
+            {teamMembers.map((member: any, index: number) => (
+              <Link
+                key={member.slug || index}
+                href={member.slug ? `/providers/${member.slug}` : '#'}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group block"
+              >
                 <div className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <User className="w-12 h-12 text-blue-600" />
-                  </div>
+                  {member.image ? (
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={urlFor(member.image).width(96).height(96).url()}
+                        alt={member.image.alt || member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <User className="w-12 h-12 text-blue-600" />
+                    </div>
+                  )}
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
                     {member.name}
                   </h3>
@@ -315,7 +296,7 @@ export default function AboutPage() {
                     {member.specialty}
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -331,33 +312,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
-            <p className="text-xl text-gray-600">
-              Hear from patients who have experienced our care
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Information */}
       <section className="py-20 px-4">
@@ -419,6 +373,39 @@ export default function AboutPage() {
                       <p>Mon-Fri: 8:00 AM - 5:00 PM</p>
                       <p>Sat: 9:00 AM - 1:00 PM</p>
                     </div>
+                  </div>
+                </div>
+                
+        {/* Map Section */}
+        <div className="bg-gray-100 rounded-lg overflow-hidden">
+          <div className="h-64 w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.0042587845938!3d40.74844097932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1635781234567!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Arjun Iyengar Hematology Oncology Medical Center Main Office Location"
+              className="w-full h-full"
+              suppressHydrationWarning={true}
+            ></iframe>
+          </div>
+                  <div className="p-4 bg-white">
+                    <h4 className="font-semibold text-gray-900 mb-2">Get Directions</h4>
+                    <p className="text-sm text-gray-600 mb-3">
+                      Located in the heart of Manhattan, easily accessible by public transportation and with convenient parking nearby.
+                    </p>
+                    <a
+                      href="https://maps.google.com/?q=123+Medical+Center+Drive+New+York+NY+10001"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm"
+                    >
+                      <MapPin className="w-4 h-4 mr-1" />
+                      Open in Google Maps
+                    </a>
                   </div>
                 </div>
               </div>
