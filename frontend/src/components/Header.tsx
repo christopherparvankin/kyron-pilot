@@ -12,7 +12,19 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50 w-full" style={{display: 'block', minHeight: '80px'}}>
+    <header 
+      className="bg-white shadow-lg sticky top-0 z-50 w-full" 
+      style={{
+        display: 'block !important',
+        minHeight: '80px',
+        position: 'sticky',
+        top: '0',
+        zIndex: '9999',
+        backgroundColor: 'white',
+        width: '100%',
+        borderBottom: '2px solid #e5e7eb'
+      }}
+    >
       {/* Top Bar */}
       <div className="bg-blue-900 text-white py-2">
         <div className="container mx-auto px-4">

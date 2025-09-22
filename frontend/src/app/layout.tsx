@@ -20,6 +20,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/* Fallback header in case main header fails */}
+        <div style={{display: 'block', minHeight: '60px', backgroundColor: 'white', borderBottom: '1px solid #ccc', padding: '10px'}}>
+          <div style={{maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+            <div style={{fontWeight: 'bold', fontSize: '20px', color: '#1f2937'}}>NY Oncologists</div>
+            <nav style={{display: 'flex', gap: '20px'}}>
+              <a href="/services" style={{color: '#374151', textDecoration: 'none'}}>Services</a>
+              <a href="/innovations" style={{color: '#374151', textDecoration: 'none'}}>Innovations</a>
+              <a href="/providers" style={{color: '#374151', textDecoration: 'none'}}>Providers</a>
+              <a href="/about" style={{color: '#374151', textDecoration: 'none'}}>About</a>
+            </nav>
+          </div>
+        </div>
         <Header />
         <main>{children}</main>
         <Footer />
