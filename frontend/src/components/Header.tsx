@@ -15,7 +15,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-white shadow-lg sticky top-0 z-50 w-full">
       {/* Top Bar */}
       <div className="bg-blue-900 text-white py-2">
         <div className="container mx-auto px-4">
@@ -43,13 +43,13 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">AI</span>
+              <span className="text-white font-bold text-xl">NY</span>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                Arjun Iyengar
+                NY Oncologists
               </h1>
-              <p className="text-sm text-gray-600">Hematology Oncology Medical Center</p>
+              <p className="text-sm text-gray-600">Advanced Cancer Care</p>
             </div>
           </Link>
 
