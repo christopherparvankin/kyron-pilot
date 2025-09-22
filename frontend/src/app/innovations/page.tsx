@@ -55,15 +55,6 @@ export default function InnovationsPage() {
       href: "/innovations/pharmacy",
       color: "from-orange-500 to-orange-700",
       features: ["Specialized Medications", "On-Site Convenience", "Expert Consultation"]
-    },
-    {
-      id: 5,
-      title: "Patient Education",
-      description: "Comprehensive educational resources and interactive learning platforms",
-      icon: BookOpen,
-      href: "/innovations/patient-education",
-      color: "from-teal-500 to-teal-700",
-      features: ["Interactive Learning", "Resource Library", "Expert Guidance"]
     }
   ];
 

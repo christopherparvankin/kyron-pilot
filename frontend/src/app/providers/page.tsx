@@ -1,9 +1,7 @@
 import { client } from "@/lib/sanity";
 import { queries } from "@/lib/queries";
 import { urlFor } from "@/lib/sanity";
-import { PortableText } from "@portabletext/react";
 import Link from "next/link";
-import ProviderFeatures from "@/components/ProviderFeatures";
 import {
   ArrowRight,
   User,
@@ -14,7 +12,6 @@ import {
   Award,
   GraduationCap,
   Heart,
-  Star,
   CheckCircle,
   Sparkles,
   Shield,
@@ -24,25 +21,63 @@ import {
 } from "lucide-react";
 
 export default async function ProvidersPage() {
-  const providers = await client.fetch(queries.providers);
+  let providers;
+  
+  try {
+    providers = await client.fetch(queries.providers);
+  } catch (error) {
+    console.error('Error fetching providers:', error);
+    providers = [];
+  }
 
-  const testimonials = [
+  // Handle empty providers array
+  if (!providers || providers.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">No Providers Found</h1>
+          <p className="text-gray-600 mb-8">
+            We're currently updating our provider information. Please check back soon.
+          </p>
+          <Link
+            href="/"
+            className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
+            Return Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const features = [
     {
-      name: "Robert K.",
-      quote: "Dr. Johnson's expertise and compassion made all the difference in my treatment. I felt confident in her care every step of the way.",
-      rating: 5
+      title: "Board Certified",
+      description: "All our physicians are board-certified in their respective specialties",
+      icon: Award,
+      stats: "100% Certified"
     },
     {
-      name: "Maria L.",
-      quote: "The entire team was incredible. Dr. Chen took the time to explain everything and made sure I understood my treatment options.",
-      rating: 5
+      title: "Extensive Education",
+      description: "Advanced training from leading medical institutions",
+      icon: GraduationCap,
+      stats: "Top Schools"
     },
     {
-      name: "John D.",
-      quote: "Dr. Rodriguez's precision and care during my radiation treatment was exceptional. I couldn't have asked for better care.",
-      rating: 5
+      title: "Patient-Centered Care",
+      description: "Personalized care plans and ongoing support",
+      icon: Heart,
+      stats: "100% Focused"
+    },
+    {
+      title: "Multiple Locations",
+      description: "Convenient care centers throughout New York",
+      icon: MapPin,
+      stats: "5+ Locations"
     }
   ];
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
@@ -95,166 +130,147 @@ export default async function ProvidersPage() {
             </p>
           </div>
 
-          {providers && providers.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {providers.map((provider: any, index: number) => (
-                <Link
-                  key={provider._id}
-                  href={`/providers/${provider.slug?.current}`}
-                  className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
-                >
-                  <div className="text-center">
-                    {provider.image ? (
-                      <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
-                        <img
-                          src={urlFor(provider.image)
-                            .width(128)
-                            .height(128)
-                            .url()}
-                          alt={provider.image.alt || provider.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <User className="w-16 h-16 text-blue-600" />
-                      </div>
-                    )}
-                    <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
-                      {provider.name}
-                    </h3>
-                    <p className="text-blue-600 font-medium mb-4">
-                      {provider.title}
-                    </p>
-
-                    {provider.specialties && provider.specialties.length > 0 && (
-                      <div className="mb-4">
-                        <div className="flex flex-wrap gap-2 justify-center">
-                          {provider.specialties.slice(0, 3).map((specialty: string, specialtyIndex: number) => (
-                            <span
-                              key={specialtyIndex}
-                              className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
-                            >
-                              {specialty}
-                            </span>
-                          ))}
-                          {provider.specialties.length > 3 && (
-                            <span className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
-                              +{provider.specialties.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    )}
-
-                    {provider.bio && (
-                      <div className="text-gray-600 text-sm mb-6 line-clamp-3">
-                        <PortableText
-                          value={provider.bio}
-                          components={{
-                            block: {
-                              normal: ({ children }) => (
-                                <p className="text-sm text-gray-600">
-                                  {children}
-                                </p>
-                              ),
-                            },
-                          }}
-                        />
-                      </div>
-                    )}
-
-                    <div className="flex items-center justify-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                      <span>View Profile</span>
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <div className="bg-gray-50 rounded-2xl p-12">
-                <User className="w-16 h-16 text-gray-400 mx-auto mb-6" />
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Our Team
-                </h2>
-                <p className="text-gray-600 mb-8 max-w-md mx-auto">
-                  We're assembling our team of expert oncologists and specialists. 
-                  Check back soon to meet our physicians.
-                </p>
-                <Link
-                  href="/appointment"
-                  className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Schedule Consultation
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <ProviderFeatures />
-
-      {/* Leadership Team */}
-      {providers && providers.length > 0 && (
-        <section className="py-20 px-4 bg-white">
-          <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Leadership Team</h2>
-              <p className="text-xl text-gray-600">
-                Experienced leaders in cancer care
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {providers.slice(0, 4).map((provider: any, index: number) => (
-                <Link
-                  key={provider._id}
-                  href={`/providers/${provider.slug?.current}`}
-                  className="bg-gray-50 rounded-2xl p-6 text-center group hover:bg-white hover:shadow-lg transition-all duration-300"
-                >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {providers.map((provider: any, index: number) => (
+              <Link
+                key={provider._id}
+                href={`/providers/${provider.slug.current}`}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 block"
+              >
+                <div className="text-center">
                   {provider.image ? (
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
                       <img
-                        src={urlFor(provider.image)
-                          .width(96)
-                          .height(96)
-                          .url()}
+                        src={urlFor(provider.image).width(128).height(128).url()}
                         alt={provider.image.alt || provider.name}
                         className="w-full h-full object-cover"
                       />
                     </div>
                   ) : (
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <User className="w-12 h-12 text-blue-600" />
+                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <User className="w-16 h-16 text-blue-600" />
                     </div>
                   )}
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
                     {provider.name}
                   </h3>
-                  <p className="text-blue-600 font-medium text-sm mb-3">
+                  <p className="text-blue-600 font-medium mb-4">
                     {provider.title}
                   </p>
-                  <div className="flex flex-wrap gap-1 justify-center">
-                    {provider.specialties?.slice(0, 2).map((specialty: string, specialtyIndex: number) => (
-                      <span
-                        key={specialtyIndex}
-                        className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
-                      >
-                        {specialty}
-                      </span>
-                    ))}
+
+                  {provider.specialties && provider.specialties.length > 0 && (
+                    <div className="mb-4">
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {provider.specialties.slice(0, 3).map((specialty: string, specialtyIndex: number) => (
+                          <span
+                            key={specialtyIndex}
+                            className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                          >
+                            {specialty}
+                          </span>
+                        ))}
+                        {provider.specialties.length > 3 && (
+                          <span className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
+                            +{provider.specialties.length - 3} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                    <span>View Profile</span>
+                    <ArrowRight className="ml-2 w-4 h-4" />
                   </div>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </Link>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="container mx-auto">
+          <div className="text-center text-white mb-16">
+            <h2 className="text-4xl font-bold mb-4">Why Choose Our Physicians?</h2>
+            <p className="text-xl opacity-90">
+              Expertise, experience, and compassionate care that makes a difference
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div 
+                  key={index} 
+                  className="text-center group transition-all duration-500"
+                >
+                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-10 h-10 text-white" />
+                  </div>
+                  <div className="text-3xl font-bold mb-2">{feature.stats}</div>
+                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  <p className="opacity-90">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Team */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Leadership Team</h2>
+            <p className="text-xl text-gray-600">
+              Experienced leaders in cancer care
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {providers.slice(0, 4).map((provider: any, index: number) => (
+              <Link
+                key={provider._id}
+                href={`/providers/${provider.slug.current}`}
+                className="bg-gray-50 rounded-2xl p-6 text-center group hover:bg-white hover:shadow-lg transition-all duration-300 block"
+              >
+                {provider.image ? (
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                    <img
+                      src={urlFor(provider.image).width(96).height(96).url()}
+                      alt={provider.image.alt || provider.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <User className="w-12 h-12 text-blue-600" />
+                  </div>
+                )}
+                <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {provider.name}
+                </h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">
+                  {provider.title}
+                </p>
+                <div className="flex flex-wrap gap-1 justify-center">
+                  {provider.specialties?.slice(0, 2).map((specialty: string, specialtyIndex: number) => (
+                    <span
+                      key={specialtyIndex}
+                      className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                    >
+                      {specialty}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Why Choose Our Physicians */}
       <section className="py-20 px-4 bg-gray-50">
@@ -348,33 +364,6 @@ export default async function ProvidersPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
-            <p className="text-xl text-gray-600">
-              Hear from patients who have experienced our physicians' care
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">

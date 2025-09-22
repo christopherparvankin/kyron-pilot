@@ -13,7 +13,6 @@ import {
   Sparkles,
   Shield,
   Clock,
-  Star,
   CheckCircle,
   Play,
   Award,
@@ -130,23 +129,6 @@ export default function Home() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Sarah M.",
-      quote: "The care I received was exceptional. The team made me feel supported throughout my entire journey.",
-      rating: 5
-    },
-    {
-      name: "Robert K.",
-      quote: "Professional, compassionate, and knowledgeable. I couldn't have asked for better care.",
-      rating: 5
-    },
-    {
-      name: "Maria L.",
-      quote: "The innovative treatments and personalized approach made all the difference in my recovery.",
-      rating: 5
-    }
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -379,33 +361,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Stories</h2>
-            <p className="text-xl text-gray-600">
-              Hear from patients who have experienced our care
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">

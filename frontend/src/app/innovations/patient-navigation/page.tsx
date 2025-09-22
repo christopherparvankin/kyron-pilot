@@ -12,7 +12,6 @@ import {
   MapPin,
   Heart,
   Shield,
-  Star,
   ArrowRight,
   Calendar,
   FileText,
@@ -78,23 +77,6 @@ export default function PatientNavigationPage() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Sarah M.",
-      quote: "My patient navigator was my lifeline during treatment. She helped me understand everything and made sure I never felt alone.",
-      rating: 5
-    },
-    {
-      name: "Robert K.",
-      quote: "The coordination between my doctors was seamless thanks to the patient navigation team. I felt truly cared for.",
-      rating: 5
-    },
-    {
-      name: "Maria L.",
-      quote: "Having someone available 24/7 to answer my questions gave me peace of mind during the most difficult time.",
-      rating: 5
-    }
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -145,14 +127,6 @@ export default function PatientNavigationPage() {
                 guide throughout your cancer care journey. They help coordinate your care, answer 
                 questions, and provide emotional support when you need it most.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105">
-                  Get Started Today
-                </button>
-                <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
-                  Learn More
-                </button>
-              </div>
             </div>
             <div className="relative">
               <div className="bg-white rounded-2xl p-8 shadow-2xl">
@@ -163,27 +137,16 @@ export default function PatientNavigationPage() {
                     return (
                       <div 
                         key={index}
-                        className={`flex items-center space-x-4 p-4 rounded-lg transition-all duration-500 ${
-                          activeStep === index 
-                            ? 'bg-blue-50 border-2 border-blue-200 transform scale-105' 
-                            : 'bg-gray-50'
-                        }`}
+                        className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50"
                       >
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                          activeStep === index 
-                            ? 'bg-blue-600 text-white' 
-                            : 'bg-gray-200 text-gray-600'
-                        }`}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gray-200 text-gray-600">
                           <IconComponent className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-900">{step.title}</h4>
                           <p className="text-gray-600 text-sm">{step.description}</p>
-                          <span className="text-xs text-blue-600 font-medium">{step.duration}</span>
+                          <span className="text-xs text-gray-500 font-medium">{step.duration}</span>
                         </div>
-                        {activeStep === index && (
-                          <CheckCircle className="w-6 h-6 text-blue-600 animate-pulse" />
-                        )}
                       </div>
                     );
                   })}
@@ -234,33 +197,6 @@ export default function PatientNavigationPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="container mx-auto">
-          <div className="text-center text-white mb-16">
-            <h2 className="text-4xl font-bold mb-4">What Patients Say</h2>
-            <p className="text-xl opacity-90">
-              Real stories from patients who have experienced our patient navigation services
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section className="py-20 px-4">
@@ -300,14 +236,6 @@ export default function PatientNavigationPage() {
               </div>
             </div>
 
-            <div className="text-center">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 mr-4">
-                Start Your Journey
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
-                Download Brochure
-              </button>
-            </div>
           </div>
         </div>
       </section>

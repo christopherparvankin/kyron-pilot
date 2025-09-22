@@ -15,7 +15,6 @@ import {
   Tv,
   WifiIcon,
   Users,
-  Star,
   ArrowRight,
   Calendar,
   FileText,
@@ -177,14 +176,6 @@ export default function InfusionCenterPage() {
                 exceptional comfort and care. Experience treatment in a serene, spa-like environment 
                 designed to promote healing and well-being.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors transform hover:scale-105">
-                  Schedule Treatment
-                </button>
-                <button className="border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors">
-                  Virtual Tour
-                </button>
-              </div>
             </div>
             <div className="relative">
               <div className="bg-white rounded-2xl p-8 shadow-2xl">
@@ -297,33 +288,6 @@ export default function InfusionCenterPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
-            <p className="text-xl text-gray-600">
-              Hear from patients who have experienced our infusion center
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section className="py-20 px-4 bg-gray-50">
@@ -363,14 +327,6 @@ export default function InfusionCenterPage() {
               </div>
             </div>
 
-            <div className="text-center">
-              <button className="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors transform hover:scale-105 mr-4">
-                Schedule Treatment
-              </button>
-              <button className="border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors">
-                Download Brochure
-              </button>
-            </div>
           </div>
         </div>
       </section>

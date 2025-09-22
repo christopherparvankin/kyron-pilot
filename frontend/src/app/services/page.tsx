@@ -11,7 +11,6 @@ import {
   Target,
   Sparkles,
   CheckCircle,
-  Star,
   Play,
   Award,
   Users,
@@ -95,23 +94,6 @@ export default function ServicesPage() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Jennifer R.",
-      quote: "The comprehensive care I received was exceptional. Every aspect of my treatment was carefully planned and executed.",
-      rating: 5
-    },
-    {
-      name: "Michael T.",
-      quote: "The team's expertise and compassion made my cancer journey much more manageable. I felt supported every step of the way.",
-      rating: 5
-    },
-    {
-      name: "Lisa K.",
-      quote: "The latest treatments and personalized approach gave me the best possible outcome. I'm forever grateful.",
-      rating: 5
-    }
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -208,10 +190,6 @@ export default function ServicesPage() {
                     ))}
                   </div>
 
-                  <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                    <span>Learn More</span>
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </div>
                 </div>
               );
             })}
@@ -247,74 +225,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Featured Services Overview */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Services</h2>
-            <p className="text-xl text-gray-600">
-              Comprehensive cancer care services designed for your needs
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {serviceCategories.slice(0, 6).map((category, index) => {
-              const IconComponent = category.icon;
-              return (
-                <div key={index} className="bg-gray-50 rounded-2xl p-8 text-center group hover:bg-white hover:shadow-lg transition-all duration-300">
-                  <div className={`
-                    w-16 h-16 rounded-full bg-gradient-to-br ${category.color}
-                    flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300
-                  `}>
-                    <IconComponent className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
-                    {category.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6">
-                    {category.description}
-                  </p>
-                  <Link
-                    href={`/services?category=${category.title.toLowerCase().replace(' ', '-')}`}
-                    className="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center"
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
-            <p className="text-xl text-gray-600">
-              Hear from patients who have experienced our comprehensive care
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">

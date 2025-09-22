@@ -15,7 +15,6 @@ import {
   Tv,
   WifiIcon,
   Users,
-  Star,
   ArrowRight,
   Calendar,
   FileText,
@@ -26,7 +25,8 @@ import {
   CreditCard,
   AlertCircle,
   Zap,
-  Target
+  Target,
+  Star
 } from "lucide-react";
 import Link from "next/link";
 
@@ -182,14 +182,6 @@ export default function PharmacyPage() {
                 comprehensive pharmaceutical care. From specialized cancer drugs to 
                 compounding services, we ensure you have access to the medications you need.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-700 transition-colors transform hover:scale-105">
-                  Visit Pharmacy
-                </button>
-                <button className="border-2 border-orange-600 text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 hover:text-white transition-colors">
-                  Check Availability
-                </button>
-              </div>
             </div>
             <div className="relative">
               <div className="bg-white rounded-2xl p-8 shadow-2xl">
@@ -302,33 +294,6 @@ export default function PharmacyPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
-            <p className="text-xl text-gray-600">
-              Hear from patients who have used our pharmacy services
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section className="py-20 px-4">
@@ -368,14 +333,6 @@ export default function PharmacyPage() {
               </div>
             </div>
 
-            <div className="text-center">
-              <button className="bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-700 transition-colors transform hover:scale-105 mr-4">
-                Contact Pharmacy
-              </button>
-              <button className="border-2 border-orange-600 text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 hover:text-white transition-colors">
-                Request Refill
-              </button>
-            </div>
           </div>
         </div>
       </section>
