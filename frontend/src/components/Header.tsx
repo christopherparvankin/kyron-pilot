@@ -63,12 +63,13 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="flex items-center space-x-8" style={{display: 'flex !important'}}>
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors relative group"
+                style={{color: '#374151', textDecoration: 'none', marginRight: '20px'}}
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
@@ -77,10 +78,18 @@ export default function Header() {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="flex items-center space-x-4" style={{display: 'flex !important'}}>
             <Link
               href="/appointment"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              style={{
+                backgroundColor: '#2563eb',
+                color: 'white',
+                padding: '12px 24px',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontWeight: '600'
+              }}
             >
               Request an Appointment
             </Link>
@@ -90,6 +99,7 @@ export default function Header() {
           <button
             className="lg:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            style={{display: 'none'}}
           >
             {isMenuOpen ? (
               <X className="w-6 h-6 text-gray-700" />
