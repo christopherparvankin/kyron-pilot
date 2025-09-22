@@ -21,8 +21,7 @@ import {
   Navigation,
   Video,
   Syringe,
-  Pill,
-  BookOpen
+  Pill
 } from "lucide-react";
 
 export default function Home() {
@@ -92,13 +91,6 @@ export default function Home() {
       icon: Pill,
       href: "/innovations/pharmacy",
       color: "from-orange-500 to-orange-700"
-    },
-    {
-      title: "Patient Education",
-      description: "Interactive learning resources",
-      icon: BookOpen,
-      href: "/innovations/patient-education",
-      color: "from-teal-500 to-teal-700"
     }
   ];
 
