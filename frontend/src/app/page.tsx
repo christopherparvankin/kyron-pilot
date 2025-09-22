@@ -1,7 +1,6 @@
-import { client } from "@/lib/sanity";
-import { queries } from "@/lib/queries";
-import { PortableText } from "@portabletext/react";
-import { urlFor } from "@/lib/sanity";
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Phone,
@@ -11,456 +10,425 @@ import {
   Users,
   Heart,
   ArrowRight,
+  Sparkles,
+  Shield,
+  Clock,
+  Star,
+  CheckCircle,
+  Play,
+  Award,
+  Target,
+  Zap,
+  Navigation,
+  Video,
+  Syringe,
+  Pill,
+  BookOpen
 } from "lucide-react";
 
-export default async function Home() {
-  // Fetch content from Sanity
-  const aboutContent = await client.fetch(queries.about);
-  const locations = await client.fetch(queries.locations);
-  const providers = await client.fetch(queries.providers);
-  const services = await client.fetch(queries.services);
+export default function Home() {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [activeFeature, setActiveFeature] = useState(0);
+
+  const quickAccessCards = [
+    {
+      id: 1,
+      title: "Find a Physician",
+      description: "Meet our expert oncologists",
+      icon: Users,
+      href: "/providers",
+      color: "from-blue-500 to-blue-700"
+    },
+    {
+      id: 2,
+      title: "Treatments & Services",
+      description: "Advanced cancer treatments",
+      icon: Stethoscope,
+      href: "/services",
+      color: "from-green-500 to-green-700"
+    },
+    {
+      id: 3,
+      title: "Innovations",
+      description: "Cutting-edge care innovations",
+      icon: Sparkles,
+      href: "/innovations",
+      color: "from-purple-500 to-purple-700"
+    },
+    {
+      id: 4,
+      title: "First Visit",
+      description: "Schedule your consultation",
+      icon: Calendar,
+      href: "/appointment",
+      color: "from-orange-500 to-orange-700"
+    }
+  ];
+
+  const innovations = [
+    {
+      title: "Patient Navigation",
+      description: "Comprehensive guidance throughout your care journey",
+      icon: Navigation,
+      href: "/innovations/patient-navigation",
+      color: "from-blue-500 to-blue-700"
+    },
+    {
+      title: "Telehealth Services",
+      description: "Advanced virtual care technology",
+      icon: Video,
+      href: "/innovations/telehealth",
+      color: "from-green-500 to-green-700"
+    },
+    {
+      title: "Infusion Center",
+      description: "State-of-the-art treatment facility",
+      icon: Syringe,
+      href: "/innovations/infusion-center",
+      color: "from-purple-500 to-purple-700"
+    },
+    {
+      title: "In-House Pharmacy",
+      description: "Specialized oncology medications",
+      icon: Pill,
+      href: "/innovations/pharmacy",
+      color: "from-orange-500 to-orange-700"
+    },
+    {
+      title: "Patient Education",
+      description: "Interactive learning resources",
+      icon: BookOpen,
+      href: "/innovations/patient-education",
+      color: "from-teal-500 to-teal-700"
+    }
+  ];
+
+  const features = [
+    {
+      title: "Expert Care",
+      description: "Board-certified oncologists with decades of experience",
+      icon: Award,
+      stats: "50+ years"
+    },
+    {
+      title: "Advanced Technology",
+      description: "Latest treatments and cutting-edge equipment",
+      icon: Target,
+      stats: "100% modern"
+    },
+    {
+      title: "Compassionate Support",
+      description: "Dedicated care team focused on your well-being",
+      icon: Heart,
+      stats: "24/7 care"
+    },
+    {
+      title: "Multiple Locations",
+      description: "Convenient care centers throughout New York",
+      icon: MapPin,
+      stats: "5+ locations"
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Sarah M.",
+      quote: "The care I received was exceptional. The team made me feel supported throughout my entire journey.",
+      rating: 5
+    },
+    {
+      name: "Robert K.",
+      quote: "Professional, compassionate, and knowledgeable. I couldn't have asked for better care.",
+      rating: 5
+    },
+    {
+      name: "Maria L.",
+      quote: "The innovative treatments and personalized approach made all the difference in my recovery.",
+      rating: 5
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Hero Section */}
-      <section
-        className="relative text-white py-24 lg:py-32"
-        style={{
-          backgroundImage: aboutContent?.heroImage
-            ? `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${urlFor(
-                aboutContent.heroImage
-              )
-                .width(1920)
-                .height(800)
-                .url()})`
-            : "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                {aboutContent?.heroTitle ||
-                  "Together: A Better Way To Fight Cancer"}
-              </h1>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-blue-100">
-                {aboutContent?.heroSubtitle ||
-                  "Patient Centered Cancer Care Across New York"}
-              </h2>
-              {aboutContent?.heroDescription && (
-                <p className="text-lg md:text-xl text-blue-100 max-w-4xl mx-auto mb-12">
-                  {aboutContent.heroDescription}
-                </p>
-              )}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="container mx-auto relative z-10">
+          <div className="text-center max-w-6xl mx-auto">
+            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+              <Sparkles className="w-4 h-4" />
+              <span>Leading Cancer Care</span>
             </div>
-
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Together
+              </span>
+              <br />
+              <span className="text-gray-700">A Better Way To Fight Cancer</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto">
+              Patient-centered cancer care across New York with innovative treatments, 
+              experienced oncologists, and compassionate support throughout your journey.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Link
                 href="/appointment"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 Request an Appointment
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
                 href="/providers"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-900 transition-colors inline-flex items-center justify-center"
+                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 Find a Physician
+                <Users className="ml-2 w-5 h-5" />
               </Link>
             </div>
 
             {/* Quick Access Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Link
-                href="/providers"
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transition-colors"
-              >
-                <Users className="w-12 h-12 text-white mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Find a Physician</h3>
-                <p className="text-blue-100 text-sm">
-                  Meet our expert oncologists
-                </p>
-              </Link>
-
-              <Link
-                href="/services"
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transition-colors"
-              >
-                <Stethoscope className="w-12 h-12 text-white mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">
-                  Treatments & Services
-                </h3>
-                <p className="text-blue-100 text-sm">
-                  Advanced cancer treatments
-                </p>
-              </Link>
-
-              <Link
-                href="/appointment"
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transition-colors"
-              >
-                <Calendar className="w-12 h-12 text-white mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">First Visit</h3>
-                <p className="text-blue-100 text-sm">
-                  Schedule your consultation
-                </p>
-              </Link>
-
-              <Link
-                href="/about"
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transition-colors"
-              >
-                <Heart className="w-12 h-12 text-white mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">About Us</h3>
-                <p className="text-blue-100 text-sm">
-                  Learn more about our practice
-                </p>
-              </Link>
+              {quickAccessCards.map((card, index) => {
+                const IconComponent = card.icon;
+                return (
+                  <Link
+                    key={card.id}
+                    href={card.href}
+                    className="group"
+                    onMouseEnter={() => setHoveredCard(card.id)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    <div className={`
+                      bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/90 
+                      transition-all duration-500 transform hover:-translate-y-2
+                      border border-white/20 overflow-hidden
+                      ${hoveredCard === card.id ? 'scale-105 shadow-2xl' : 'shadow-lg'}
+                    `}>
+                      <div className={`
+                        w-16 h-16 rounded-2xl bg-gradient-to-br ${card.color} 
+                        flex items-center justify-center mx-auto mb-4 group-hover:scale-110 
+                        transition-transform duration-300
+                      `}>
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+                        {card.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {card.description}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
+                <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                  <Heart className="w-4 h-4" />
+                  <span>50+ Years of Excellence</span>
+                </div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  {aboutContent?.aboutTitle || "About NY Oncologists"}
+                  About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">NY Oncologists</span>
                 </h2>
-                {aboutContent?.aboutContent ? (
-                  <div className="prose prose-lg max-w-none">
-                    <PortableText value={aboutContent.aboutContent} />
-                  </div>
-                ) : (
-                  <div className="space-y-4 text-gray-600">
-                    <p>
-                      For {aboutContent?.yearsExperience || 50} years, we have
-                      been at the leading-edge of cancer care. When you are a
-                      patient at NY Oncologists, you can expect innovative
-                      cancer care tailored to you using the latest treatments
-                      and technologies available, including clinical trials.
-                    </p>
-                    <p>
-                      Our cancer centers specialize in medical oncology,
-                      hematology, gynecologic oncology, radiation oncology and
-                      bone marrow transplants. We are rooted in the community
-                      and available to provide care, resources and support for
-                      you and your family close to home.
-                    </p>
-                  </div>
-                )}
+                <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
+                  <p>
+                    For over 50 years, we have been at the leading-edge of cancer care. 
+                    When you are a patient at NY Oncologists, you can expect innovative 
+                    cancer care tailored to you using the latest treatments and technologies 
+                    available, including clinical trials.
+                  </p>
+                  <p>
+                    Our cancer centers specialize in medical oncology, hematology, 
+                    gynecologic oncology, radiation oncology and bone marrow transplants. 
+                    We are rooted in the community and available to provide care, resources 
+                    and support for you and your family close to home.
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-white rounded-lg p-8 shadow-lg">
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 shadow-xl">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  {aboutContent?.missionTitle || "Our Mission"}
+                  Our Mission
                 </h3>
-                {aboutContent?.missionContent ? (
-                  <div className="prose max-w-none">
-                    <PortableText value={aboutContent.missionContent} />
-                  </div>
-                ) : (
-                  <p className="text-gray-600">
-                    To provide superior treatment and compassionate care for
-                    those diagnosed with cancer and blood disorders by offering
-                    a dedicated environment of wellness through patient
-                    education, innovative treatment options and ongoing
-                    emotional support for our patients and their families.
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Services */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Learn More About Cancer & Treatment Options
-              </h2>
-              <p className="text-xl text-gray-600">
-                Comprehensive cancer care with the latest treatments and
-                technologies
-              </p>
-            </div>
-
-            {services && services.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {services.slice(0, 6).map((service: any) => (
-                  <Link
-                    key={service._id}
-                    href={`/services/${service.slug?.current}`}
-                    className="group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200"
-                  >
-                    <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-blue-600">
-                      {service.title}
-                    </h3>
-                    {service.description && (
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {service.description}
-                      </p>
-                    )}
-                    {service.category && (
-                      <span className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
-                        {service.category
-                          .replace("-", " ")
-                          .replace(/\b\w/g, (l: string) => l.toUpperCase())}
-                      </span>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                    Breast Cancer
-                  </h3>
-                  <p className="text-gray-600">
-                    Comprehensive breast cancer treatment and care
-                  </p>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                    Lung Cancer
-                  </h3>
-                  <p className="text-gray-600">
-                    Advanced lung cancer diagnosis and treatment
-                  </p>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                    Prostate Cancer
-                  </h3>
-                  <p className="text-gray-600">
-                    Specialized prostate cancer care and treatment
-                  </p>
-                </div>
-              </div>
-            )}
-
-            <div className="text-center mt-12">
-              <Link
-                href="/services"
-                className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
-              >
-                View All Services
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Providers */}
-      {providers && providers.length > 0 && (
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Meet Our Expert Team
-                </h2>
-                <p className="text-xl text-gray-600">
-                  Experienced oncologists dedicated to your care
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  To provide superior treatment and compassionate care for those diagnosed 
+                  with cancer and blood disorders by offering a dedicated environment of 
+                  wellness through patient education, innovative treatment options and 
+                  ongoing emotional support for our patients and their families.
                 </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {providers.slice(0, 4).map((provider: any) => (
-                  <Link
-                    key={provider._id}
-                    href={`/providers/${provider.slug?.current}`}
-                    className="group text-center"
-                  >
-                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-                      {provider.image ? (
-                        <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
-                          <img
-                            src={urlFor(provider.image)
-                              .width(96)
-                              .height(96)
-                              .url()}
-                            alt={provider.image.alt || provider.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-200 overflow-hidden">
-                          <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                            <Users className="w-12 h-12 text-blue-600" />
-                          </div>
-                        </div>
-                      )}
-                      <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-blue-600">
-                        {provider.name}
-                      </h3>
-                      {provider.title && (
-                        <p className="text-blue-600 font-medium text-sm mb-2">
-                          {provider.title}
-                        </p>
-                      )}
-                      {provider.specialties &&
-                        provider.specialties.length > 0 && (
-                          <div className="flex flex-wrap gap-1 justify-center">
-                            {provider.specialties
-                              .slice(0, 2)
-                              .map((specialty: string, index: number) => (
-                                <span
-                                  key={index}
-                                  className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
-                                >
-                                  {specialty
-                                    .replace("-", " ")
-                                    .replace(/\b\w/g, (l: string) => l.toUpperCase())}
-                                </span>
-                              ))}
-                          </div>
-                        )}
+                <div className="space-y-3">
+                  {[
+                    "50+ years of experience",
+                    "400+ years combined expertise", 
+                    "Latest treatments & clinical trials",
+                    "Multidisciplinary team approach",
+                    "Community-based care"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-blue-600" />
+                      <span className="text-gray-700">{item}</span>
                     </div>
-                  </Link>
-                ))}
-              </div>
-
-              <div className="text-center mt-12">
-                <Link
-                  href="/providers"
-                  className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
-                >
-                  View All Physicians
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Locations Section */}
-      {locations && locations.length > 0 && (
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Our Locations
-              </h2>
-              <p className="text-xl text-gray-600">
-                Convenient care locations throughout New York
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {locations.slice(0, 3).map((location: any) => (
-                <div
-                  key={location._id}
-                  className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-                >
-                  <div className="flex items-start space-x-3 mb-4">
-                    <MapPin className="w-6 h-6 text-blue-600 mt-1" />
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                        {location.name}
-                      </h3>
-                      <div className="text-gray-600">
-                        <p>{location.address?.street}</p>
-                        <p>
-                          {location.address?.city}, {location.address?.state}{" "}
-                          {location.address?.zipCode}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <Phone className="w-5 h-5 text-blue-600" />
-                      <a
-                        href={`tel:${location.phone}`}
-                        className="text-gray-600 hover:text-blue-600"
-                      >
-                        {location.phone}
-                      </a>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Calendar className="w-5 h-5 text-blue-600" />
-                      <div className="text-gray-600 text-sm">
-                        {location.hours && location.hours.length > 0 ? (
-                          <div>
-                            {location.hours
-                              .filter((hour: any) => !hour.closed)
-                              .slice(0, 2)
-                              .map((hour: any, index: number) => (
-                                <p key={index}>
-                                  {hour.day}: {hour.open} - {hour.close}
-                                </p>
-                              ))}
-                          </div>
-                        ) : (
-                          <p>Mon-Fri: 8:00 AM - 5:00 PM</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6">
-                    <Link
-                      href="/appointment"
-                      className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                    >
-                      Schedule Appointment
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            {locations.length > 3 && (
-              <div className="text-center mt-12">
-                <Link
-                  href="/locations"
-                  className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
-                >
-                  View All Locations
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
               </div>
-            )}
+            </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="container mx-auto">
+          <div className="text-center text-white mb-16">
+            <h2 className="text-4xl font-bold mb-4">Why Choose Us?</h2>
+            <p className="text-xl opacity-90">
+              Excellence in cancer care with a personal touch
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div 
+                  key={index} 
+                  className={`text-center group ${
+                    activeFeature === index ? 'transform scale-105' : ''
+                  } transition-all duration-500`}
+                >
+                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-10 h-10 text-white" />
+                  </div>
+                  <div className="text-3xl font-bold mb-2">{feature.stats}</div>
+                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  <p className="opacity-90">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Innovations Preview */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Innovations
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover our cutting-edge innovations designed to enhance your cancer care experience
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {innovations.map((innovation, index) => {
+              const IconComponent = innovation.icon;
+              return (
+                <Link
+                  key={index}
+                  href={innovation.href}
+                  className="group"
+                >
+                  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                    <div className={`
+                      w-16 h-16 rounded-2xl bg-gradient-to-br ${innovation.color} 
+                      flex items-center justify-center mb-4 group-hover:scale-110 
+                      transition-transform duration-300
+                    `}>
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      {innovation.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      {innovation.description}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/innovations"
+              className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105"
+            >
+              Explore All Innovations
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Stories</h2>
+            <p className="text-xl text-gray-600">
+              Hear from patients who have experienced our care
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
+                  "{testimonial.quote}"
+                </p>
+                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-6">
-              {aboutContent?.ctaTitle || "Ready to Begin Your Care Journey?"}
+              Ready to Begin Your Care Journey?
             </h2>
             <p className="text-xl mb-8 text-blue-100">
-              {aboutContent?.ctaDescription ||
-                "Our compassionate team is here to support you every step of the way. Contact us today to schedule a consultation."}
+              Our compassionate team is here to support you every step of the way. 
+              Contact us today to schedule a consultation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/appointment"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 <Calendar className="mr-2 w-5 h-5" />
                 Schedule Appointment
               </Link>
               <Link
                 href="/providers"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-900 transition-colors inline-flex items-center justify-center"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 <Users className="mr-2 w-5 h-5" />
                 Find a Physician

@@ -1,6 +1,7 @@
-import { client } from "@/lib/sanity";
-import { queries } from "@/lib/queries";
-import { urlFor } from "@/lib/sanity";
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   Phone,
   MapPin,
@@ -10,343 +11,473 @@ import {
   User,
   MessageSquare,
   ArrowRight,
+  CheckCircle,
+  Star,
+  Sparkles,
+  Heart,
+  Shield,
+  Award,
+  Users,
+  Clock3
 } from "lucide-react";
-import Link from "next/link";
 
-export default async function AppointmentPage() {
-  const locations = await client.fetch(queries.locations);
-  const contactInfo = await client.fetch(queries.contactInfo);
-  const providers = await client.fetch(queries.providers);
+export default function AppointmentPage() {
+  const [hoveredContact, setHoveredContact] = useState<number | null>(null);
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    preferredProvider: '',
+    preferredLocation: '',
+    appointmentType: '',
+    message: ''
+  });
 
-  const mainLocation = locations?.[0];
+  const contactMethods = [
+    {
+      id: 1,
+      title: "Call Us",
+      description: "Speak directly with our scheduling team",
+      icon: Phone,
+      value: "(555) 123-4567",
+      details: "Available Monday - Friday, 8:00 AM - 5:00 PM",
+      color: "from-blue-500 to-blue-700"
+    },
+    {
+      id: 2,
+      title: "Email Us",
+      description: "Send us your appointment request",
+      icon: Mail,
+      value: "info@nyoncologists.com",
+      details: "We'll respond within 24 hours",
+      color: "from-green-500 to-green-700"
+    },
+    {
+      id: 3,
+      title: "Visit Us",
+      description: "Come to our office in person",
+      icon: MapPin,
+      value: "123 Medical Center Drive, New York, NY 10001",
+      details: "Walk-ins welcome during business hours",
+      color: "from-purple-500 to-purple-700"
+    }
+  ];
+
+  const features = [
+    {
+      title: "Quick Scheduling",
+      description: "Get an appointment within 24-48 hours",
+      icon: Clock,
+      stats: "24-48 hours"
+    },
+    {
+      title: "Expert Care",
+      description: "Board-certified oncologists",
+      icon: Award,
+      stats: "100% certified"
+    },
+    {
+      title: "Multiple Locations",
+      description: "Convenient care centers",
+      icon: MapPin,
+      stats: "5+ locations"
+    },
+    {
+      title: "24/7 Support",
+      description: "Always here when you need us",
+      icon: Heart,
+      stats: "Always available"
+    }
+  ];
+
+  const appointmentTypes = [
+    {
+      value: "new-patient",
+      title: "New Patient Consultation",
+      description: "Comprehensive initial evaluation and treatment planning",
+      icon: User
+    },
+    {
+      value: "follow-up",
+      title: "Follow-up Appointment",
+      description: "Ongoing care and treatment monitoring",
+      icon: Calendar
+    },
+    {
+      value: "second-opinion",
+      title: "Second Opinion",
+      description: "Expert review of your diagnosis and treatment options",
+      icon: Shield
+    },
+    {
+      value: "emergency",
+      title: "Urgent/Emergency",
+      description: "Immediate care for urgent medical needs",
+      icon: Clock3
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Sarah M.",
+      quote: "The scheduling process was so easy and the staff was incredibly helpful. I got an appointment within 24 hours.",
+      rating: 5
+    },
+    {
+      name: "Robert K.",
+      quote: "From the first call to the appointment, everything was seamless. The team made me feel comfortable and cared for.",
+      rating: 5
+    },
+    {
+      name: "Maria L.",
+      quote: "The online form made it easy to request an appointment, and they called me back the same day to confirm.",
+      rating: 5
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Appointment request submitted! We will contact you within 24 hours.');
+  };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-20 text-center">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Request an Appointment
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="container mx-auto relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+              <Calendar className="w-4 h-4" />
+              <span>Easy Scheduling</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Request an
+              </span>
+              <br />
+              <span className="text-gray-700">Appointment</span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8">
-              Schedule your consultation with our expert oncologists
-            </p>
-            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
-              We're here to help you take the next step in your cancer care
-              journey. Contact us today to schedule your consultation.
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              Schedule your consultation with our expert oncologists. We're here to help you 
+              take the next step in your cancer care journey with compassionate, expert care.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Information */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+      {/* Contact Methods */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Multiple ways to reach us for your appointment needs
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {contactMethods.map((method, index) => {
+              const IconComponent = method.icon;
+              return (
+                <div
+                  key={method.id}
+                  className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                  onMouseEnter={() => setHoveredContact(method.id)}
+                  onMouseLeave={() => setHoveredContact(null)}
+                >
+                  <div className={`
+                    w-16 h-16 rounded-2xl bg-gradient-to-br ${method.color} 
+                    flex items-center justify-center mb-6 group-hover:scale-110 
+                    transition-transform duration-300
+                  `}>
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                    {method.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {method.description}
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-lg font-semibold text-gray-900">
+                      {method.value}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {method.details}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="container mx-auto">
+          <div className="text-center text-white mb-16">
+            <h2 className="text-4xl font-bold mb-4">Why Choose Our Scheduling?</h2>
+            <p className="text-xl opacity-90">
+              Fast, convenient, and patient-centered appointment scheduling
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div 
+                  key={index} 
+                  className={`text-center group ${
+                    activeFeature === index ? 'transform scale-105' : ''
+                  } transition-all duration-500`}
+                >
+                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-10 h-10 text-white" />
+                  </div>
+                  <div className="text-3xl font-bold mb-2">{feature.stats}</div>
+                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  <p className="opacity-90">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Appointment Form */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Get in Touch
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Request Appointment</h2>
               <p className="text-xl text-gray-600">
-                Multiple ways to reach us for your appointment needs
+                Fill out the form below and we'll contact you within 24 hours
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Methods */}
-              <div className="space-y-8">
-                <div className="bg-white rounded-lg p-8 shadow-md">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    Contact Information
-                  </h3>
-
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <Phone className="w-6 h-6 text-blue-600 mt-1" />
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                          Call Us
-                        </h4>
-                        <p className="text-gray-600 mb-2">
-                          {contactInfo?.phone ||
-                            mainLocation?.phone ||
-                            "(555) 123-4567"}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          Available Monday - Friday, 8:00 AM - 5:00 PM
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <Mail className="w-6 h-6 text-blue-600 mt-1" />
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                          Email Us
-                        </h4>
-                        <p className="text-gray-600 mb-2">
-                          {contactInfo?.email ||
-                            mainLocation?.email ||
-                            "info@nyoncologists.com"}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          We'll respond within 24 hours
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <MapPin className="w-6 h-6 text-blue-600 mt-1" />
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                          Visit Us
-                        </h4>
-                        <div className="text-gray-600">
-                          <p>
-                            {mainLocation?.address?.street ||
-                              "123 Medical Center Drive"}
-                          </p>
-                          <p>
-                            {mainLocation?.address?.city || "New York"},{" "}
-                            {mainLocation?.address?.state || "NY"}{" "}
-                            {mainLocation?.address?.zipCode || "10001"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Office Hours */}
-                <div className="bg-white rounded-lg p-8 shadow-md">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    Office Hours
-                  </h3>
-
-                  <div className="space-y-3">
-                    {mainLocation?.hours && mainLocation.hours.length > 0 ? (
-                      mainLocation.hours.map((hour: any, index: number) => (
-                        <div
-                          key={index}
-                          className="flex justify-between items-center"
-                        >
-                          <span className="font-medium text-gray-900">
-                            {hour.day}
-                          </span>
-                          <span className="text-gray-600">
-                            {hour.closed
-                              ? "Closed"
-                              : `${hour.open} - ${hour.close}`}
-                          </span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium text-gray-900">
-                            Monday - Friday
-                          </span>
-                          <span className="text-gray-600">
-                            8:00 AM - 5:00 PM
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium text-gray-900">
-                            Saturday
-                          </span>
-                          <span className="text-gray-600">Closed</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium text-gray-900">
-                            Sunday
-                          </span>
-                          <span className="text-gray-600">Closed</span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Appointment Form */}
-              <div className="bg-white rounded-lg p-8 shadow-md">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Request Appointment
-                </h3>
-
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="firstName"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        First Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Your first name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="lastName"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Last Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Your last name"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="(555) 123-4567"
-                      />
-                    </div>
-                  </div>
-
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-12 shadow-xl">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label
-                      htmlFor="preferredProvider"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Preferred Provider (Optional)
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name *
                     </label>
-                    <select
-                      id="preferredProvider"
-                      name="preferredProvider"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select a provider</option>
-                      {providers &&
-                        providers.map((provider: any) => (
-                          <option key={provider._id} value={provider._id}>
-                            {provider.name} - {provider.title}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="preferredLocation"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Preferred Location *
-                    </label>
-                    <select
-                      id="preferredLocation"
-                      name="preferredLocation"
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select a location</option>
-                      {locations &&
-                        locations.map((location: any) => (
-                          <option key={location._id} value={location._id}>
-                            {location.name} - {location.address?.city}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="appointmentType"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Appointment Type *
-                    </label>
-                    <select
-                      id="appointmentType"
-                      name="appointmentType"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select appointment type</option>
-                      <option value="new-patient">
-                        New Patient Consultation
-                      </option>
-                      <option value="follow-up">Follow-up Appointment</option>
-                      <option value="second-opinion">Second Opinion</option>
-                      <option value="emergency">Urgent/Emergency</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Additional Information
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Please provide any additional information about your appointment needs..."
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Your first name"
                     />
                   </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
-                  >
-                    <Calendar className="mr-2 w-5 h-5" />
-                    Request Appointment
-                  </button>
-                  
-                  {/* Disclaimer */}
-                  <div className="mt-6 p-4 bg-gray-50 rounded-lg border-l-4 border-blue-200">
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      <strong>Important:</strong> This request form is not a medical record and should not contain sensitive health information. 
-                      Please do not include detailed medical history, symptoms, or personal health details in your message.
-                    </p>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Your last name"
+                    />
                   </div>
-                </form>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="(555) 123-4567"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="appointmentType" className="block text-sm font-medium text-gray-700 mb-2">
+                    Appointment Type *
+                  </label>
+                  <select
+                    id="appointmentType"
+                    name="appointmentType"
+                    value={formData.appointmentType}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  >
+                    <option value="">Select appointment type</option>
+                    {appointmentTypes.map((type, index) => {
+                      const IconComponent = type.icon;
+                      return (
+                        <option key={index} value={type.value}>
+                          {type.title}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="preferredLocation" className="block text-sm font-medium text-gray-700 mb-2">
+                    Preferred Location *
+                  </label>
+                  <select
+                    id="preferredLocation"
+                    name="preferredLocation"
+                    value={formData.preferredLocation}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  >
+                    <option value="">Select a location</option>
+                    <option value="main">Main Office - New York</option>
+                    <option value="brooklyn">Brooklyn Location</option>
+                    <option value="queens">Queens Location</option>
+                    <option value="manhattan">Manhattan Location</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Additional Information
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    placeholder="Please provide any additional information about your appointment needs..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors transform hover:scale-105 flex items-center justify-center"
+                >
+                  <Calendar className="mr-2 w-5 h-5" />
+                  Request Appointment
+                </button>
+                
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-200">
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    <strong>Important:</strong> This request form is not a medical record and should not contain sensitive health information. 
+                    Please do not include detailed medical history, symptoms, or personal health details in your message.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
+            <p className="text-xl text-gray-600">
+              Hear from patients about their scheduling experience
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
+                  "{testimonial.quote}"
+                </p>
+                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h2 className="text-4xl font-bold mb-6">
+              Ready to Begin Your Care Journey?
+            </h2>
+            <p className="text-xl mb-8 text-blue-100">
+              Our compassionate team is here to support you every step of the way. 
+              Contact us today to schedule your consultation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="tel:555-123-4567"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                Call Now
+              </a>
+              <Link
+                href="/providers"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+              >
+                <Users className="mr-2 w-5 h-5" />
+                Meet Our Team
+              </Link>
             </div>
           </div>
         </div>

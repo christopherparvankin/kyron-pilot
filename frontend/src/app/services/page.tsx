@@ -1,6 +1,6 @@
-import { client } from "@/lib/sanity";
-import { queries } from "@/lib/queries";
-import { urlFor } from "@/lib/sanity";
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -9,301 +9,337 @@ import {
   Zap,
   Shield,
   Target,
+  Sparkles,
+  CheckCircle,
+  Star,
+  Play,
+  Award,
+  Users,
+  Clock,
+  Calendar
 } from "lucide-react";
 
-export default async function ServicesPage() {
-  const services = await client.fetch(queries.services);
+export default function ServicesPage() {
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState(0);
 
-  // Group services by category
-  const servicesByCategory =
-    services?.reduce((acc: any, service: any) => {
-      const category = service.category || "other";
-      if (!acc[category]) {
-        acc[category] = [];
-      }
-      acc[category].push(service);
-      return acc;
-    }, {}) || {};
+  const serviceCategories = [
+    {
+      title: "Medical Oncology",
+      description: "Comprehensive medical cancer treatments including chemotherapy, targeted therapy, and immunotherapy",
+      icon: Stethoscope,
+      color: "from-blue-500 to-blue-700",
+      services: ["Chemotherapy", "Immunotherapy", "Targeted Therapy", "Clinical Trials"]
+    },
+    {
+      title: "Hematology",
+      description: "Specialized care for blood disorders and blood-related cancers with advanced treatment options",
+      icon: Heart,
+      color: "from-red-500 to-red-700",
+      services: ["Blood Disorders", "Leukemia", "Lymphoma", "Bone Marrow Transplant"]
+    },
+    {
+      title: "Radiation Oncology",
+      description: "Advanced radiation therapy using state-of-the-art equipment and precision targeting",
+      icon: Zap,
+      color: "from-yellow-500 to-yellow-700",
+      services: ["External Beam", "Brachytherapy", "Stereotactic", "Proton Therapy"]
+    },
+    {
+      title: "Gynecologic Oncology",
+      description: "Specialized care for gynecologic cancers with comprehensive treatment and surgical options",
+      icon: Shield,
+      color: "from-purple-500 to-purple-700",
+      services: ["Ovarian Cancer", "Cervical Cancer", "Uterine Cancer", "Surgical Oncology"]
+    },
+    {
+      title: "Cancer Treatments",
+      description: "Latest cancer treatment options including clinical trials and innovative therapies",
+      icon: Target,
+      color: "from-green-500 to-green-700",
+      services: ["Surgery", "Chemotherapy", "Radiation", "Clinical Trials"]
+    },
+    {
+      title: "Patient Services",
+      description: "Comprehensive support services including counseling, nutrition, and financial assistance",
+      icon: Users,
+      color: "from-teal-500 to-teal-700",
+      services: ["Counseling", "Nutrition", "Financial Aid", "Support Groups"]
+    }
+  ];
 
-  const categoryIcons: { [key: string]: any } = {
-    "medical-oncology": Stethoscope,
-    hematology: Heart,
-    "radiation-oncology": Zap,
-    "gynecologic-oncology": Shield,
-    "cancer-treatment": Target,
-    "patient-services": Heart,
-  };
+  const features = [
+    {
+      title: "Advanced Technology",
+      description: "State-of-the-art equipment and cutting-edge treatments",
+      icon: Zap,
+      stats: "100% Modern"
+    },
+    {
+      title: "Expert Team",
+      description: "Board-certified specialists with decades of experience",
+      icon: Award,
+      stats: "50+ Years"
+    },
+    {
+      title: "Personalized Care",
+      description: "Tailored treatment plans for each patient",
+      icon: Heart,
+      stats: "100% Custom"
+    },
+    {
+      title: "24/7 Support",
+      description: "Round-the-clock care and assistance",
+      icon: Clock,
+      stats: "Always Available"
+    }
+  ];
 
-  const categoryTitles: { [key: string]: string } = {
-    "medical-oncology": "Medical Oncology",
-    hematology: "Hematology",
-    "radiation-oncology": "Radiation Oncology",
-    "gynecologic-oncology": "Gynecologic Oncology",
-    "cancer-treatment": "Cancer Treatments",
-    "patient-services": "Patient Services",
-  };
+  const testimonials = [
+    {
+      name: "Jennifer R.",
+      quote: "The comprehensive care I received was exceptional. Every aspect of my treatment was carefully planned and executed.",
+      rating: 5
+    },
+    {
+      name: "Michael T.",
+      quote: "The team's expertise and compassion made my cancer journey much more manageable. I felt supported every step of the way.",
+      rating: 5
+    },
+    {
+      name: "Lisa K.",
+      quote: "The latest treatments and personalized approach gave me the best possible outcome. I'm forever grateful.",
+      rating: 5
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCategory((prev) => (prev + 1) % serviceCategories.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Treatments & Services
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className="container mx-auto relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+              <Stethoscope className="w-4 h-4" />
+              <span>Comprehensive Care</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Treatments
+              </span>
+              <br />
+              <span className="text-gray-700">& Services</span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8">
-              Comprehensive cancer care with the latest treatments and
-              technologies
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              Comprehensive cancer care with the latest treatments and technologies. 
+              Our multidisciplinary team provides advanced cancer treatments, cutting-edge 
+              therapies, and compassionate care tailored to your specific needs.
             </p>
-            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
-              Our multidisciplinary team provides advanced cancer treatments,
-              cutting-edge therapies, and compassionate care tailored to your
-              specific needs.
-            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/appointment"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+              >
+                Schedule Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link
+                href="/providers"
+                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+              >
+                Meet Our Team
+                <Users className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services by Category */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            {Object.keys(servicesByCategory).length > 0 ? (
-              <div className="space-y-16">
-                {Object.entries(servicesByCategory).map(
-                  ([category, categoryServices]: [string, any]) => {
-                    const IconComponent =
-                      categoryIcons[category] || Stethoscope;
-                    const categoryTitle =
-                      categoryTitles[category] ||
-                      category
-                        .replace("-", " ")
-                        .replace(/\b\w/g, (l) => l.toUpperCase());
+      {/* Service Categories */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Treatment Specialties</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Advanced cancer care across multiple specialties with cutting-edge treatments
+            </p>
+          </div>
 
-                    return (
-                      <div key={category} className="bg-gray-50 rounded-lg p-8">
-                        <div className="flex items-center mb-8">
-                          <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
-                            <IconComponent className="w-6 h-6 text-white" />
-                          </div>
-                          <h2 className="text-3xl font-bold text-gray-900">
-                            {categoryTitle}
-                          </h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {categoryServices.map((service: any) => (
-                            <Link
-                              key={service._id}
-                              href={`/services/${service.slug?.current}`}
-                              className="group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6"
-                            >
-                              <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-blue-600">
-                                {service.title}
-                              </h3>
-                              {service.description && (
-                                <p className="text-gray-600 mb-4 line-clamp-3">
-                                  {service.description}
-                                </p>
-                              )}
-                              {service.featured && (
-                                <span className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mb-4">
-                                  Featured Service
-                                </span>
-                              )}
-                              <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700">
-                                Learn More
-                                <ArrowRight className="ml-2 w-4 h-4" />
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  }
-                )}
-              </div>
-            ) : (
-              <div className="text-center">
-                <div className="bg-gray-50 rounded-lg p-12">
-                  <Stethoscope className="w-16 h-16 text-gray-400 mx-auto mb-6" />
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    Services Coming Soon
-                  </h2>
-                  <p className="text-gray-600 mb-8 max-w-md mx-auto">
-                    We're working on adding our comprehensive cancer treatment
-                    services. Check back soon for detailed information about our
-                    treatments and care options.
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {serviceCategories.map((category, index) => {
+              const IconComponent = category.icon;
+              return (
+                <div
+                  key={index}
+                  className={`group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
+                    activeCategory === index ? 'ring-2 ring-blue-200 scale-105' : ''
+                  }`}
+                  onMouseEnter={() => setHoveredService(index)}
+                  onMouseLeave={() => setHoveredService(null)}
+                >
+                  <div className={`
+                    w-16 h-16 rounded-2xl bg-gradient-to-br ${category.color} 
+                    flex items-center justify-center mb-6 group-hover:scale-110 
+                    transition-transform duration-300
+                  `}>
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                    {category.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {category.description}
                   </p>
-                  <Link
-                    href="/appointment"
-                    className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                  >
-                    Schedule Consultation
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
+                  
+                  <div className="space-y-2 mb-6">
+                    {category.services.map((service, serviceIndex) => (
+                      <div key={serviceIndex} className="flex items-center space-x-2 text-sm text-gray-500">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span>{service}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                    <span>Learn More</span>
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="container mx-auto">
+          <div className="text-center text-white mb-16">
+            <h2 className="text-4xl font-bold mb-4">Why Choose Our Services?</h2>
+            <p className="text-xl opacity-90">
+              Excellence in cancer care with advanced technology and compassionate support
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div key={index} className="text-center group">
+                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-10 h-10 text-white" />
+                  </div>
+                  <div className="text-3xl font-bold mb-2">{feature.stats}</div>
+                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  <p className="opacity-90">{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Featured Services Overview */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Our Treatment Specialties
-              </h2>
-              <p className="text-xl text-gray-600">
-                Advanced cancer care across multiple specialties
-              </p>
-            </div>
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Services</h2>
+            <p className="text-xl text-gray-600">
+              Comprehensive cancer care services designed for your needs
+            </p>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg p-8 shadow-md text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Stethoscope className="w-8 h-8 text-blue-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {serviceCategories.slice(0, 6).map((category, index) => {
+              const IconComponent = category.icon;
+              return (
+                <div key={index} className="bg-gray-50 rounded-2xl p-8 text-center group hover:bg-white hover:shadow-lg transition-all duration-300">
+                  <div className={`
+                    w-16 h-16 rounded-full bg-gradient-to-br ${category.color}
+                    flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300
+                  `}>
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
+                    {category.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    {category.description}
+                  </p>
+                  <Link
+                    href={`/services?category=${category.title.toLowerCase().replace(' ', '-')}`}
+                    className="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center"
+                  >
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  Medical Oncology
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Comprehensive medical cancer treatments including
-                  chemotherapy, targeted therapy, and immunotherapy.
-                </p>
-                <Link
-                  href="/services?category=medical-oncology"
-                  className="text-blue-600 font-medium hover:text-blue-700"
-                >
-                  Learn More →
-                </Link>
-              </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-              <div className="bg-white rounded-lg p-8 shadow-md text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  Hematology
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Specialized care for blood disorders and blood-related cancers
-                  with advanced treatment options.
-                </p>
-                <Link
-                  href="/services?category=hematology"
-                  className="text-blue-600 font-medium hover:text-blue-700"
-                >
-                  Learn More →
-                </Link>
-              </div>
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
+            <p className="text-xl text-gray-600">
+              Hear from patients who have experienced our comprehensive care
+            </p>
+          </div>
 
-              <div className="bg-white rounded-lg p-8 shadow-md text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-8 h-8 text-blue-600" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  Radiation Oncology
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Advanced radiation therapy using state-of-the-art equipment
-                  and precision targeting.
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
+                  "{testimonial.quote}"
                 </p>
-                <Link
-                  href="/services?category=radiation-oncology"
-                  className="text-blue-600 font-medium hover:text-blue-700"
-                >
-                  Learn More →
-                </Link>
+                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
               </div>
-
-              <div className="bg-white rounded-lg p-8 shadow-md text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Shield className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  Gynecologic Oncology
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Specialized care for gynecologic cancers with comprehensive
-                  treatment and surgical options.
-                </p>
-                <Link
-                  href="/services?category=gynecologic-oncology"
-                  className="text-blue-600 font-medium hover:text-blue-700"
-                >
-                  Learn More →
-                </Link>
-              </div>
-
-              <div className="bg-white rounded-lg p-8 shadow-md text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  Cancer Treatments
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Latest cancer treatment options including clinical trials and
-                  innovative therapies.
-                </p>
-                <Link
-                  href="/services?category=cancer-treatment"
-                  className="text-blue-600 font-medium hover:text-blue-700"
-                >
-                  Learn More →
-                </Link>
-              </div>
-
-              <div className="bg-white rounded-lg p-8 shadow-md text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  Patient Services
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Comprehensive support services including counseling,
-                  nutrition, and financial assistance.
-                </p>
-                <Link
-                  href="/services?category=patient-services"
-                  className="text-blue-600 font-medium hover:text-blue-700"
-                >
-                  Learn More →
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-6">
               Ready to Learn More About Our Services?
             </h2>
             <p className="text-xl mb-8 text-blue-100">
-              Our team is here to discuss your treatment options and answer any
-              questions you may have.
+              Our team is here to discuss your treatment options and answer any 
+              questions you may have about our comprehensive cancer care services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/appointment"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
+                <Calendar className="mr-2 w-5 h-5" />
                 Schedule Consultation
               </Link>
               <Link
                 href="/providers"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-900 transition-colors inline-flex items-center justify-center"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
+                <Users className="mr-2 w-5 h-5" />
                 Meet Our Team
               </Link>
             </div>
