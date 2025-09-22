@@ -56,7 +56,7 @@ export default function Header() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                NY Oncologists
+                Arjun Iyengar Hematology Oncology Medical Center
               </h1>
               <p className="text-sm text-gray-600">Advanced Cancer Care</p>
             </div>
