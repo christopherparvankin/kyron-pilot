@@ -25,82 +25,6 @@ export default function LocationsPage() {
   const locations = [
     {
       id: 1,
-      name: "Main Office - Manhattan",
-      address: {
-        street: "123 Medical Center Drive",
-        city: "New York",
-        state: "NY",
-        zipCode: "10001"
-      },
-      phone: "(555) 123-4567",
-      fax: "(555) 123-4568",
-      email: "manhattan@nyoncologists.com",
-      hours: [
-        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
-        { day: "Saturday", open: "9:00 AM", close: "1:00 PM", closed: false },
-        { day: "Sunday", open: "", close: "", closed: true }
-      ],
-      features: ["Full Services", "Parking Available", "Public Transit Access"]
-    },
-    {
-      id: 2,
-      name: "Brooklyn Location",
-      address: {
-        street: "456 Healthcare Plaza",
-        city: "Brooklyn",
-        state: "NY",
-        zipCode: "11201"
-      },
-      phone: "(555) 123-4568",
-      fax: "(555) 123-4569",
-      email: "brooklyn@nyoncologists.com",
-      hours: [
-        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
-        { day: "Saturday", open: "", close: "", closed: true },
-        { day: "Sunday", open: "", close: "", closed: true }
-      ],
-      features: ["Oncology Services", "Free Parking", "Wheelchair Accessible"]
-    },
-    {
-      id: 3,
-      name: "Queens Medical Center",
-      address: {
-        street: "789 Health Street",
-        city: "Queens",
-        state: "NY",
-        zipCode: "11375"
-      },
-      phone: "(555) 123-4569",
-      fax: "(555) 123-4570",
-      email: "queens@nyoncologists.com",
-      hours: [
-        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
-        { day: "Saturday", open: "9:00 AM", close: "2:00 PM", closed: false },
-        { day: "Sunday", open: "", close: "", closed: true }
-      ],
-      features: ["Specialized Care", "Valet Parking", "Multilingual Staff"]
-    },
-    {
-      id: 4,
-      name: "Bronx Cancer Center",
-      address: {
-        street: "321 Wellness Avenue",
-        city: "Bronx",
-        state: "NY",
-        zipCode: "10451"
-      },
-      phone: "(555) 123-4570",
-      fax: "(555) 123-4571",
-      email: "bronx@nyoncologists.com",
-      hours: [
-        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
-        { day: "Saturday", open: "", close: "", closed: true },
-        { day: "Sunday", open: "", close: "", closed: true }
-      ],
-      features: ["Community Focus", "Financial Assistance", "Support Groups"]
-    },
-    {
-      id: 5,
       name: "Bayonne Clinic",
       address: {
         street: "27 E 29th St",
@@ -110,7 +34,7 @@ export default function LocationsPage() {
       },
       phone: "201-858-1211",
       fax: "201-858-4171",
-      email: "bayonne@nyoncologists.com",
+      email: "patient@ihomes.com",
       hours: [
         { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
         { day: "Saturday", open: "9:00 AM", close: "1:00 PM", closed: false },
@@ -119,7 +43,7 @@ export default function LocationsPage() {
       features: ["Full Services", "Free Parking", "Wheelchair Accessible"]
     },
     {
-      id: 6,
+      id: 2,
       name: "West Orange Clinic",
       address: {
         street: "393 Northfield Ave",
@@ -144,7 +68,7 @@ export default function LocationsPage() {
       title: "Convenience",
       description: "Multiple locations mean shorter travel times and easier access to care",
       icon: MapPin,
-      stats: "6+ Locations"
+      stats: "2 Locations"
     },
     {
       title: "Flexible Scheduling",
