@@ -1,11 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, Phone, MapPin, User, CreditCard } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
+import ClientHeader from "./ClientHeader";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
     { name: "Treatments & Services", href: "/services" },
@@ -15,7 +12,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50 w-full">
+    <header className="bg-white shadow-lg sticky top-0 z-50 w-full" style={{display: 'block', minHeight: '80px'}}>
       {/* Top Bar */}
       <div className="bg-blue-900 text-white py-2">
         <div className="container mx-auto px-4">
@@ -77,43 +74,8 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
-            )}
-          </button>
+          <ClientHeader navigation={navigation} />
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200">
-            <nav className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-700 hover:text-blue-600 font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Link
-                href="/appointment"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-blue-700 transition-colors mt-4"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Request an Appointment
-              </Link>
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   );
