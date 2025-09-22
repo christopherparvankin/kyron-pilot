@@ -161,20 +161,10 @@ export default function Home() {
               </Link>
               <Link
                 href="/providers"
-                className="px-8 py-4 rounded-lg font-semibold transform hover:scale-105 inline-flex items-center justify-center"
-                style={{
-                  backgroundColor: '#2563eb !important',
-                  color: 'white !important',
-                  border: 'none !important',
-                  outline: 'none !important',
-                  textDecoration: 'none !important',
-                  display: 'inline-flex !important',
-                  alignItems: 'center !important',
-                  justifyContent: 'center !important'
-                }}
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 Find a Physician
-                <Users className="ml-2 w-5 h-5" style={{color: 'white !important'}} />
+                <Users className="ml-2 w-5 h-5" />
               </Link>
             </div>
 
@@ -385,19 +375,9 @@ export default function Home() {
               </Link>
               <Link
                 href="/providers"
-                className="px-8 py-4 rounded-lg font-semibold transform hover:scale-105 inline-flex items-center justify-center"
-                style={{
-                  backgroundColor: '#2563eb !important',
-                  color: 'white !important',
-                  border: 'none !important',
-                  outline: 'none !important',
-                  textDecoration: 'none !important',
-                  display: 'inline-flex !important',
-                  alignItems: 'center !important',
-                  justifyContent: 'center !important'
-                }}
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
-                <Users className="mr-2 w-5 h-5" style={{color: 'white !important'}} />
+                <Users className="mr-2 w-5 h-5" />
                 Find a Physician
               </Link>
             </div>

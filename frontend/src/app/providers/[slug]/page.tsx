@@ -22,11 +22,79 @@ interface ProviderPageProps {
   }>;
 }
 
+// Generate static params for better performance
+export async function generateStaticParams() {
+  try {
+    const providers = await client.fetch(queries.providers);
+    return providers.map((provider: any) => ({
+      slug: provider.slug.current,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
+}
+
+// Handle not found cases
+export async function generateMetadata({ params }: ProviderPageProps) {
+  const { slug } = await params;
+  
+  try {
+    const provider = await client.fetch(queries.getProviderBySlug, {
+      slug: slug,
+    });
+    
+    if (!provider) {
+      return {
+        title: 'Provider Not Found',
+        description: 'The requested provider could not be found.',
+      };
+    }
+    
+    return {
+      title: `Dr. ${provider.name} - ${provider.title || 'Oncologist'}`,
+      description: provider.bio ? 
+        provider.bio[0]?.children?.[0]?.text?.substring(0, 160) + '...' : 
+        `Learn more about Dr. ${provider.name}, ${provider.title || 'oncologist'}.`,
+    };
+  } catch (error) {
+    return {
+      title: 'Provider Not Found',
+      description: 'The requested provider could not be found.',
+    };
+  }
+}
+
 export default async function ProviderPage({ params }: ProviderPageProps) {
   const { slug } = await params;
-  const provider = await client.fetch(queries.getProviderBySlug, {
-    slug: slug,
-  });
+  
+  let provider;
+  try {
+    provider = await client.fetch(queries.getProviderBySlug, {
+      slug: slug,
+    });
+  } catch (error) {
+    console.error('Error fetching provider:', error);
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Error Loading Provider
+          </h1>
+          <p className="text-gray-600 mb-8">
+            There was an error loading the provider information. Please try again later.
+          </p>
+          <Link
+            href="/providers"
+            className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
+            <ArrowLeft className="mr-2 w-4 h-4" />
+            Back to Providers
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   if (!provider) {
     return (
