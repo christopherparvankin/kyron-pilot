@@ -130,18 +130,18 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-creme-50 to-white">
+    <main className="min-h-screen bg-gradient-to-br from-gold-50 to-creme-50">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-gold-200/30 to-royal-200/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gold-300/50 to-gold-200/40"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-6xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-gold-100 text-gold-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-gold-200 text-gold-900 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse shadow-lg">
               <Sparkles className="w-4 h-4" />
               <span>Leading Cancer Care</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-gold-600 to-royal-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent">
                 Together
               </span>
               <br />
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Link
                 href="/appointment"
-                className="bg-royal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-royal-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg"
               >
                 Request an Appointment
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -219,17 +219,17 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-white to-gold-50/30">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div className="inline-flex items-center space-x-2 bg-gold-200 text-gold-900 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-lg">
                   <Heart className="w-4 h-4" />
                   <span>50+ Years of Excellence</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  About <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">NY Oncologists</span>
+                  About <span className="bg-gradient-to-r from-gold-600 to-gold-700 bg-clip-text text-transparent">NY Oncologists</span>
                 </h2>
                 <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
                   <p>
@@ -247,7 +247,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-cream-100 to-soft-50 rounded-2xl p-8 shadow-xl">
+              <div className="bg-gradient-to-br from-gold-100 to-gold-200 rounded-2xl p-8 shadow-xl border border-gold-300">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Our Mission
                 </h3>
@@ -266,7 +266,7 @@ export default function Home() {
                     "Community-based care"
                   ].map((item, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-soft-600" />
+                      <CheckCircle className="w-5 h-5 text-gold-600" />
                       <span className="text-gray-700">{item}</span>
                     </div>
                   ))}
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-soft-500 to-primary-500">
+      <section className="py-20 px-4 bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700">
         <div className="container mx-auto">
           <div className="text-center text-white mb-16">
             <h2 className="text-4xl font-bold mb-4">Why Choose Us?</h2>
@@ -311,7 +311,7 @@ export default function Home() {
       </section>
 
       {/* Innovations Preview */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-white to-gold-50/20">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -365,20 +365,20 @@ export default function Home() {
 
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-soft-700 to-primary-700">
+      <section className="py-20 px-4 bg-gradient-to-r from-gold-700 via-gold-800 to-gold-900">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-6">
               Ready to Begin Your Care Journey?
             </h2>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className="text-xl mb-8 text-yellow-100">
               Our compassionate team is here to support you every step of the way. 
               Contact us today to schedule a consultation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/appointment"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-white text-gold-900 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg"
               >
                 <Calendar className="mr-2 w-5 h-5" />
                 Schedule Appointment
