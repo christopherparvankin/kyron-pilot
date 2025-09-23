@@ -16,7 +16,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-sage-50 shadow-lg sticky top-0 z-50 w-full border-b-2 border-sage-200">
+    <header className="bg-gradient-to-r from-amber-50 to-white shadow-lg sticky top-0 z-50 w-full border-b-2 border-amber-200">
 
       {/* Main Navigation */}
       <div className="container mx-auto px-4">
@@ -49,10 +49,10 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sage-700 hover:text-sage-600 font-medium transition-colors relative group"
+                className="text-navy-800 hover:text-amber-600 font-medium transition-colors relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sage-600 transition-all group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 transition-all group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
@@ -64,7 +64,7 @@ export default function Header() {
           <div className="flex items-center space-x-4 flex-shrink-0">
             <Link
               href="/appointment"
-              className="bg-sage-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-sage-700 transition-colors"
+              className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors"
             >
               Request an Appointment
             </Link>
@@ -91,7 +91,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-sage-700 hover:text-sage-600 font-medium py-2"
+                  className="text-navy-800 hover:text-amber-600 font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}

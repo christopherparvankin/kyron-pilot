@@ -35,7 +35,7 @@ export default function Home() {
       description: "Meet our expert oncologists",
       icon: Users,
       href: "/providers",
-      color: "from-lavender-500 to-lavender-700"
+      color: "from-amber-500 to-amber-700"
     },
     {
       id: 2,
@@ -69,7 +69,7 @@ export default function Home() {
       description: "Comprehensive guidance throughout your care journey",
       icon: Navigation,
       href: "/innovations/patient-navigation",
-      color: "from-lavender-500 to-lavender-700"
+      color: "from-amber-500 to-amber-700"
     },
     {
       title: "Telehealth Services",
@@ -130,31 +130,31 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-lavender-100 to-lavender-200">
+    <main className="min-h-screen bg-gradient-to-br from-navy-700 via-navy-600 to-amber-100">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-lavender-200/50 to-lavender-300/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-200/40 via-navy-500/20 to-terracotta-200/30"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-6xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-lavender-100 text-lavender-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-amber-100 text-amber-900 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Sparkles className="w-4 h-4" />
               <span>Leading Cancer Care</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-lavender-600 to-lavender-700 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-amber-400 to-terracotta-500 bg-clip-text text-transparent">
                 Together
               </span>
               <br />
-              <span className="text-gray-700">A Better Way To Fight Cancer</span>
+              <span className="text-gray-200">A Better Way To Fight Cancer</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-4xl mx-auto">
               Patient-centered cancer care across New York with innovative treatments, 
               experienced oncologists, and compassionate support throughout your journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Link
                 href="/appointment"
-                className="bg-lavender-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-lavender-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-amber-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 Request an Appointment
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -203,10 +203,10 @@ export default function Home() {
                       `}>
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-lavender-600 transition-colors">
+                      <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-amber-600 transition-colors">
                         {card.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-700 text-sm">
                         {card.description}
                       </p>
                     </div>
@@ -224,14 +224,14 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center space-x-2 bg-lavender-100 text-lavender-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div className="inline-flex items-center space-x-2 bg-amber-100 text-amber-900 px-4 py-2 rounded-full text-sm font-medium mb-6">
                   <Heart className="w-4 h-4" />
                   <span>50+ Years of Excellence</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  About <span className="bg-gradient-to-r from-lavender-600 to-lavender-700 bg-clip-text text-transparent">NY Oncologists</span>
+                  About <span className="bg-gradient-to-r from-amber-400 to-terracotta-500 bg-clip-text text-transparent">NY Oncologists</span>
                 </h2>
-                <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
+                <div className="space-y-4 text-gray-800 text-lg leading-relaxed">
                   <p>
                     For over 50 years, we have been at the leading-edge of cancer care. 
                     When you are a patient at NY Oncologists, you can expect innovative 
@@ -247,7 +247,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-lavender-50 to-lavender-100 rounded-2xl p-8 shadow-xl">
+              <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-8 shadow-xl border border-amber-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Our Mission
                 </h3>
@@ -266,7 +266,7 @@ export default function Home() {
                     "Community-based care"
                   ].map((item, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-lavender-600" />
+                      <CheckCircle className="w-5 h-5 text-amber-500" />
                       <span className="text-gray-700">{item}</span>
                     </div>
                   ))}
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-lavender-600 to-lavender-700">
+      <section className="py-20 px-4 bg-gradient-to-r from-amber-700 to-terracotta-700">
         <div className="container mx-auto">
           <div className="text-center text-white mb-16">
             <h2 className="text-4xl font-bold mb-4">Why Choose Us?</h2>
@@ -365,7 +365,7 @@ export default function Home() {
 
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-lavender-800 to-lavender-900">
+      <section className="py-20 px-4 bg-gradient-to-r from-navy-900 to-navy-800">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-6">
