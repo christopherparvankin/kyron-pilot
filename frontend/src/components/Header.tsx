@@ -17,23 +17,6 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50 w-full border-b-2 border-gray-200">
-      {/* Top Bar */}
-      <div className="bg-soft-200 text-gray-800 py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>Call: (555) 123-4567</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
-                <span>Multiple NY Locations</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Main Navigation */}
       <div className="container mx-auto px-4">

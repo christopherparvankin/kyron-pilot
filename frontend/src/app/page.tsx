@@ -130,18 +130,18 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
+    <main className="min-h-screen bg-gradient-to-br from-creme-50 to-white">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-soft-300/20 to-primary-300/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gold-200/30 to-royal-200/30"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-6xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-gold-100 text-gold-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Sparkles className="w-4 h-4" />
               <span>Leading Cancer Care</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-600 to-royal-600 bg-clip-text text-transparent">
                 Together
               </span>
               <br />
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Link
                 href="/appointment"
-                className="bg-soft-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-soft-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-royal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-royal-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
               >
                 Request an Appointment
                 <ArrowRight className="ml-2 w-5 h-5" />
