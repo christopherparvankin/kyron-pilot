@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50 w-full border-b-2 border-gray-200">
       {/* Top Bar */}
-      <div className="bg-soft-800 text-white py-2">
+      <div className="bg-soft-200 text-gray-800 py-2">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-6">
@@ -40,14 +40,20 @@ export default function Header() {
         <div className="flex items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 flex-shrink-0">
-            <div className="w-12 h-12 bg-soft-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">AI</span>
+            <div className="w-16 h-16 flex items-center justify-center">
+              <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10C45 15 40 20 40 30C40 35 42 40 50 45C58 40 60 35 60 30C60 20 55 15 50 10Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                <path d="M20 25C25 20 30 22 35 27C40 32 35 42 30 47C25 42 20 32 20 25Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                <path d="M80 25C75 20 70 22 65 27C60 32 65 42 70 47C75 42 80 32 80 25Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                <path d="M30 47C35 42 40 47 50 52C40 57 35 57 30 52Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                <path d="M70 47C65 42 60 47 50 52C60 57 65 57 70 52Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+              </svg>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                Arjun Iyengar
+                Iyengar
               </h1>
-              <p className="text-sm text-gray-600 mt-2">Hematology Oncology Medical Center</p>
+              <p className="text-sm text-gray-600 mt-0">Hematology & Oncology Medical Center</p>
             </div>
           </Link>
 
@@ -110,7 +116,7 @@ export default function Header() {
               ))}
               <Link
                 href="/appointment"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-blue-700 transition-colors mt-4"
+                className="bg-soft-600 text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-soft-700 transition-colors mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Request an Appointment

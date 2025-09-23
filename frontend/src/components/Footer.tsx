@@ -17,13 +17,19 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-soft-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">AI</span>
+              <div className="w-16 h-16 flex items-center justify-center">
+                <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M50 10C45 15 40 20 40 30C40 35 42 40 50 45C58 40 60 35 60 30C60 20 55 15 50 10Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                  <path d="M20 25C25 20 30 22 35 27C40 32 35 42 30 47C25 42 20 32 20 25Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                  <path d="M80 25C75 20 70 22 65 27C60 32 65 42 70 47C75 42 80 32 80 25Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                  <path d="M30 47C35 42 40 47 50 52C40 57 35 57 30 52Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                  <path d="M70 47C65 42 60 47 50 52C60 57 65 57 70 52Z" stroke="#E91E63" strokeWidth="3" fill="none"/>
+                </svg>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Arjun Iyengar</h3>
-                <p className="text-sm text-gray-400">
-                  Hematology Oncology Medical Center
+                <h3 className="text-xl font-bold">Iyengar</h3>
+                <p className="text-sm text-gray-400 -mt-1">
+                  Hematology & Oncology Medical Center
                 </p>
               </div>
             </div>
@@ -74,7 +80,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
               <p className="text-gray-400 text-sm">
-                © 2025 Arjun Iyengar Hematology Oncology Medical Center. All
+                © 2025 Iyengar Hematology & Oncology Medical Center. All
                 rights reserved.
               </p>
             </div>
