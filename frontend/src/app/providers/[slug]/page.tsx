@@ -350,7 +350,7 @@ export default async function ProviderPage({ params }: ProviderPageProps) {
               <div className="text-center">
                 <Mail className="w-12 h-12 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Email Us</h3>
-                <p className="text-blue-100">info@nyoncologists.com</p>
+                <p className="text-blue-100">patient@ihomes.org</p>
                 <p className="text-sm text-blue-200">24-hour response</p>
               </div>
               <div className="text-center">

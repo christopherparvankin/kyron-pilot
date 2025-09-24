@@ -185,7 +185,7 @@ export default async function AboutPage() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-blue-300" />
-                    <span>info@nyoncologists.com</span>
+                    <span>patient@ihomes.org</span>
                   </div>
                   {mainLocation && (
                     <div className="flex items-center space-x-3">

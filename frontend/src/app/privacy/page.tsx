@@ -1,4 +1,4 @@
-import { Shield, Lock, Eye, FileText, Phone, Mail } from "lucide-react";
+import { Shield, Lock, Eye, FileText } from "lucide-react";
 import Link from "next/link";
 
 export default function PrivacyPolicyPage() {
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
                   <strong>Last Updated:</strong> September 2025
                 </p>
                 <p className="text-blue-700 mt-2">
-                  This Privacy Policy describes how Arjun Iyengar Hematology
+                  This Privacy Policy describes how Iyengar Hematology
                   Oncology Medical Center collects, uses, and protects your
                   information when you visit our website or use our services.
                 </p>
@@ -208,28 +208,6 @@ export default function PrivacyPolicyPage() {
                 control cookie settings through your browser preferences.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Contact Us
-              </h2>
-
-              <div className="bg-gray-50 p-6 rounded-lg mb-8">
-                <p className="text-gray-700 mb-4">
-                  If you have questions about this Privacy Policy or how we
-                  handle your personal information, please contact us:
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-blue-600" />
-                    <span className="text-gray-700">(555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-blue-600" />
-                    <span className="text-gray-700">
-                      privacy@arjuniyengar.com
-                    </span>
-                  </div>
-                </div>
-              </div>
 
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-yellow-800 mb-3">

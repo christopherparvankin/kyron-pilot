@@ -144,7 +144,7 @@ This guide will help you set up all the content in Sanity Studio to populate you
   - **State**: "NY"
   - **ZIP Code**: "10001"
 - **Phone**: "(555) 123-4567"
-- **Email**: "info@nyoncologists.com"
+- **Email**: "patient@ihomes.org"
 - **Office Hours**:
   - Monday: 8:00 AM - 5:00 PM
   - Tuesday: 8:00 AM - 5:00 PM
@@ -165,7 +165,7 @@ Create 2-3 more location entries for different offices.
 **Fill in contact information:**
 
 - **Phone**: "(555) 123-4567"
-- **Email**: "info@nyoncologists.com"
+- **Email**: "patient@ihomes.org"
 - **Address**: "123 Medical Center Drive, New York, NY 10001"
 - **Hours**: "Mon-Fri: 8:00 AM - 5:00 PM"
 

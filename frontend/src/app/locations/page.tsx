@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   Phone,
@@ -11,16 +11,12 @@ import {
   ArrowRight,
   Navigation,
   Sparkles,
-  Heart,
-  Shield,
   Users,
-  Star,
   CheckCircle
 } from "lucide-react";
 
 export default function LocationsPage() {
   const [hoveredLocation, setHoveredLocation] = useState<number | null>(null);
-  const [activeFeature, setActiveFeature] = useState(0);
 
   const locations = [
     {
@@ -34,10 +30,11 @@ export default function LocationsPage() {
       },
       phone: "201-858-1211",
       fax: "201-858-4171",
-      email: "patient@ihomes.com",
+      email: "patient@ihomes.org",
       hours: [
-        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
-        { day: "Saturday", open: "9:00 AM", close: "1:00 PM", closed: false },
+        { day: "Monday - Thursday", open: "10:00 AM", close: "5:30 PM", closed: false },
+        { day: "Friday", open: "", close: "", closed: true },
+        { day: "Saturday", open: "", close: "", closed: true },
         { day: "Sunday", open: "", close: "", closed: true }
       ],
       features: ["Full Services", "Free Parking", "Wheelchair Accessible"]
@@ -53,67 +50,21 @@ export default function LocationsPage() {
       },
       phone: "973-457-8728",
       fax: "973-457-8729",
-      email: "westorange@nyoncologists.com",
+      email: "patient@ihomes.org",
       hours: [
-        { day: "Monday - Friday", open: "8:00 AM", close: "5:00 PM", closed: false },
-        { day: "Saturday", open: "9:00 AM", close: "1:00 PM", closed: false },
+        { day: "Monday", open: "", close: "", closed: true },
+        { day: "Tuesday", open: "", close: "", closed: true },
+        { day: "Wednesday", open: "", close: "", closed: true },
+        { day: "Thursday", open: "9:00 AM", close: "4:00 PM", closed: false },
+        { day: "Friday", open: "", close: "", closed: true },
+        { day: "Saturday", open: "", close: "", closed: true },
         { day: "Sunday", open: "", close: "", closed: true }
       ],
       features: ["Oncology Services", "Free Parking", "Multilingual Staff"]
     }
   ];
 
-  const features = [
-    {
-      title: "Convenience",
-      description: "Multiple locations mean shorter travel times and easier access to care",
-      icon: MapPin,
-      stats: "2 Locations"
-    },
-    {
-      title: "Flexible Scheduling",
-      description: "More appointment availability and scheduling options",
-      icon: Clock,
-      stats: "7 Days/Week"
-    },
-    {
-      title: "Continuity of Care",
-      description: "Seamless care coordination across all locations",
-      icon: Heart,
-      stats: "100% Coordinated"
-    },
-    {
-      title: "Expert Care",
-      description: "Same high-quality care at every location",
-      icon: Shield,
-      stats: "Consistent Quality"
-    }
-  ];
 
-  const testimonials = [
-    {
-      name: "Jennifer R.",
-      quote: "The Brooklyn location was so convenient for me. The same excellent care I received at the main office.",
-      rating: 5
-    },
-    {
-      name: "Michael T.",
-      quote: "I love that I can visit different locations based on my schedule. The care is consistent everywhere.",
-      rating: 5
-    },
-    {
-      name: "Maria L.",
-      quote: "The Queens location had everything I needed and the staff was incredibly helpful and friendly.",
-      rating: 5
-    }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % features.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
@@ -149,24 +100,27 @@ export default function LocationsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-16 max-w-7xl mx-auto">
             {locations.map((location, index) => (
               <div
                 key={location.id}
-                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
                 onMouseEnter={() => setHoveredLocation(location.id)}
                 onMouseLeave={() => setHoveredLocation(null)}
               >
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-soft-500 to-soft-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <MapPin className="w-6 h-6 text-white" />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  {/* Location Information */}
+                  <div className="p-10">
+                <div className="flex items-start space-x-6 mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-soft-500 to-soft-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <MapPin className="w-8 h-8 text-white" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-soft-600 transition-colors">
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-soft-600 transition-colors">
                       {location.name}
                     </h3>
-                    <div className="text-gray-600">
-                      <p className="font-medium">
+                    <div className="text-gray-600 text-lg">
+                      <p className="font-medium mb-1">
                         {location.address.street}
                       </p>
                       <p>
@@ -176,14 +130,14 @@ export default function LocationsPage() {
                   </div>
                 </div>
 
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-soft-600" />
+                <div className="space-y-6 mb-8">
+                  <div className="flex items-center space-x-4">
+                    <Phone className="w-6 h-6 text-soft-600" />
                     <div>
-                      <p className="font-medium text-gray-900">Phone</p>
+                      <p className="font-semibold text-gray-900 text-lg">Phone</p>
                       <a
                         href={`tel:${location.phone}`}
-                        className="text-soft-600 hover:text-soft-700 transition-colors"
+                        className="text-soft-600 hover:text-soft-700 transition-colors text-lg"
                       >
                         {location.phone}
                       </a>
@@ -191,41 +145,45 @@ export default function LocationsPage() {
                   </div>
 
                   {location.fax && (
-                    <div className="flex items-center space-x-3">
-                      <Phone className="w-5 h-5 text-soft-600" />
+                    <div className="flex items-center space-x-4">
+                      <Phone className="w-6 h-6 text-soft-600" />
                       <div>
-                        <p className="font-medium text-gray-900">Fax</p>
-                        <span className="text-gray-600">
+                        <p className="font-semibold text-gray-900 text-lg">Fax</p>
+                        <span className="text-gray-600 text-lg">
                           {location.fax}
                         </span>
                       </div>
                     </div>
                   )}
 
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-soft-600" />
+                  <div className="flex items-center space-x-4">
+                    <Mail className="w-6 h-6 text-soft-600" />
                     <div>
-                      <p className="font-medium text-gray-900">Email</p>
+                      <p className="font-semibold text-gray-900 text-lg">Email</p>
                       <a
                         href={`mailto:${location.email}`}
-                        className="text-soft-600 hover:text-soft-700 transition-colors"
+                        className="text-soft-600 hover:text-soft-700 transition-colors text-lg break-all"
                       >
                         {location.email}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-3">
-                    <Clock className="w-5 h-5 text-soft-600 mt-1" />
-                    <div>
-                      <p className="font-medium text-gray-900 mb-2">Office Hours</p>
+                  <div className="flex items-start space-x-4">
+                    <Clock className="w-6 h-6 text-soft-600 mt-1" />
+                    <div className="flex-1">
+                      <p className="font-semibold text-gray-900 text-lg mb-4">Office Hours</p>
                       <div className="text-gray-600">
-                        <div className="space-y-1">
+                        <div className="space-y-3">
                           {location.hours.map((hour, hourIndex) => (
-                            <div key={hourIndex} className="flex justify-between">
-                              <span className="font-medium">{hour.day}</span>
-                              <span>
-                                {hour.closed ? "Closed" : `${hour.open} - ${hour.close}`}
+                            <div key={hourIndex} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                              <span className="font-medium text-lg">{hour.day}</span>
+                              <span className="text-lg">
+                                {hour.closed ? (
+                                  <span className="text-red-500 font-medium">Closed</span>
+                                ) : (
+                                  <span className="text-green-600 font-medium">{hour.open} - {hour.close}</span>
+                                )}
                               </span>
                             </div>
                           ))}
@@ -234,36 +192,57 @@ export default function LocationsPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {location.features.map((feature, featureIndex) => (
-                      <span
-                        key={featureIndex}
-                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-soft-100 text-soft-800"
-                      >
-                        <CheckCircle className="w-3 h-3 mr-1" />
-                        {feature}
-                      </span>
-                    ))}
+                </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link
+                      href="/appointment"
+                      className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center transform hover:scale-105"
+                    >
+                      <Calendar className="mr-2 w-4 h-4" />
+                      Schedule Appointment
+                    </Link>
+                    <a
+                      href={`https://maps.google.com/?q=${location.address.street}, ${location.address.city}, ${location.address.state} ${location.address.zipCode}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center transform hover:scale-105"
+                    >
+                      <Navigation className="mr-2 w-4 h-4" />
+                      Get Directions
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/appointment"
-                    className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center transform hover:scale-105"
-                  >
-                    <Calendar className="mr-2 w-4 h-4" />
-                    Schedule Appointment
-                  </Link>
-                  <a
-                    href={`https://maps.google.com/?q=${location.address.street}, ${location.address.city}, ${location.address.state} ${location.address.zipCode}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 border-2 border-blue-600 text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors text-center inline-flex items-center justify-center transform hover:scale-105"
-                  >
-                    <Navigation className="mr-2 w-4 h-4" />
-                    Get Directions
-                  </a>
+                  {/* Map Section */}
+                  <div className="relative">
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        `${location.address.street}, ${location.address.city}, ${location.address.state} ${location.address.zipCode}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-gray-100 h-full hover:bg-gray-200 transition-colors duration-300 group"
+                    >
+                      <div className="w-full h-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative min-h-96">
+                        {/* Map Icon */}
+                        <div className="text-center">
+                          <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <MapPin className="w-10 h-10 text-white" />
+                          </div>
+                          <h4 className="text-xl font-bold text-gray-900 mb-2">{location.name}</h4>
+                          <p className="text-gray-600 mb-4">
+                            {location.address.street}<br />
+                            {location.address.city}, {location.address.state} {location.address.zipCode}
+                          </p>
+                          <div className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-blue-700 transition-colors">
+                            <Navigation className="w-5 h-5 mr-2" />
+                            View on Google Maps
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -271,66 +250,7 @@ export default function LocationsPage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-soft-500 to-primary-500">
-        <div className="container mx-auto">
-          <div className="text-center text-white mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Multiple Locations?</h2>
-            <p className="text-xl opacity-90">
-              We believe cancer care should be accessible and convenient for all patients
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <div 
-                  key={index} 
-                  className={`text-center group ${
-                    activeFeature === index ? 'transform scale-105' : ''
-                  } transition-all duration-500`}
-                >
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-10 h-10 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold mb-2">{feature.stats}</div>
-                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                  <p className="opacity-90">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Patient Experiences</h2>
-            <p className="text-xl text-gray-600">
-              Hear from patients about their experience at our different locations
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="font-semibold text-gray-900">— {testimonial.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-soft-700 to-primary-700">

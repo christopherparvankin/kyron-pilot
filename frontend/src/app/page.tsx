@@ -180,32 +180,32 @@ export default function Home() {
               <span className="font-semibold">Leading Cancer Care</span>
             </div>
             
-            <h1 className="text-7xl md:text-9xl font-black mb-8 leading-tight">
-              <span style={{ 
-                background: 'linear-gradient(135deg, #123447 0%, #1a4a5c 50%, #C69F59 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
-                Iyengar
-              </span>
+            <h1 className="text-7xl md:text-9xl font-black mb-8 leading-tight" style={{ 
+              color: '#123447'
+            }}>
+              Iyengar
             </h1>
             
-              <h2 className="text-3xl md:text-4xl mb-8 font-black" style={{ 
+              <h2 className="text-3xl md:text-4xl mb-4" style={{ 
                 color: '#000000',
                 textShadow: '0 6px 20px rgba(255, 255, 255, 0.9)',
-                fontWeight: '900'
+                fontWeight: '300',
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                letterSpacing: '0.5px'
               }}>
                 Hematology & Oncology Medical Center
               </h2>
+              
+              <h3 className="text-xl md:text-2xl mb-8" style={{ 
+                color: '#000000',
+                textShadow: '0 4px 15px rgba(255, 255, 255, 0.9)',
+                fontWeight: '300',
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                letterSpacing: '0.3px'
+              }}>
+                Infusion and Injection Services
+              </h3>
             
-            <p className="text-2xl md:text-3xl mb-12 leading-relaxed font-black" style={{ 
-              color: '#000000',
-              textShadow: '0 4px 15px rgba(255, 255, 255, 0.9)',
-              fontWeight: '900'
-            }}>
-              Located in New York, NY
-            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link
@@ -226,22 +226,14 @@ export default function Home() {
               </Link>
               <Link
                 href="/providers"
-                className="px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center border-2 shadow-lg"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255, 248, 220, 0.1) 0%, rgba(232, 184, 109, 0.1) 100%)', 
-                  color: '#123447', 
-                  borderColor: '#C69F59' 
-                }}
+                className="px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center shadow-lg"
+                style={{ background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)', color: '#123447' }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)';
-                  e.currentTarget.style.color = '#FFF8DC';
-                  e.currentTarget.style.borderColor = 'transparent';
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #E8B86D 0%, #C69F59 100%)';
                   e.currentTarget.style.boxShadow = '0 10px 25px rgba(198, 159, 89, 0.3)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 248, 220, 0.1) 0%, rgba(232, 184, 109, 0.1) 100%)';
-                  e.currentTarget.style.color = '#123447';
-                  e.currentTarget.style.borderColor = '#C69F59';
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)';
                   e.currentTarget.style.boxShadow = '0 4px 15px rgba(198, 159, 89, 0.2)';
                 }}
               >
@@ -474,12 +466,26 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="container mx-auto">
+      <section className="py-16 px-4 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+              opacity: 0.6
+            }}
+          ></div>
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/60 to-white/70"></div>
+        </div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-6" style={{ 
-                color: '#1E293B'
+                color: '#1E293B',
+                textShadow: '0 2px 4px rgba(0,0,0,0.1)'
               }}>
                 Words from our patients
               </h2>
@@ -488,8 +494,9 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="rounded-xl p-8 shadow-2xl border" style={{ 
-                  background: 'linear-gradient(135deg, rgba(255, 248, 220, 0.05) 0%, rgba(198, 159, 89, 0.1) 100%)', 
-                  borderColor: '#C69F59' 
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 220, 0.95) 100%)', 
+                  borderColor: '#C69F59',
+                  backdropFilter: 'blur(10px)'
                 }}>
                   <div className="flex items-center mb-6">
                     <div className="flex mr-4">

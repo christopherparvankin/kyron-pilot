@@ -277,7 +277,7 @@ export default function AppointmentPage() {
                 <Mail className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Email</h3>
                 <p className="text-gray-600 mb-2">
-                  appointments@nyoncologists.com
+                  patient@ihomes.org
                 </p>
                 <p className="text-sm text-gray-500">
                   Response within 24 hours

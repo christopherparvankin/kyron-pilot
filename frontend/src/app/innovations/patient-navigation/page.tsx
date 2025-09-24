@@ -223,7 +223,7 @@ export default function PatientNavigationPage() {
                   <Mail className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Email Us</h3>
-                <p className="text-gray-600 mb-2">navigator@kyron.com</p>
+                <p className="text-gray-600 mb-2">patient@ihomes.org</p>
                 <p className="text-sm text-gray-500">Response within 2 hours</p>
               </div>
               <div className="text-center group">

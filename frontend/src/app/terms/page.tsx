@@ -1,4 +1,4 @@
-import { FileText, Scale, Shield, AlertTriangle, Phone, Mail } from "lucide-react";
+import { FileText, Scale, Shield, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 
 export default function TermsOfServicePage() {
@@ -168,23 +168,6 @@ export default function TermsOfServicePage() {
                 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
-              
-              <div className="bg-gray-50 p-6 rounded-lg mb-8">
-                <p className="text-gray-700 mb-4">
-                  If you have any questions about these Terms of Service, please contact us:
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-blue-600" />
-                    <span className="text-gray-700">(555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-blue-600" />
-                    <span className="text-gray-700">legal@arjuniyengar.com</span>
-                  </div>
-                </div>
-              </div>
 
               <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-green-800 mb-3">Agreement</h3>

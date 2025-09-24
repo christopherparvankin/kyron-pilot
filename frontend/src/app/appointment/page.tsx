@@ -52,7 +52,7 @@ export default function AppointmentPage() {
       title: "Email Us",
       description: "Send us your appointment request",
       icon: Mail,
-      value: "info@nyoncologists.com",
+      value: "patient@ihomes.org",
       details: "We'll respond within 24 hours",
       color: "from-green-500 to-green-700"
     },
