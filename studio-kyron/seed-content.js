@@ -179,7 +179,7 @@ const location = {
     zipCode: "10001",
   },
   phone: "(555) 123-4567",
-  email: "info@nyoncologists.com",
+  email: "patient@ihomes.org",
   hours: [
     { day: "Monday", open: "8:00 AM", close: "5:00 PM", closed: false },
     { day: "Tuesday", open: "8:00 AM", close: "5:00 PM", closed: false },
