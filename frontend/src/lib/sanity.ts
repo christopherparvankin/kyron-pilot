@@ -2,12 +2,13 @@ import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "oniivxbv",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  useCdn: process.env.NODE_ENV === "production", // Use CDN in production, direct API in development
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2023-05-03", // Use current date (YYYY-MM-DD) to target the latest API version
-  token: process.env.SANITY_API_TOKEN, // Optional: for write operations
-  ignoreBrowserTokenWarning: true, // Suppress browser token warning
+  projectId: "oniivxbv",
+  dataset: "production",
+  useCdn: true, // Use CDN for better performance
+  apiVersion: "2023-05-03",
+  token: undefined, // No token needed for read operations
+  ignoreBrowserTokenWarning: true,
+  perspective: "published", // Only fetch published content
 });
 
 // Set up the image URL builder
