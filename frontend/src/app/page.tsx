@@ -180,29 +180,29 @@ export default function Home() {
               <span className="font-semibold">Leading Cancer Care</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>
+            <h1 className="text-7xl md:text-9xl font-black mb-8 leading-tight">
               <span style={{ 
-                background: 'linear-gradient(135deg, #123447 0%, #1E3A52 25%, #2A4A63 50%, #1E3A52 75%, #123447 100%)',
+                background: 'linear-gradient(135deg, #123447 0%, #1a4a5c 50%, #C69F59 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                backgroundSize: '200% 200%',
-                animation: 'gradientShift 3s ease-in-out infinite'
+                backgroundClip: 'text'
               }}>
                 Iyengar
               </span>
             </h1>
             
-              <h2 className="text-xl md:text-2xl mb-6 font-medium" style={{ 
-                color: '#475569',
-                textShadow: '0 3px 8px rgba(71, 85, 105, 0.2)'
+              <h2 className="text-3xl md:text-4xl mb-8 font-black" style={{ 
+                color: '#000000',
+                textShadow: '0 6px 20px rgba(255, 255, 255, 0.9)',
+                fontWeight: '900'
               }}>
                 Hematology & Oncology Medical Center
               </h2>
             
-            <p className="text-lg mb-10 leading-relaxed" style={{ 
-              color: '#475569',
-              textShadow: '0 2px 6px rgba(71, 85, 105, 0.2)'
+            <p className="text-2xl md:text-3xl mb-12 leading-relaxed font-black" style={{ 
+              color: '#000000',
+              textShadow: '0 4px 15px rgba(255, 255, 255, 0.9)',
+              fontWeight: '900'
             }}>
               Located in New York, NY
             </p>

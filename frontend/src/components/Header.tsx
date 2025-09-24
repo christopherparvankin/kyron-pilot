@@ -26,27 +26,12 @@ export default function Header() {
         <div className="flex items-center justify-between py-3">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-1 flex-shrink-0">
-            <div className="w-24 h-12">
+            <div className="w-32 h-16">
               <img 
                 src="/ihomes.svg" 
                 alt="Arjun Iyengar Hematology Oncology Medical Center" 
                 className="w-full h-full object-contain"
               />
-            </div>
-            <div className="hidden lg:block">
-              <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
-                <span style={{ 
-                  background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>
-                  Iyengar
-                </span>
-              </h1>
-              <p className="text-xs font-medium leading-tight tracking-wide mt-0.5" style={{ color: '#FFF8DC' }}>
-                Hematology & Oncology
-              </p>
             </div>
           </Link>
 
@@ -134,22 +119,6 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden py-4" style={{ borderTop: '1px solid #C69F59' }}>
-            {/* Mobile Logo Text */}
-            <div className="md:hidden mb-4 pb-4" style={{ borderBottom: '1px solid #C69F59' }}>
-              <h1 className="text-xl font-extrabold leading-tight tracking-tight">
-                <span style={{ 
-                  background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>
-                  Iyengar
-                </span>
-              </h1>
-              <p className="text-xs font-medium leading-tight tracking-wide mt-0.5" style={{ color: '#FFF8DC' }}>
-                Hematology & Oncology
-              </p>
-            </div>
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
