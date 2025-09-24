@@ -94,6 +94,15 @@ header .flex.items-center.space-x-3 a {
   display: inline-flex !important;
   visibility: visible !important;
   opacity: 1 !important;
+  color: #123447 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+header .flex.items-center.space-x-3 a span {
+  display: inline !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Ensure header container is visible */

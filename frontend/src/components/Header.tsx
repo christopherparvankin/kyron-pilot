@@ -64,8 +64,7 @@ export default function Header() {
                 boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
               }}
             >
-              <span className="hidden sm:inline">Contact Us</span>
-              <span className="sm:hidden">Contact</span>
+              Contact Us
             </Link>
             <Link
               href="/appointment"
@@ -75,8 +74,7 @@ export default function Header() {
                 boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
               }}
             >
-              <span className="hidden sm:inline">Request an Appointment</span>
-              <span className="sm:hidden">Book Now</span>
+              Request an Appointment
             </Link>
           </div>
 
