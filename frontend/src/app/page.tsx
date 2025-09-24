@@ -39,55 +39,13 @@ export default function Home() {
     const fetchProviders = async () => {
       try {
         setLoading(true);
-        console.log('🔍 Starting provider fetch...');
-        
-        // Try direct API call first
-        const apiUrl = 'https://oniivxbv.api.sanity.io/v2023-05-03/data/query/production?query=*%5B_type%20%3D%3D%20%22provider%22%5D';
-        console.log('🌐 Trying direct API call to:', apiUrl);
-        
-        const response = await fetch(apiUrl);
-        console.log('📡 API response status:', response.status);
-        
-        if (response.ok) {
-          const data = await response.json();
-          console.log('✅ Direct API result:', data);
-          if (data.result && data.result.length > 0) {
-            console.log('👥 Providers from direct API:', data.result.length);
-            console.log('🔍 First provider details:', data.result[0]);
-            setProviders(data.result);
-            return;
-          }
-        }
-        
-        // Fallback to client
-        console.log('🔄 Falling back to Sanity client...');
-        const clientQuery = await client.fetch('*[_type == "provider"]');
-        console.log('✅ Client query result:', clientQuery);
-        
-        // If no data from API, use test data
-        if (!clientQuery || clientQuery.length === 0) {
-          console.log('🧪 Using test data since no providers found');
-          const testData = [
-            {
-              _id: 'test-1',
-              name: 'Dr. Arjun Iyengar',
-              title: 'Board-Certified Hematologist & Medical Oncologist',
-              slug: { current: 'test-arjun' },
-              bio: [{ children: [{ text: 'Test bio for Arjun Iyengar' }] }],
-              image: null
-            }
-          ];
-          setProviders(testData);
-        } else {
-          setProviders(clientQuery || []);
-        }
-        
+        const providers = await client.fetch('*[_type == "provider"] | order(name asc)');
+        setProviders(providers || []);
       } catch (error) {
-        console.error('❌ Error fetching providers:', error);
+        console.error('Error fetching providers:', error);
         setProviders([]);
       } finally {
         setLoading(false);
-        console.log('🏁 Provider fetch completed');
       }
     };
 
