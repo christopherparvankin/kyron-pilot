@@ -61,6 +61,9 @@ nav {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
 }
 
 /* Ensure navigation links are visible */
@@ -69,6 +72,15 @@ nav a {
   visibility: visible !important;
   opacity: 1 !important;
   color: #FFF8DC !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+nav a:hover {
+  color: #C69F59 !important;
+  transform: scale(1.05) !important;
 }
 
 /* Ensure CTA buttons are visible */
@@ -101,4 +113,38 @@ header .flex.items-center.justify-between {
 /* Ensure main content doesn't overlap with fixed header */
 main {
   padding-top: 80px !important;
+}
+
+/* Force header layout to work on all screen sizes */
+@media (max-width: 768px) {
+  header .flex.items-center.justify-between {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  nav {
+    order: 2 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  
+  header .flex.items-center.space-x-3 {
+    order: 3 !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* Ensure all header elements are visible on mobile */
+@media (max-width: 640px) {
+  nav a {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  header .flex.items-center.space-x-3 a {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 1rem !important;
+  }
 }
