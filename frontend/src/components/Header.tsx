@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ContactModal from "./ContactModal";
 
@@ -16,6 +16,50 @@ export default function Header() {
     { name: "About", href: "/about" },
   ];
 
+  // Ensure navigation is visible on desktop
+  useEffect(() => {
+    const handleResize = () => {
+      const desktopNav = document.querySelector('.desktop-nav') as HTMLElement;
+      const desktopCta = document.querySelector('.desktop-cta') as HTMLElement;
+      const mobileCta = document.querySelector('.mobile-cta') as HTMLElement;
+      
+      if (window.innerWidth >= 1024) {
+        // Desktop view
+        if (desktopNav) {
+          desktopNav.style.display = 'flex';
+          desktopNav.style.visibility = 'visible';
+          desktopNav.style.opacity = '1';
+        }
+        if (desktopCta) {
+          desktopCta.style.display = 'flex';
+          desktopCta.style.visibility = 'visible';
+          desktopCta.style.opacity = '1';
+        }
+        if (mobileCta) {
+          mobileCta.style.display = 'none';
+        }
+      } else {
+        // Mobile view
+        if (desktopNav) {
+          desktopNav.style.display = 'none';
+        }
+        if (desktopCta) {
+          desktopCta.style.display = 'none';
+        }
+        if (mobileCta) {
+          mobileCta.style.display = 'flex';
+          mobileCta.style.visibility = 'visible';
+          mobileCta.style.opacity = '1';
+        }
+      }
+    };
+
+    // Run on mount and resize
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <header 
@@ -40,7 +84,14 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation - Hidden on mobile */}
-          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+          <nav 
+            className="hidden lg:flex items-center space-x-4 xl:space-x-6 desktop-nav"
+            style={{
+              display: 'none',
+              visibility: 'hidden',
+              opacity: '0'
+            }}
+          >
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -48,7 +99,10 @@ export default function Header() {
                 className="font-medium transition-colors text-sm hover:scale-105 whitespace-nowrap"
                 style={{
                   color: '#FFF8DC',
-                  textDecoration: 'none'
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  visibility: 'visible',
+                  opacity: '1'
                 }}
                 onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#C69F59'}
                 onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFF8DC'}

@@ -72,13 +72,13 @@ header .flex.items-center.justify-between {
 
 /* Desktop navigation - ensure it's visible on large screens */
 @media (min-width: 1024px) {
-  header nav {
+  .desktop-nav {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
   
-  header nav a {
+  .desktop-nav a {
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -89,9 +89,28 @@ header .flex.items-center.justify-between {
     transition: all 0.3s ease !important;
   }
   
-  header nav a:hover {
+  .desktop-nav a:hover {
     color: #C69F59 !important;
     transform: scale(1.05) !important;
+  }
+}
+
+/* Force navigation visibility - production override */
+@media (min-width: 1024px) {
+  header .desktop-nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  header .desktop-nav a {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #FFF8DC !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    text-decoration: none !important;
   }
 }
 
