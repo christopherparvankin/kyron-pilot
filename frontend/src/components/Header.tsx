@@ -202,12 +202,12 @@ export default function Header() {
                       }}
                       onClick={() => setIsMenuOpen(false)}
                       onMouseEnter={(e) => {
-                        e.target.style.color = '#C69F59';
-                        e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                        (e.target as HTMLElement).style.color = '#C69F59';
+                        (e.target as HTMLElement).style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.color = '#FFF8DC';
-                        e.target.style.backgroundColor = 'transparent';
+                        (e.target as HTMLElement).style.color = '#FFF8DC';
+                        (e.target as HTMLElement).style.backgroundColor = 'transparent';
                       }}
                     >
                       {item.name}

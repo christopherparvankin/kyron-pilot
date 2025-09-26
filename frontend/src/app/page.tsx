@@ -145,7 +145,7 @@ export default function Home() {
     <>
       <main className="min-h-screen bg-white">
         {/* Hero Slideshow Section */}
-        <section className="relative h-screen overflow-hidden" style={{ marginTop: '-40px', height: 'calc(100vh + 40px)' }}>
+        <section className="relative h-screen overflow-hidden pb-20 sm:pb-0" style={{ marginTop: '-40px', height: 'calc(100vh + 40px)' }}>
           {/* Slideshow Images */}
           <div className="relative w-full h-full">
             {slideshowImages.map((image, index) => (
@@ -171,7 +171,7 @@ export default function Home() {
           </div>
 
           {/* Content Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center z-10" style={{ top: '120px', height: '100vh' }}>
+          <div className="absolute inset-0 flex items-center justify-center z-10" style={{ top: '120px', height: 'calc(100vh - 80px)' }}>
             <div className="text-center text-white max-w-4xl px-4">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent drop-shadow-2xl">
@@ -191,19 +191,19 @@ export default function Home() {
               <div className="flex flex-wrap justify-center gap-3 mb-8 text-sm">
                 <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full font-medium">Bayonne & West Orange, NJ</span>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 sm:mb-0">
                 <Link
                   href="/appointment"
-                  className="hidden sm:inline-flex bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors transform hover:scale-105 items-center justify-center"
+                  className="bg-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center navbar-blue"
                 >
-                  <Calendar className="mr-2 w-5 h-5" />
+                  <Calendar className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                   Schedule Consultation
                 </Link>
                 <Link
                   href="/providers"
-                  className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                  className="bg-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center navbar-blue"
                 >
-                  <Users className="mr-2 w-5 h-5" />
+                  <Users className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                   Meet Our Team
                 </Link>
               </div>
@@ -275,7 +275,10 @@ export default function Home() {
                         <div className="w-16 h-16 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-opacity-30 transition-all duration-300">
                           <IconComponent className="w-8 h-8 text-white" />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-200 transition-colors">
+                        <h3 className="text-lg font-semibold text-white mb-2 transition-colors"
+                            style={{ color: 'white' }}
+                            onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#C69F59'}
+                            onMouseLeave={(e) => (e.target as HTMLElement).style.color = 'white'}>
                           {service.title}
                         </h3>
                         <p className="text-sm text-white text-opacity-90">
@@ -295,13 +298,13 @@ export default function Home() {
                   <div>
                     <p className="font-semibold text-gray-900">Bayonne Clinic</p>
                     <p className="text-gray-600">27 E 29th St, Bayonne, NJ 07002</p>
-                    <p className="text-blue-600 font-medium">(201) 858-1211</p>
+                    <p className="font-medium navbar-blue">(201) 858-1211</p>
                     <p className="text-gray-500">Mon-Thu: 10AM-5:30PM</p>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">West Orange Clinic</p>
                     <p className="text-gray-600">393 Northfield Ave, West Orange, NJ 07052</p>
-                    <p className="text-blue-600 font-medium">(973) 457-8728</p>
+                    <p className="font-medium navbar-blue">(973) 457-8728</p>
                     <p className="text-gray-500">Thu: 9AM-4PM</p>
                   </div>
                 </div>
@@ -353,7 +356,7 @@ export default function Home() {
                       <h3 className="text-3xl font-bold text-gray-900 mb-2">
                         Arjun Iyengar, M.D., MBA
                       </h3>
-                      <p className="text-xl text-blue-600 font-medium mb-4">
+                      <p className="text-xl font-medium mb-4 navbar-blue">
                         Hematology & Oncology
                       </p>
                     </div>
@@ -372,7 +375,7 @@ export default function Home() {
                     <div className="mt-8">
                       <Link
                         href="/providers/arjun-iyengar"
-                        className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                        className="inline-flex items-center font-medium transition-colors navbar-blue"
                       >
                         Read more
                         <ChevronRight className="w-4 h-4 ml-1" />
@@ -402,7 +405,7 @@ export default function Home() {
                       <h3 className="text-3xl font-bold text-gray-900 mb-2">
                         Adam A. Paduszynski, M.D.
                       </h3>
-                      <p className="text-xl text-blue-600 font-medium mb-4">
+                      <p className="text-xl font-medium mb-4 navbar-blue">
                         Family Medicine
                       </p>
                     </div>
@@ -421,7 +424,7 @@ export default function Home() {
                     <div className="mt-8">
                       <Link
                         href="/providers/adam-paduszynski"
-                        className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                        className="inline-flex items-center font-medium transition-colors navbar-blue"
                       >
                         Read more
                         <ChevronRight className="w-4 h-4 ml-1" />
@@ -451,7 +454,7 @@ export default function Home() {
                       <h3 className="text-3xl font-bold text-gray-900 mb-2">
                         Devarajan P. Iyengar, M.D.
                       </h3>
-                      <p className="text-xl text-blue-600 font-medium mb-4">
+                      <p className="text-xl font-medium mb-4 navbar-blue">
                         Oncology
                       </p>
                     </div>
@@ -470,7 +473,7 @@ export default function Home() {
                     <div className="mt-8">
                       <Link
                         href="/providers/devarajan-iyengar"
-                        className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                        className="inline-flex items-center font-medium transition-colors navbar-blue"
                       >
                         Read more
                         <ChevronRight className="w-4 h-4 ml-1" />
@@ -544,7 +547,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <div className="text-center p-6 bg-gray-50 rounded-lg">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Phone className="w-8 h-8 text-blue-600" />
+                  <Phone className="w-8 h-8 navbar-blue" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Call Us</h3>
                 <p className="text-gray-600">973-435-6544</p>
@@ -552,7 +555,7 @@ export default function Home() {
               
               <div className="text-center p-6 bg-gray-50 rounded-lg">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="w-8 h-8 text-blue-600" />
+                  <Calendar className="w-8 h-8 navbar-blue" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Schedule Online</h3>
                 <p className="text-gray-600">Book your appointment</p>
@@ -560,7 +563,7 @@ export default function Home() {
 
               <div className="text-center p-6 bg-gray-50 rounded-lg">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-8 h-8 text-blue-600" />
+                  <MapPin className="w-8 h-8 navbar-blue" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Visit Us</h3>
                 <p className="text-gray-600">West Orange & Bayonne, NJ</p>

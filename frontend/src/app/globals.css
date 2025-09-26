@@ -214,6 +214,15 @@ main {
   padding-top: 80px;
 }
 
+/* Navbar blue color class */
+.navbar-blue {
+  color: #123447 !important;
+}
+
+.navbar-blue:hover {
+  color: #C69F59 !important;
+}
+
 /* Mobile-friendly improvements */
 @media (max-width: 1024px) {
   .page-content {
