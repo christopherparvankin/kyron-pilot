@@ -181,7 +181,13 @@ export default function Header() {
             />
             
             {/* Dropdown Menu */}
-            <div className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-200 z-50 lg:hidden">
+            <div 
+              className="absolute top-full left-0 right-0 shadow-2xl border-t z-50 lg:hidden"
+              style={{
+                background: 'linear-gradient(to right, #123447, #1a4a5c)',
+                borderTop: '2px solid #C69F59'
+              }}
+            >
               <div className="py-1">
                 {/* Navigation Links */}
                 <nav>
@@ -189,8 +195,20 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block py-4 px-6 text-gray-800 font-medium text-lg border-b border-gray-100 hover:bg-gray-50 hover:text-blue-600 transition-colors"
+                      className="block py-4 px-6 font-medium text-lg border-b transition-colors"
+                      style={{
+                        color: '#FFF8DC',
+                        borderBottomColor: 'rgba(255, 248, 220, 0.2)'
+                      }}
                       onClick={() => setIsMenuOpen(false)}
+                      onMouseEnter={(e) => {
+                        e.target.style.color = '#C69F59';
+                        e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.color = '#FFF8DC';
+                        e.target.style.backgroundColor = 'transparent';
+                      }}
                     >
                       {item.name}
                     </Link>
@@ -198,19 +216,32 @@ export default function Header() {
                 </nav>
 
                 {/* CTA Buttons */}
-                <div className="px-6 py-4 bg-gray-50">
+                <div className="px-6 py-4" style={{ borderTop: '1px solid rgba(255, 248, 220, 0.2)' }}>
                   <button
                     onClick={() => {
                       setIsContactModalOpen(true);
                       setIsMenuOpen(false);
                     }}
-                    className="w-full mb-3 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                    className="w-full mb-3 px-6 py-3 font-semibold rounded-lg transition-colors"
+                    style={{
+                      background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                      color: '#123447',
+                      border: 'none',
+                      cursor: 'pointer',
+                      boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
+                    }}
                   >
                     Contact Us
                   </button>
                   <Link
                     href="/appointment"
-                    className="block w-full px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-600 transition-colors text-center"
+                    className="block w-full px-6 py-3 font-semibold rounded-lg transition-colors text-center"
+                    style={{
+                      background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                      color: '#123447',
+                      textDecoration: 'none',
+                      boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
+                    }}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Schedule Appointment

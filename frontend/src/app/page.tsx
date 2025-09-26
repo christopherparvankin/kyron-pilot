@@ -96,42 +96,36 @@ export default function Home() {
       title: "Infusion Center",
       description: "State-of-the-art infusion & injection treatments",
       icon: Syringe,
-      href: "/innovations/infusion-center",
       image: "/stock/infusion.jpeg"
     },
     {
       title: "Hematology & Oncology",
       description: "Precision-based cancer care & blood disorders",
       icon: Heart,
-      href: "/services/hematology",
       image: "/stock/oncology.jpeg"
     },
     {
       title: "Genomic Testing",
       description: "Advanced diagnostic & treatment planning",
       icon: Stethoscope,
-      href: "/services/medical-oncology",
       image: "/stock/genomic.jpeg"
     },
     {
       title: "Clinical Trials",
       description: "Access to cutting-edge research treatments",
       icon: Target,
-      href: "/innovations",
       image: "/stock/clinical%20research.jpeg"
     },
     {
       title: "In-House Pharmacy",
       description: "Specialized oncology medications on-site",
       icon: Pill,
-      href: "/innovations/pharmacy",
       image: "/stock/pharmacy.jpeg"
     },
     {
       title: "Multilingual Care",
       description: "English, Spanish, Hindi, Tamil, Gujarati",
       icon: Users,
-      href: "/about",
       image: "/stock/multilingual.jpeg"
     }
   ];
@@ -200,7 +194,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/appointment"
-                  className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                  className="hidden sm:inline-flex bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors transform hover:scale-105 items-center justify-center"
                 >
                   <Calendar className="mr-2 w-5 h-5" />
                   Schedule Consultation
@@ -264,9 +258,8 @@ export default function Home() {
               {services.map((service, index) => {
                 const IconComponent = service.icon;
               return (
-                  <Link
+                  <div
                   key={index} 
-                    href={service.href}
                     className="group relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-64"
                     style={{
                       backgroundImage: `url(${service.image})`,
@@ -277,7 +270,7 @@ export default function Home() {
                     {/* Overlay for better text readability */}
                     <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300"></div>
                     
-                    <div className="relative z-10 h-full flex flex-col justify-between p-6 text-center">
+                    <div className="relative z-10 h-full flex flex-col justify-center p-6 text-center">
                       <div>
                         <div className="w-16 h-16 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-opacity-30 transition-all duration-300">
                           <IconComponent className="w-8 h-8 text-white" />
@@ -285,16 +278,12 @@ export default function Home() {
                         <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-200 transition-colors">
                           {service.title}
                         </h3>
-                        <p className="text-sm text-white text-opacity-90 mb-3">
+                        <p className="text-sm text-white text-opacity-90">
                           {service.description}
                         </p>
                       </div>
-                      <div className="flex items-center justify-center text-white text-sm font-medium group-hover:text-blue-200">
-                        <span>more info</span>
-                        <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </div>
                     </div>
-                  </Link>
+                  </div>
                 );
               })}
             </div>
