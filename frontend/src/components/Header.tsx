@@ -173,23 +173,23 @@ export default function Header() {
 
         {/* Mobile Navigation - Clean Dropdown */}
         {isMenuOpen && (
-          <div className="lg:hidden mobile-menu">
+          <>
             {/* Backdrop */}
             <div 
-              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
               onClick={() => setIsMenuOpen(false)}
             />
             
             {/* Dropdown Menu */}
-            <div className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-200 z-50">
-              <div className="py-2">
+            <div className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-200 z-50 lg:hidden">
+              <div className="py-1">
                 {/* Navigation Links */}
-                <nav className="px-4">
+                <nav>
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block py-4 px-4 text-gray-800 font-medium text-lg border-b border-gray-100 hover:bg-gray-50 hover:text-blue-600 transition-colors"
+                      className="block py-4 px-6 text-gray-800 font-medium text-lg border-b border-gray-100 hover:bg-gray-50 hover:text-blue-600 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
@@ -198,7 +198,7 @@ export default function Header() {
                 </nav>
 
                 {/* CTA Buttons */}
-                <div className="px-4 py-4 bg-gray-50">
+                <div className="px-6 py-4 bg-gray-50">
                   <button
                     onClick={() => {
                       setIsContactModalOpen(true);
@@ -218,7 +218,7 @@ export default function Header() {
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </div>
 
