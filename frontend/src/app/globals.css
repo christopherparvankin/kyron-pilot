@@ -56,55 +56,6 @@ header {
   width: 100% !important;
 }
 
-/* Ensure navigation items are visible */
-nav {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 1.5rem !important;
-}
-
-/* Ensure navigation links are visible */
-nav a {
-  display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #FFF8DC !important;
-  font-weight: 500 !important;
-  font-size: 0.875rem !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
-}
-
-nav a:hover {
-  color: #C69F59 !important;
-  transform: scale(1.05) !important;
-}
-
-/* Ensure CTA buttons are visible */
-header .flex.items-center.space-x-3 {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-header .flex.items-center.space-x-3 a {
-  display: inline-flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #123447 !important;
-  font-weight: 600 !important;
-  text-decoration: none !important;
-}
-
-header .flex.items-center.space-x-3 a span {
-  display: inline !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
 /* Ensure header container is visible */
 header .container {
   display: flex !important;
@@ -117,6 +68,96 @@ header .flex.items-center.justify-between {
   visibility: visible !important;
   opacity: 1 !important;
   width: 100% !important;
+}
+
+/* Desktop navigation - ensure it's visible on large screens */
+@media (min-width: 1024px) {
+  header nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  header nav a {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #FFF8DC !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  header nav a:hover {
+    color: #C69F59 !important;
+    transform: scale(1.05) !important;
+  }
+}
+
+/* Ensure CTA buttons are visible - respect responsive classes */
+.desktop-cta {
+  display: none !important;
+}
+
+.mobile-cta {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .desktop-cta {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .desktop-cta a,
+  .desktop-cta button {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #123447 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .mobile-cta {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .mobile-cta a,
+  .mobile-cta button {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #123447 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Mobile navigation visibility */
+.mobile-menu {
+  display: block !important;
+}
+
+.mobile-menu nav {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.mobile-menu nav a {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #FFF8DC !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
 }
 
 /* Ensure main content doesn't overlap with fixed header */

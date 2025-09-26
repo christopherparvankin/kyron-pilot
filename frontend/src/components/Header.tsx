@@ -16,6 +16,7 @@ export default function Header() {
     { name: "About", href: "/about" },
   ];
 
+
   return (
     <header 
       className="fixed top-0 left-0 right-0 z-50 w-full shadow-lg"
@@ -58,7 +59,7 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA Buttons - Hidden on mobile */}
-          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 desktop-cta">
             <button
               onClick={() => setIsContactModalOpen(true)}
               className="px-3 py-2 xl:px-4 xl:py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 text-xs xl:text-sm whitespace-nowrap shadow-lg hover:shadow-xl"
@@ -88,7 +89,7 @@ export default function Header() {
           </div>
 
           {/* Mobile CTA Buttons - Visible on mobile */}
-          <div className="flex lg:hidden items-center space-x-2">
+          <div className="flex lg:hidden items-center space-x-2 mobile-cta">
             <button
               onClick={() => setIsContactModalOpen(true)}
               className="px-2 py-1 rounded text-xs font-semibold"
@@ -142,7 +143,7 @@ export default function Header() {
         {/* Mobile Navigation - Slide down menu */}
         {isMenuOpen && (
           <div 
-            className="lg:hidden"
+            className="lg:hidden mobile-menu"
             style={{
               borderTop: '1px solid #C69F59',
               background: 'linear-gradient(to right, #123447, #1a4a5c)'

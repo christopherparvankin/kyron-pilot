@@ -33,9 +33,7 @@ export default function LocationsPage() {
       email: "patient@ihomes.org",
       hours: [
         { day: "Monday - Thursday", open: "10:00 AM", close: "5:30 PM", closed: false },
-        { day: "Friday", open: "", close: "", closed: true },
-        { day: "Saturday", open: "", close: "", closed: true },
-        { day: "Sunday", open: "", close: "", closed: true }
+        { day: "Friday - Sunday", open: "", close: "", closed: true }
       ],
       features: ["Full Services", "Free Parking", "Wheelchair Accessible"]
     },
