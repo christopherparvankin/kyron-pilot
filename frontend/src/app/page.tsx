@@ -520,10 +520,10 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white bg-opacity-95 backdrop-blur-sm rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center mb-4">
+                <div key={index} className="bg-white bg-opacity-95 backdrop-blur-sm rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full max-w-sm">
+                  <div className="flex items-center justify-center mb-4">
                     <div className="flex mr-3">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
@@ -532,11 +532,11 @@ export default function Home() {
                     <Quote className="w-5 h-5 text-gray-400" />
                   </div>
                   
-                  <blockquote className="text-gray-700 leading-relaxed mb-4">
+                  <blockquote className="text-gray-700 leading-relaxed mb-4 text-center">
                     "{testimonial.quote}"
                   </blockquote>
                   
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-center">
                     <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
                       <span className="font-semibold text-sm text-blue-600">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}

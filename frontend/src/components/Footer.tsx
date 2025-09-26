@@ -23,9 +23,6 @@ export default function Footer() {
               <h2 className="text-lg font-black mb-2 text-white">
                 Hematology & Oncology Medical Center
               </h2>
-              <h3 className="text-sm font-bold text-white">
-                Infusion and Injection Services
-              </h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Leading cancer care with innovative treatments and compassionate

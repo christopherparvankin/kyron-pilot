@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingRoot: "/Users/chrisparvankin/Desktop/kryon-updated/kyron-pilot/frontend",
   images: {
-    domains: ['cdn.sanity.io'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -23,6 +22,8 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    qualities: [75, 80, 85, 90, 95],
+    formats: ['image/webp', 'image/avif'],
   },
 };
 

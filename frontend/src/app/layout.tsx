@@ -19,9 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </head>
+      <body className="overflow-x-hidden">
         <Header />
-        <main style={{ minHeight: '100vh' }}>{children}</main>
+        <main className="min-h-screen pt-16 sm:pt-20">{children}</main>
         <Footer />
       </body>
     </html>
