@@ -136,16 +136,14 @@ export default function Home() {
     }
   ];
 
-  const testimonials = [
+  const innovationPartners = [
     {
       quote: "Dr. Iyengar is a wonderful and kind human being. His compassionate approach to patient care and his expertise in hematology and oncology make him an exceptional physician.",
-      author: "Ayush Sharma",
-      rating: 5
+      author: "Ayush Sharma"
     },
     {
       quote: "Dr. Iyengar is wonderful to work with as we implement AI solutions in healthcare practices across the US. He is entrepreneurial and innovative!",
-      author: "Jay Gopal",
-      rating: 5
+      author: "Jay Gopal"
     }
   ];
 
@@ -413,7 +411,7 @@ export default function Home() {
                   <div className="lg:w-2/3 p-8">
                     <div className="mb-6">
                       <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                        Dr. Adam A. Paduszynski, M.D.
+                        Adam A. Paduszynski, M.D.
                       </h3>
                       <p className="text-xl text-blue-600 font-medium mb-4">
                         Family Medicine
@@ -462,7 +460,7 @@ export default function Home() {
                   <div className="lg:w-2/3 p-8">
                     <div className="mb-6">
                       <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                        Dr. Devarajan P. Iyengar, M.D.
+                        Devarajan P. Iyengar, M.D.
                       </h3>
                       <p className="text-xl text-blue-600 font-medium mb-4">
                         Oncology
@@ -497,60 +495,50 @@ export default function Home() {
         </div>
       </section>
 
-        {/* Testimonials Section - Hudson Style */}
+        {/* Innovation Partners Section */}
         <section 
           className="relative py-20 px-4 overflow-hidden"
           style={{
-            backgroundImage: 'url(/stock/new_york.jpeg)',
+            backgroundImage: 'url(/stock/brooklyn.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed'
           }}
         >
           {/* Background Overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-          
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-white mb-4">
-                Words from our patients
+                We Support Innovation
               </h2>
-              <p className="text-xl text-white opacity-90">
-                Hear what our patients say about their experience
+              <p className="text-xl text-white opacity-90 max-w-3xl mx-auto">
+                Our commitment to advancing healthcare through technology and innovation
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white bg-opacity-95 backdrop-blur-sm rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full max-w-sm">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="flex mr-3">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
-                      ))}
-                    </div>
-                    <Quote className="w-5 h-5 text-gray-400" />
-                  </div>
-                  
-                  <blockquote className="text-gray-700 leading-relaxed mb-4 text-center">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  
-                  <div className="flex items-center justify-center">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                      <span className="font-semibold text-sm text-blue-600">
-                        {testimonial.author.split(' ').map(n => n[0]).join('')}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {innovationPartners.map((partner, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold text-lg">
+                        {partner.author.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">{partner.author}</h3>
+                      <blockquote className="text-gray-700 italic leading-relaxed">
+                        "{partner.quote}"
+                      </blockquote>
                     </div>
                   </div>
                 </div>
               ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
 
         {/* Contact Section - Hudson Style */}
         <section className="py-20 px-4 bg-white">

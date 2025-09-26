@@ -161,11 +161,12 @@ header .flex.items-center.justify-between {
 
 /* Mobile navigation visibility */
 .mobile-menu {
+  position: relative !important;
   display: block !important;
 }
 
 .mobile-menu nav {
-  display: flex !important;
+  display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
@@ -174,7 +175,7 @@ header .flex.items-center.justify-between {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  color: #FFF8DC !important;
+  color: #1f2937 !important;
   font-weight: 500 !important;
   text-decoration: none !important;
 }

@@ -85,7 +85,7 @@ export default function Header() {
 
           {/* Desktop Navigation - Hidden on mobile */}
           <nav 
-            className="hidden lg:flex items-center space-x-4 xl:space-x-6 desktop-nav"
+            className="hidden lg:flex items-center space-x-6 xl:space-x-8 desktop-nav"
             style={{
               display: 'none',
               visibility: 'hidden',
@@ -96,7 +96,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="font-medium transition-colors text-sm hover:scale-105 whitespace-nowrap"
+                className="font-medium transition-colors text-base hover:scale-105 whitespace-nowrap px-3 py-2 rounded-md hover:bg-white/10"
                 style={{
                   color: '#FFF8DC',
                   textDecoration: 'none',
@@ -104,8 +104,14 @@ export default function Header() {
                   visibility: 'visible',
                   opacity: '1'
                 }}
-                onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#C69F59'}
-                onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFF8DC'}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLElement).style.color = '#C69F59';
+                  (e.target as HTMLElement).style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLElement).style.color = '#FFF8DC';
+                  (e.target as HTMLElement).style.backgroundColor = 'transparent';
+                }}
               >
                 {item.name}
               </Link>
@@ -142,35 +148,6 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile CTA Buttons - Visible on mobile */}
-          <div className="flex lg:hidden items-center space-x-2 mobile-cta">
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="px-2 py-1 rounded text-xs font-semibold"
-              style={{
-                background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
-                color: '#123447',
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(198, 159, 89, 0.2)'
-              }}
-            >
-              Contact
-            </button>
-            <Link
-              href="/appointment"
-              className="px-2 py-1 rounded text-xs font-semibold"
-              style={{ 
-                background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
-                color: '#123447',
-                textDecoration: 'none',
-                display: 'inline-block',
-                boxShadow: '0 2px 8px rgba(198, 159, 89, 0.2)'
-              }}
-            >
-              Book
-            </Link>
-          </div>
 
           {/* Mobile menu button */}
           <button
@@ -194,76 +171,51 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Navigation - Slide down menu */}
+        {/* Mobile Navigation - Clean Dropdown */}
         {isMenuOpen && (
-          <div 
-            className="lg:hidden mobile-menu"
-            style={{
-              borderTop: '1px solid #C69F59',
-              background: 'linear-gradient(to right, #123447, #1a4a5c)'
-            }}
-          >
-            <div className="py-4 px-2">
-              {/* Navigation Links */}
-              <nav className="flex flex-col space-y-3 mb-4">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="font-medium py-3 px-4 rounded-lg transition-colors hover:bg-white/10 text-center"
-                    style={{
-                      color: '#FFF8DC',
-                      textDecoration: 'none'
-                    }}
-                    onClick={() => setIsMenuOpen(false)}
-                    onMouseEnter={(e) => {
-                      const target = e.target as HTMLElement;
-                      target.style.color = '#C69F59';
-                      target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      const target = e.target as HTMLElement;
-                      target.style.color = '#FFF8DC';
-                      target.style.backgroundColor = 'transparent';
-                    }}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </nav>
+          <div className="lg:hidden mobile-menu">
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Dropdown Menu */}
+            <div className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-200 z-50">
+              <div className="py-2">
+                {/* Navigation Links */}
+                <nav className="px-4">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="block py-4 px-4 text-gray-800 font-medium text-lg border-b border-gray-100 hover:bg-gray-50 hover:text-blue-600 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
 
-              {/* Mobile CTA Buttons */}
-              <div className="flex flex-col space-y-3 pt-2" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
-                <button
-                  onClick={() => {
-                    setIsContactModalOpen(true);
-                    setIsMenuOpen(false);
-                  }}
-                  className="px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  style={{
-                    background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
-                    color: '#123447',
-                    border: 'none',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
-                  }}
-                >
-                  Contact Us
-                </button>
-                <Link
-                  href="/appointment"
-                  className="px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  style={{ 
-                    background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
-                    color: '#123447',
-                    textDecoration: 'none',
-                    display: 'block',
-                    boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
-                  }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Request an Appointment
-                </Link>
+                {/* CTA Buttons */}
+                <div className="px-4 py-4 bg-gray-50">
+                  <button
+                    onClick={() => {
+                      setIsContactModalOpen(true);
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full mb-3 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Contact Us
+                  </button>
+                  <Link
+                    href="/appointment"
+                    className="block w-full px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-600 transition-colors text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Schedule Appointment
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
