@@ -324,24 +324,24 @@ export default function Home() {
       </section>
 
         {/* Our Providers Section - Hudson Style */}
-        <section className="py-20 px-4 bg-white" style={{ backgroundColor: 'white' }}>
+        <section className="py-12 sm:py-16 lg:py-20 px-4 bg-white" style={{ backgroundColor: 'white' }}>
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 Our Medical Team
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Meet our board-certified physicians who are dedicated to providing exceptional cancer care and hematology services.
               </p>
             </div>
 
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-10 lg:space-y-12">
               {/* Dr. Arjun Iyengar */}
               <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="flex flex-col lg:flex-row">
                   {/* Photo Section */}
-                  <div className="lg:w-1/3 p-8 flex justify-center items-center bg-gray-50">
-                    <div className="w-64 h-80 rounded-lg overflow-hidden shadow-lg">
+                  <div className="lg:w-1/3 p-4 sm:p-6 lg:p-8 flex justify-center items-center bg-gray-50">
+                    <div className="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 rounded-lg overflow-hidden shadow-lg">
                       <img 
                         src="/iy.png"
                         alt="Dr. Arjun Iyengar"
@@ -351,22 +351,22 @@ export default function Home() {
                   </div>
                   
                   {/* Information Section */}
-                  <div className="lg:w-2/3 p-8">
-                    <div className="mb-6">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                  <div className="lg:w-2/3 p-4 sm:p-6 lg:p-8">
+                    <div className="mb-4 sm:mb-6">
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                         Arjun Iyengar, M.D., MBA
                       </h3>
-                      <p className="text-xl font-medium mb-4 navbar-blue">
+                      <p className="text-base sm:text-lg lg:text-xl font-medium mb-4 navbar-blue">
                         Hematology & Oncology
                       </p>
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-4 sm:mb-6">
                       <div className="prose prose-gray max-w-none">
-                        <p className="mb-4 text-gray-600 leading-relaxed">
+                        <p className="mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 leading-relaxed">
                           Dr. Iyengar is a board-certified hematologist and medical oncologist specializing in comprehensive cancer care and blood disorders. Practicing in the heart of New Jersey, he specializes in precision-based oncology care, genomic testing, and various treatment modalities including chemotherapy, immunotherapy, and biological therapies.
                         </p>
-                        <p className="mb-4 text-gray-600 leading-relaxed">
+                        <p className="mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 leading-relaxed">
                           Dr. Iyengar completed his medical education at Brown University, Rutgers Medical School, and Cornell MBA. He completed his residency at Dartmouth and fellowship at NYU Grossman School of Medicine. He currently serves as Department Chairman at Bayonne Medical Center and Clinical Assistant Professor at NYU.
                         </p>
                       </div>
@@ -389,8 +389,8 @@ export default function Home() {
               <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="flex flex-col lg:flex-row">
                   {/* Photo Section */}
-                  <div className="lg:w-1/3 p-8 flex justify-center items-center bg-gray-50">
-                    <div className="w-64 h-80 rounded-lg overflow-hidden shadow-lg">
+                  <div className="lg:w-1/3 p-4 sm:p-6 lg:p-8 flex justify-center items-center bg-gray-50">
+                    <div className="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 rounded-lg overflow-hidden shadow-lg">
                       <img 
                         src="/adam.webp"
                         alt="Dr. Adam Paduszynski"
@@ -400,22 +400,22 @@ export default function Home() {
                   </div>
                   
                   {/* Information Section */}
-                  <div className="lg:w-2/3 p-8">
-                    <div className="mb-6">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                  <div className="lg:w-2/3 p-4 sm:p-6 lg:p-8">
+                    <div className="mb-4 sm:mb-6">
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                         Adam A. Paduszynski, M.D.
                       </h3>
-                      <p className="text-xl font-medium mb-4 navbar-blue">
+                      <p className="text-base sm:text-lg lg:text-xl font-medium mb-4 navbar-blue">
                         Family Medicine
                       </p>
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-4 sm:mb-6">
                       <div className="prose prose-gray max-w-none">
-                        <p className="mb-4 text-gray-600 leading-relaxed">
+                        <p className="mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 leading-relaxed">
                           Dr. Adam A. Paduszynski is a board-certified Family Medicine physician with over 35 years of experience. He has received the "Patients Top Choice" award, which is given to providers who have received a 5-star rating from their patients.
                         </p>
-                        <p className="mb-4 text-gray-600 leading-relaxed">
+                        <p className="mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 leading-relaxed">
                           Dr. Paduszynski completed his medical education at Wroclaw Medical University and his residency in Family Medicine at St. Luke's University Hospital/Warren Hospital. He also completed an internship at Atlantic Health System. He has received 4 patient awards and maintains a perfect 5/5 patient rating based on 6 reviews.
                         </p>
                       </div>
@@ -438,8 +438,8 @@ export default function Home() {
               <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="flex flex-col lg:flex-row">
                   {/* Photo Section */}
-                  <div className="lg:w-1/3 p-8 flex justify-center items-center bg-gray-50">
-                    <div className="w-64 h-80 rounded-lg overflow-hidden shadow-lg">
+                  <div className="lg:w-1/3 p-4 sm:p-6 lg:p-8 flex justify-center items-center bg-gray-50">
+                    <div className="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 rounded-lg overflow-hidden shadow-lg">
                       <img 
                         src="/download.jpeg"
                         alt="Dr. Devarajan P. Iyengar"
@@ -449,22 +449,22 @@ export default function Home() {
                   </div>
                   
                   {/* Information Section */}
-                  <div className="lg:w-2/3 p-8">
-                    <div className="mb-6">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                  <div className="lg:w-2/3 p-4 sm:p-6 lg:p-8">
+                    <div className="mb-4 sm:mb-6">
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                         Devarajan P. Iyengar, M.D.
                       </h3>
-                      <p className="text-xl font-medium mb-4 navbar-blue">
+                      <p className="text-base sm:text-lg lg:text-xl font-medium mb-4 navbar-blue">
                         Oncology
                       </p>
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-4 sm:mb-6">
                       <div className="prose prose-gray max-w-none">
-                        <p className="mb-4 text-gray-600 leading-relaxed">
+                        <p className="mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 leading-relaxed">
                           Dr. Devarajan P. Iyengar is an oncologist in Bayonne, New Jersey and is affiliated with multiple hospitals in the area, including CarePoint Health Bayonne Medical Center and CarePoint Health Hoboken University Medical Center. He received his medical degree from Baroda Medical College and has been in practice for more than 20 years.
                         </p>
-                        <p className="mb-4 text-gray-600 leading-relaxed">
+                        <p className="mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 leading-relaxed">
                           Dr. Iyengar has expertise in treating inflammatory bowel disease (IBD), stroke, diabetes, among other conditions. He accepts Aetna, Cigna, United Healthcare and other insurance plans. He completed his fellowship in Hematology and Medical Oncology at Newark Beth Israel Medical Center and his residency in Internal Medicine at Rutgers Health/New Jersey Medical School.
                         </p>
                       </div>
