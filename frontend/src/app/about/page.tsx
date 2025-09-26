@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ResponsiveImage from "@/components/ResponsiveImage";
 import {
   MapPin,
   Phone,
@@ -49,17 +50,13 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100 page-content">
       {/* Hero Section */}
-      <section 
-        className="relative py-20 px-4 overflow-hidden"
-        style={{
-          backgroundImage: 'url(/stock/AdobeStock_350407100.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}
+      <ResponsiveImage
+        src="/stock/AdobeStock_350407100.jpeg"
+        alt="About Iyengar Hematology & Oncology Medical Center"
+        className="py-20 px-4"
+        priority={true}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="container mx-auto relative z-10">
+        <div className="container mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Heart className="w-4 h-4" />
@@ -77,7 +74,7 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-      </section>
+      </ResponsiveImage>
 
       {/* Mission Section */}
       <section className="py-20 px-4 bg-white">
