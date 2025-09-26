@@ -194,7 +194,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/appointment"
-                  className="hidden sm:inline-flex px-8 py-4 rounded-lg font-semibold text-lg transition-colors transform hover:scale-105 items-center justify-center shadow-lg hover:shadow-xl"
+                  className="px-8 py-4 rounded-lg font-semibold text-lg transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg hover:shadow-xl"
                   style={{
                     background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
                     color: '#123447',
@@ -220,8 +220,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Slide Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+          {/* Slide Indicators - Hidden on mobile */}
+          <div className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 space-x-3 z-10">
             {slideshowImages.map((_, index) => (
               <button
                 key={index}
@@ -241,8 +241,8 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 right-8 z-10">
+          {/* Scroll Indicator - Hidden on mobile */}
+          <div className="hidden md:block absolute bottom-8 right-8 z-10">
             <div className="flex flex-col items-center text-white">
               <span className="text-sm mb-2">Scroll Down</span>
               <div className="w-6 h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center">
