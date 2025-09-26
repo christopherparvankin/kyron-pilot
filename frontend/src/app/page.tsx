@@ -171,27 +171,27 @@ export default function Home() {
           </div>
 
           {/* Content Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center z-10" style={{ top: '120px', height: '100vh' }}>
-            <div className="text-center text-white max-w-4xl px-4">
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <div className="absolute inset-0 flex items-center justify-center z-10" style={{ top: '120px', height: '100vh', paddingBottom: '80px' }}>
+            <div className="text-center text-white max-w-4xl px-4 pb-20 sm:pb-4">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-white to-amber-100 bg-clip-text text-transparent drop-shadow-2xl">
                   Iyengar Hematology & Oncology
                 </span>
               </h1>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white drop-shadow-lg">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-3 sm:mb-4 text-white drop-shadow-lg">
                 Medical Center
               </h2>
-              <h3 className="text-xl md:text-2xl font-semibold mb-6 text-white drop-shadow-lg">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6 text-white drop-shadow-lg">
                 Infusion & Injection Services
               </h3>
-              <p className="text-lg mb-8 text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg font-medium">
+              <p className="text-base sm:text-lg mb-6 sm:mb-8 text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg font-medium">
                 Board-certified oncologists providing precision-based cancer care, genomic testing, and state-of-the-art infusion treatments. 
                 Multilingual support in English, Spanish, Hindi, Tamil, and Gujarati.
               </p>
               <div className="flex flex-wrap justify-center gap-3 mb-8 text-sm">
                 <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full font-medium">Bayonne & West Orange, NJ</span>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 sm:mb-0">
                 <Link
                   href="/appointment"
                   className="px-8 py-4 rounded-lg font-semibold text-lg transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg hover:shadow-xl"
