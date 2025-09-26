@@ -22,7 +22,6 @@ import {
 export default function ServicesPage() {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [activeCategory, setActiveCategory] = useState(0);
 
   const serviceCategories = [
     {
@@ -89,12 +88,6 @@ export default function ServicesPage() {
 
 
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveCategory((prev) => (prev + 1) % serviceCategories.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100 page-content">
@@ -116,7 +109,7 @@ export default function ServicesPage() {
               <span>Comprehensive Care</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent drop-shadow-2xl">
+              <span className="bg-gradient-to-r from-white to-amber-100 bg-clip-text text-transparent drop-shadow-2xl">
                 Treatments
               </span>
               <br />
@@ -130,14 +123,24 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/appointment"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="px-8 py-4 rounded-lg font-semibold transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg hover:shadow-xl"
+                style={{
+                  background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                  color: '#123447',
+                  textDecoration: 'none'
+                }}
               >
                 Schedule Consultation
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
                 href="/providers"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="px-8 py-4 rounded-lg font-semibold transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg hover:shadow-xl"
+                style={{
+                  background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                  color: '#123447',
+                  textDecoration: 'none'
+                }}
               >
                 Meet Our Team
                 <Users className="ml-2 w-5 h-5" />
@@ -151,7 +154,7 @@ export default function ServicesPage() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services & Treatments</h2>
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#123447' }}>Our Services & Treatments</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Comprehensive cancer care services, treatments, and specialized support for all your needs
             </p>
@@ -163,20 +166,14 @@ export default function ServicesPage() {
               return (
                 <div
                   key={index}
-                  className={`group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
-                    activeCategory === index ? 'ring-2 ring-soft-200 scale-105' : ''
-                  }`}
+                  className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
                   onMouseEnter={() => setHoveredService(index)}
                   onMouseLeave={() => setHoveredService(null)}
                 >
-                  <div className={`
-                    w-16 h-16 rounded-2xl bg-gradient-to-br ${category.color} 
-                    flex items-center justify-center mb-6 group-hover:scale-110 
-                    transition-transform duration-300
-                  `}>
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style={{ background: 'linear-gradient(135deg, #123447 0%, #1a4a5c 100%)' }}>
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-soft-600 transition-colors">
+                  <h3 className="text-2xl font-bold mb-4 transition-colors" style={{ color: '#123447' }}>
                     {category.title}
                   </h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">
@@ -186,7 +183,7 @@ export default function ServicesPage() {
                   <div className="space-y-2 mb-6">
                     {category.services.map((service, serviceIndex) => (
                       <div key={serviceIndex} className="flex items-center space-x-2 text-sm text-gray-500">
-                        <CheckCircle className="w-4 h-4 text-primary-500" />
+                        <CheckCircle className="w-4 h-4" style={{ color: '#C69F59' }} />
                         <span>{service}</span>
                       </div>
                     ))}
@@ -204,11 +201,11 @@ export default function ServicesPage() {
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: '#C69F59', color: '#123447' }}>
               <Sparkles className="w-4 h-4" />
               <span>Innovation in Cancer Care</span>
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Innovative Care Solutions</h2>
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#123447' }}>Innovative Care Solutions</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Discover our cutting-edge innovations designed to enhance your cancer care experience
               with advanced technology, personalized support, and compassionate care.
@@ -225,15 +222,11 @@ export default function ServicesPage() {
                   onMouseEnter={() => setHoveredCard(innovation.id)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <div className={`
-                    w-16 h-16 rounded-2xl bg-gradient-to-br ${innovation.color} 
-                    flex items-center justify-center mb-6 group-hover:scale-110 
-                    transition-transform duration-300
-                  `}>
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style={{ background: 'linear-gradient(135deg, #123447 0%, #1a4a5c 100%)' }}>
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-bold mb-4 transition-colors" style={{ color: '#123447' }}>
                     {innovation.title}
                   </h3>
                   
@@ -244,17 +237,14 @@ export default function ServicesPage() {
                   <div className="space-y-2">
                     {innovation.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center space-x-2 text-sm text-gray-500">
-                        <CheckCircle className="w-4 h-4 text-blue-500" />
+                        <CheckCircle className="w-4 h-4" style={{ color: '#C69F59' }} />
                         <span>{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Hover Effect */}
-                  <div className={`
-                    absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${innovation.color}
-                    transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300
-                  `}></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" style={{ background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)' }}></div>
                 </div>
               );
             })}
@@ -263,27 +253,37 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-soft-700 to-primary-700">
+      <section className="py-20 px-4" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)' }}>
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-4xl font-bold mb-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6" style={{ color: '#123447' }}>
               Ready to Learn More About Our Services?
             </h2>
-            <p className="text-xl mb-8 text-soft-100">
+            <p className="text-xl mb-8 text-gray-600">
               Our team is here to discuss your treatment options and answer any 
               questions you may have about our comprehensive cancer care services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/appointment"
-                className="bg-white text-soft-900 px-8 py-4 rounded-lg font-semibold hover:bg-soft-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="px-8 py-4 rounded-lg font-semibold transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg hover:shadow-xl"
+                style={{
+                  background: 'linear-gradient(135deg, #123447 0%, #1a4a5c 100%)',
+                  color: '#FFF8DC',
+                  textDecoration: 'none'
+                }}
               >
                 <Calendar className="mr-2 w-5 h-5" />
                 Schedule Consultation
               </Link>
               <Link
                 href="/providers"
-                className="bg-white text-soft-900 px-8 py-4 rounded-lg font-semibold hover:bg-soft-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="px-8 py-4 rounded-lg font-semibold transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg hover:shadow-xl"
+                style={{
+                  background: 'linear-gradient(135deg, #123447 0%, #1a4a5c 100%)',
+                  color: '#FFF8DC',
+                  textDecoration: 'none'
+                }}
               >
                 <Users className="mr-2 w-5 h-5" />
                 Meet Our Team

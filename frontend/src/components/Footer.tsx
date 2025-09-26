@@ -11,7 +11,13 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer 
+      className="text-white"
+      style={{
+        background: 'linear-gradient(to right, #123447, #1a4a5c)',
+        borderTop: '2px solid #C69F59'
+      }}
+    >
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
@@ -78,7 +84,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
+        <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
               <p className="text-gray-400 text-sm">
