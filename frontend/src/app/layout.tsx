@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
         <Header />
-        <main style={{ paddingTop: '80px', minHeight: '100vh' }}>{children}</main>
+        <main style={{ minHeight: '100vh' }}>{children}</main>
         <Footer />
       </body>
     </html>

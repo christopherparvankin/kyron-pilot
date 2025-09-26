@@ -1,6 +1,3 @@
-import { client } from "@/lib/sanity";
-import { queries } from "@/lib/queries";
-import { urlFor } from "@/lib/sanity";
 import Link from "next/link";
 import {
   MapPin,
@@ -20,53 +17,62 @@ import {
   User
 } from "lucide-react";
 
-export default async function AboutPage() {
-  // Fetch data from Sanity CMS
-  let providers;
-  let aboutContent;
-  
-  try {
-    providers = await client.fetch(queries.providers);
-    aboutContent = await client.fetch(queries.about);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    providers = [];
-    aboutContent = null;
-  }
-
-
-  // Use providers from Sanity CMS, limit to 4 for display
-  const teamMembers = providers.slice(0, 4).map((provider: any) => ({
-    name: provider.name,
-    title: provider.title,
-    specialty: provider.specialties?.[0] || "Oncology",
-    image: provider.image,
-    slug: provider.slug?.current,
-    bio: provider.bio
-  }));
+export default function AboutPage() {
+  // Static team members data
+  const teamMembers = [
+    {
+      name: "Dr. Arjun Iyengar, M.D.",
+      title: "Hematology & Oncology",
+      specialty: "Hematology",
+      image: "/iy.png",
+      slug: "arjun-iyengar"
+    },
+    {
+      name: "Dr. Adam A. Paduszynski, M.D.",
+      title: "Family Medicine",
+      specialty: "Family Medicine",
+      image: "/adam.webp",
+      slug: "adam-paduszynski"
+    },
+    {
+      name: "Dr. Devarajan P. Iyengar, M.D.",
+      title: "Oncology",
+      specialty: "Oncology",
+      image: "/download.jpeg",
+      slug: "devarajan-iyengar"
+    }
+  ];
 
 
   // Server component - no client-side state needed
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
+    <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100 page-content">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-soft-300/20 to-primary-300/20"></div>
+      <section 
+        className="relative py-20 px-4 overflow-hidden"
+        style={{
+          backgroundImage: 'url(/stock/AdobeStock_350407100.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Heart className="w-4 h-4" />
               <span>Leading Cancer Care</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent drop-shadow-2xl">
                 About
               </span>
               <br />
-              <span className="text-gray-700">Iyengar Hematology & Oncology Medical Center</span>
+              <span className="text-white drop-shadow-lg">Iyengar Hematology & Oncology Medical Center</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-xl text-white mb-8 leading-relaxed drop-shadow-lg">
               Compassionate + Comprehensive Blood & Cancer Care
             </p>
           </div>
@@ -211,34 +217,28 @@ export default async function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member: any, index: number) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
               <Link
                 key={member.slug || index}
-                href={member.slug ? `/providers/${member.slug}` : '#'}
+                href={`/providers/${member.slug}`}
                 className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group block"
               >
                 <div className="text-center">
-                  {member.image ? (
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
-                      <img
-                        src={urlFor(member.image).width(96).height(96).url()}
-                        alt={member.image.alt || member.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-soft-100 to-soft-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <User className="w-12 h-12 text-soft-600" />
-                    </div>
-                  )}
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-soft-600 transition-colors">
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-soft-600 font-medium mb-3">
+                  <p className="text-blue-600 font-medium mb-3">
                     {member.title}
                   </p>
-                  <span className="inline-block bg-soft-100 text-soft-800 text-sm px-3 py-1 rounded-full">
+                  <span className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
                     {member.specialty}
                   </span>
                 </div>

@@ -121,7 +121,12 @@ header .flex.items-center.justify-between {
 
 /* Ensure main content doesn't overlap with fixed header */
 main {
-  padding-top: 80px !important;
+  padding-top: 0 !important;
+}
+
+/* Add padding to all pages except home */
+.page-content {
+  padding-top: 80px;
 }
 
 /* Force header layout to work on all screen sizes */

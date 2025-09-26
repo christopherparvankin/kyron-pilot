@@ -52,13 +52,8 @@ export default function LocationsPage() {
       fax: "973-457-8729",
       email: "patient@ihomes.org",
       hours: [
-        { day: "Monday", open: "", close: "", closed: true },
-        { day: "Tuesday", open: "", close: "", closed: true },
-        { day: "Wednesday", open: "", close: "", closed: true },
-        { day: "Thursday", open: "9:00 AM", close: "4:00 PM", closed: false },
-        { day: "Friday", open: "", close: "", closed: true },
-        { day: "Saturday", open: "", close: "", closed: true },
-        { day: "Sunday", open: "", close: "", closed: true }
+        { day: "Monday-Wednesday, Friday-Sunday", open: "", close: "", closed: true },
+        { day: "Thursday", open: "9:00 AM", close: "4:00 PM", closed: false }
       ],
       features: ["Oncology Services", "Free Parking", "Multilingual Staff"]
     }
@@ -67,24 +62,32 @@ export default function LocationsPage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100">
+    <div className="min-h-screen bg-gradient-to-br from-cream-50 to-cream-100 page-content">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-soft-300/20 to-primary-300/20"></div>
+      <section 
+        className="relative py-20 px-4 overflow-hidden"
+        style={{
+          backgroundImage: 'url(/stock/AdobeStock_58897104.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-soft-100 text-soft-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <MapPin className="w-4 h-4" />
               <span>Convenient Care</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-soft-600 to-primary-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent drop-shadow-2xl">
                 Our Locations
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Convenient cancer care locations throughout New York. We're committed to bringing 
-              expert oncology care closer to you with multiple locations across the city.
+            <p className="text-xl text-white mb-8 leading-relaxed drop-shadow-lg">
+              Convenient cancer care locations throughout the greater New York area. We're committed to bringing 
+              expert oncology care closer to you with multiple locations across the region.
             </p>
           </div>
         </div>
@@ -100,26 +103,26 @@ export default function LocationsPage() {
             </p>
           </div>
 
-          <div className="space-y-16 max-w-7xl mx-auto">
+          <div className="space-y-8 max-w-5xl mx-auto">
             {locations.map((location, index) => (
               <div
                 key={location.id}
-                className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+                className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden"
                 onMouseEnter={() => setHoveredLocation(location.id)}
                 onMouseLeave={() => setHoveredLocation(null)}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Location Information */}
-                  <div className="p-10">
-                <div className="flex items-start space-x-6 mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-soft-500 to-soft-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <MapPin className="w-8 h-8 text-white" />
+                  <div className="p-6">
+                <div className="flex items-start space-x-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-soft-500 to-soft-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-soft-600 transition-colors">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-soft-600 transition-colors">
                       {location.name}
                     </h3>
-                    <div className="text-gray-600 text-lg">
+                    <div className="text-gray-600 text-sm">
                       <p className="font-medium mb-1">
                         {location.address.street}
                       </p>
@@ -130,14 +133,14 @@ export default function LocationsPage() {
                   </div>
                 </div>
 
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-center space-x-4">
-                    <Phone className="w-6 h-6 text-soft-600" />
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <Phone className="w-4 h-4 text-soft-600" />
                     <div>
-                      <p className="font-semibold text-gray-900 text-lg">Phone</p>
+                      <span className="font-medium text-gray-900 text-sm">Phone: </span>
                       <a
                         href={`tel:${location.phone}`}
-                        className="text-soft-600 hover:text-soft-700 transition-colors text-lg"
+                        className="text-soft-600 hover:text-soft-700 transition-colors text-sm"
                       >
                         {location.phone}
                       </a>
@@ -145,40 +148,40 @@ export default function LocationsPage() {
                   </div>
 
                   {location.fax && (
-                    <div className="flex items-center space-x-4">
-                      <Phone className="w-6 h-6 text-soft-600" />
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-4 h-4 text-soft-600" />
                       <div>
-                        <p className="font-semibold text-gray-900 text-lg">Fax</p>
-                        <span className="text-gray-600 text-lg">
+                        <span className="font-medium text-gray-900 text-sm">Fax: </span>
+                        <span className="text-gray-600 text-sm">
                           {location.fax}
                         </span>
                       </div>
                     </div>
                   )}
 
-                  <div className="flex items-center space-x-4">
-                    <Mail className="w-6 h-6 text-soft-600" />
+                  <div className="flex items-center space-x-3">
+                    <Mail className="w-4 h-4 text-soft-600" />
                     <div>
-                      <p className="font-semibold text-gray-900 text-lg">Email</p>
+                      <span className="font-medium text-gray-900 text-sm">Email: </span>
                       <a
                         href={`mailto:${location.email}`}
-                        className="text-soft-600 hover:text-soft-700 transition-colors text-lg break-all"
+                        className="text-soft-600 hover:text-soft-700 transition-colors text-sm break-all"
                       >
                         {location.email}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <Clock className="w-6 h-6 text-soft-600 mt-1" />
+                  <div className="flex items-start space-x-3">
+                    <Clock className="w-4 h-4 text-soft-600 mt-1" />
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-900 text-lg mb-4">Office Hours</p>
-                      <div className="text-gray-600">
-                        <div className="space-y-3">
+                      <p className="font-medium text-gray-900 text-sm mb-2">Office Hours</p>
+                      <div className="text-gray-600 text-xs">
+                        <div className="space-y-1">
                           {location.hours.map((hour, hourIndex) => (
-                            <div key={hourIndex} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
-                              <span className="font-medium text-lg">{hour.day}</span>
-                              <span className="text-lg">
+                            <div key={hourIndex} className="flex justify-between items-center py-1">
+                              <span className="font-medium">{hour.day}</span>
+                              <span>
                                 {hour.closed ? (
                                   <span className="text-red-500 font-medium">Closed</span>
                                 ) : (
@@ -194,21 +197,21 @@ export default function LocationsPage() {
 
                 </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <Link
                       href="/appointment"
-                      className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center transform hover:scale-105"
+                      className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center text-sm"
                     >
-                      <Calendar className="mr-2 w-4 h-4" />
+                      <Calendar className="mr-1 w-3 h-3" />
                       Schedule Appointment
                     </Link>
                     <a
                       href={`https://maps.google.com/?q=${location.address.street}, ${location.address.city}, ${location.address.state} ${location.address.zipCode}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center transform hover:scale-105"
+                      className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center text-sm"
                     >
-                      <Navigation className="mr-2 w-4 h-4" />
+                      <Navigation className="mr-1 w-3 h-3" />
                       Get Directions
                     </a>
                   </div>
@@ -224,19 +227,19 @@ export default function LocationsPage() {
                       rel="noopener noreferrer"
                       className="block bg-gray-100 h-full hover:bg-gray-200 transition-colors duration-300 group"
                     >
-                      <div className="w-full h-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative min-h-96">
+                      <div className="w-full h-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative min-h-64">
                         {/* Map Icon */}
                         <div className="text-center">
-                          <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <MapPin className="w-10 h-10 text-white" />
+                          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                            <MapPin className="w-8 h-8 text-white" />
                           </div>
-                          <h4 className="text-xl font-bold text-gray-900 mb-2">{location.name}</h4>
-                          <p className="text-gray-600 mb-4">
+                          <h4 className="text-lg font-bold text-gray-900 mb-2">{location.name}</h4>
+                          <p className="text-gray-600 mb-3 text-sm">
                             {location.address.street}<br />
                             {location.address.city}, {location.address.state} {location.address.zipCode}
                           </p>
-                          <div className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-blue-700 transition-colors">
-                            <Navigation className="w-5 h-5 mr-2" />
+                          <div className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-md font-medium group-hover:bg-blue-700 transition-colors text-sm">
+                            <Navigation className="w-4 h-4 mr-1" />
                             View on Google Maps
                           </div>
                         </div>

@@ -8,34 +8,18 @@ import {
   Mail,
   Clock,
   Calendar,
-  User,
-  MessageSquare,
   ArrowRight,
-  CheckCircle,
   Star,
   Sparkles,
   Heart,
   Shield,
   Award,
-  Users,
-  Clock3,
-  X
+  Users
 } from "lucide-react";
 
 export default function AppointmentPage() {
   const [hoveredContact, setHoveredContact] = useState<number | null>(null);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    preferredProvider: '',
-    preferredLocation: '',
-    appointmentType: '',
-    message: ''
-  });
 
   const contactMethods = [
     {
@@ -94,32 +78,6 @@ export default function AppointmentPage() {
     }
   ];
 
-  const appointmentTypes = [
-    {
-      value: "new-patient",
-      title: "New Patient Consultation",
-      description: "Comprehensive initial evaluation and treatment planning",
-      icon: User
-    },
-    {
-      value: "follow-up",
-      title: "Follow-up Appointment",
-      description: "Ongoing care and treatment monitoring",
-      icon: Calendar
-    },
-    {
-      value: "second-opinion",
-      title: "Second Opinion",
-      description: "Expert review of your diagnosis and treatment options",
-      icon: Shield
-    },
-    {
-      value: "emergency",
-      title: "Urgent/Emergency",
-      description: "Immediate care for urgent medical needs",
-      icon: Clock3
-    }
-  ];
 
   const testimonials = [
     {
@@ -146,35 +104,9 @@ export default function AppointmentPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after successful submission
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      preferredProvider: '',
-      preferredLocation: '',
-      appointmentType: '',
-      message: ''
-    });
-  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 page-content">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
@@ -199,28 +131,6 @@ export default function AppointmentPage() {
         </div>
       </section>
 
-      {/* Success Message */}
-      {isSubmitted && (
-        <section className="py-8 px-4 bg-green-50 border-b border-green-200">
-          <div className="container mx-auto">
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg flex items-center">
-                <CheckCircle className="w-6 h-6 mr-3 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-lg">Appointment request submitted!</p>
-                  <p className="text-sm">We will contact you within 24 hours.</p>
-                </div>
-                <button
-                  onClick={() => setIsSubmitted(false)}
-                  className="ml-auto text-green-600 hover:text-green-800 transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Contact Methods */}
       <section className="py-20 px-4 bg-white">
@@ -271,163 +181,6 @@ export default function AppointmentPage() {
       </section>
 
 
-      {/* Appointment Form */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Request Appointment</h2>
-              <p className="text-xl text-gray-600">
-                Fill out the form below and we'll contact you within 24 hours
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-12 shadow-xl">
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                      placeholder="Your first name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                      placeholder="Your last name"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                      placeholder="(555) 123-4567"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="appointmentType" className="block text-sm font-medium text-gray-700 mb-2">
-                    Appointment Type *
-                  </label>
-                  <select
-                    id="appointmentType"
-                    name="appointmentType"
-                    value={formData.appointmentType}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Select appointment type</option>
-                    {appointmentTypes.map((type, index) => {
-                      const IconComponent = type.icon;
-                      return (
-                        <option key={index} value={type.value}>
-                          {type.title}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="preferredLocation" className="block text-sm font-medium text-gray-700 mb-2">
-                    Preferred Location *
-                  </label>
-                  <select
-                    id="preferredLocation"
-                    name="preferredLocation"
-                    value={formData.preferredLocation}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Select a location</option>
-                    <option value="main">Main Office - New York</option>
-                    <option value="brooklyn">Brooklyn Location</option>
-                    <option value="queens">Queens Location</option>
-                    <option value="manhattan">Manhattan Location</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Additional Information
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                    placeholder="Please provide any additional information about your appointment needs..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors transform hover:scale-105 flex items-center justify-center"
-                >
-                  <Calendar className="mr-2 w-5 h-5" />
-                  Request Appointment
-                </button>
-                
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-200">
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    <strong>Important:</strong> This request form is not a medical record and should not contain sensitive health information. 
-                    Please do not include detailed medical history, symptoms, or personal health details in your message.
-                  </p>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* CTA Section */}

@@ -1,33 +1,7 @@
-import { client } from "@/lib/sanity";
-import { queries } from "@/lib/queries";
-import { formatPhoneNumber } from "@/lib/contactUtils";
-
-export default async function ContactInfo() {
-  const contactInfo = await client.fetch(queries.contactInfo);
-
-  if (!contactInfo) {
-    // Fallback to hardcoded values if no contact info is found
-    return (
-      <>
-        <a
-          href="tel:561-964-8221"
-          style={{
-            color: "white",
-            textDecoration: "none",
-            fontSize: "0.9rem",
-            fontWeight: "500",
-            padding: "4px 8px",
-          }}
-        >
-          Call Us: 561-964-8221
-        </a>
-      </>
-    );
-  }
-
+export default function ContactInfo() {
   return (
     <a
-      href={`tel:${contactInfo.phone}`}
+      href="tel:973-435-6544"
       style={{
         color: "white",
         textDecoration: "none",
@@ -36,7 +10,7 @@ export default async function ContactInfo() {
         padding: "4px 8px",
       }}
     >
-      Call Us: {formatPhoneNumber(contactInfo.phone)}
+      Call Us: (973) 435-6544
     </a>
   );
 }

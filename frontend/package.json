@@ -9,9 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@portabletext/react": "^4.0.3",
-    "@sanity/client": "^7.11.2",
-    "@sanity/image-url": "^1.2.0",
     "autoprefixer": "^10.4.21",
     "lucide-react": "^0.263.1",
     "next": "15.5.3",

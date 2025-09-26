@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white page-content">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-20 text-center">
         <div className="container mx-auto px-4">
