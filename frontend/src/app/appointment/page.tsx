@@ -27,8 +27,8 @@ export default function AppointmentPage() {
       title: "Call Us",
       description: "Speak directly with our scheduling team",
       icon: Phone,
-      value: "(555) 123-4567",
-      details: "Available Monday - Friday, 8:00 AM - 5:00 PM",
+      value: "Bayonne: (201) 858-1211 | West Orange: (973) 457-8728",
+      details: "Available Monday - Thursday, 10:00 AM - 5:30 PM",
       color: "from-blue-500 to-blue-700"
     },
     {
@@ -45,7 +45,7 @@ export default function AppointmentPage() {
       title: "Visit Us",
       description: "Come to our office in person",
       icon: MapPin,
-      value: "123 Medical Center Drive, New York, NY 10001",
+      value: "27 E 29th St, Bayonne, NJ 07002 | 393 Northfield Ave, West Orange, NJ 07052",
       details: "Walk-ins welcome during business hours",
       color: "from-purple-500 to-purple-700"
     }
@@ -106,24 +106,26 @@ export default function AppointmentPage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 page-content">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 page-content">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+      <section className="relative py-20 px-4 overflow-hidden" style={{
+        background: 'linear-gradient(to right, #123447, #1a4a5c)',
+        borderBottom: '2px solid #C69F59'
+      }}>
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+            <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
               <Calendar className="w-4 h-4" />
               <span>Easy Scheduling</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white to-amber-100 bg-clip-text text-transparent drop-shadow-2xl">
                 Request an
               </span>
               <br />
-              <span className="text-gray-700">Appointment</span>
+              <span className="text-white drop-shadow-lg">Appointment</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-xl text-white mb-8 leading-relaxed drop-shadow-lg">
               Schedule your consultation with our expert oncologists. We're here to help you 
               take the next step in your cancer care journey with compassionate, expert care.
             </p>
@@ -184,27 +186,34 @@ export default function AppointmentPage() {
 
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center text-white">
+          <div className="max-w-4xl mx-auto text-center text-gray-900">
             <h2 className="text-4xl font-bold mb-6">
               Ready to Begin Your Care Journey?
             </h2>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className="text-xl mb-8 text-gray-600">
               Our compassionate team is here to support you every step of the way. 
               Contact us today to schedule your consultation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:555-123-4567"
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                href="tel:201-858-1211"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg"
               >
                 <Phone className="mr-2 w-5 h-5" />
-                Call Now
+                Call Bayonne
+              </a>
+              <a
+                href="tel:973-457-8728"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg"
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                Call West Orange
               </a>
               <Link
                 href="/providers"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors transform hover:scale-105 inline-flex items-center justify-center"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center justify-center shadow-lg"
               >
                 <Users className="mr-2 w-5 h-5" />
                 Meet Our Team

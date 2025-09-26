@@ -21,7 +21,7 @@ export default function ProvidersPage() {
   const providers = [
     {
       id: "arjun-iyengar",
-      name: "Dr. Arjun Iyengar, M.D.",
+      name: "Arjun Iyengar, M.D.",
       title: "Hematology & Oncology",
       image: "/iy.png",
       specialties: ["Hematology", "Medical Oncology", "Precision-Based Care", "Genomic Testing", "Clinical Trials", "Blood Disorders", "Infusions & Injections"],
@@ -29,7 +29,7 @@ export default function ProvidersPage() {
     },
     {
       id: "adam-paduszynski",
-      name: "Dr. Adam A. Paduszynski, M.D.",
+      name: "Adam A. Paduszynski, M.D.",
       title: "Family Medicine",
       image: "/adam.webp",
       specialties: ["Family Medicine", "Primary Care", "Preventive Medicine", "Chronic Disease Management"],
@@ -37,7 +37,7 @@ export default function ProvidersPage() {
     },
     {
       id: "devarajan-iyengar",
-      name: "Dr. Devarajan P. Iyengar, M.D.",
+      name: "Devarajan P. Iyengar, M.D.",
       title: "Oncology",
       image: "/download.jpeg",
       specialties: ["Oncology", "Hematology", "Cancer Treatment", "Inflammatory Bowel Disease", "Stroke Management", "Diabetes Care"],
@@ -163,7 +163,7 @@ export default function ProvidersPage() {
 
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+      <section className="py-20 px-4 bg-gradient-to-r from-soft-700 to-primary-700">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-6">

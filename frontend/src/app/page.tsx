@@ -431,7 +431,7 @@ export default function Home() {
                           Dr. Adam A. Paduszynski is a board-certified Family Medicine physician with over 35 years of experience. He has received the "Patients Top Choice" award, which is given to providers who have received a 5-star rating from their patients.
                         </p>
                         <p className="mb-4 text-gray-600 leading-relaxed">
-                          Dr. Paduszynski completed his medical education at Wroclaw Medical University and his residency in Family Medicine at St. Luke's University Hospital/Warren Hospital. He also completed an internship at Atlantic Health System. He has received 4 patient awards and maintains a perfect 5/5 patient rating based on 6 reviews.
+                          Dr. Paduszynski completed his medical education at Wroclaw Medical University and his residency in Family Medicine at St. Luke's University Hospital/Warren Hospital.
                         </p>
                       </div>
                     </div>
