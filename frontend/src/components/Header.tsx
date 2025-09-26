@@ -16,50 +16,8 @@ export default function Header() {
     { name: "About", href: "/about" },
   ];
 
-  // Ensure navigation is visible on desktop
-  useEffect(() => {
-    const handleResize = () => {
-      const desktopNav = document.querySelector('.desktop-nav') as HTMLElement;
-      const desktopCta = document.querySelector('.desktop-cta') as HTMLElement;
-      const mobileCta = document.querySelector('.mobile-cta') as HTMLElement;
-      
-      if (window.innerWidth >= 1024) {
-        // Desktop view
-        if (desktopNav) {
-          desktopNav.style.display = 'flex';
-          desktopNav.style.visibility = 'visible';
-          desktopNav.style.opacity = '1';
-        }
-        if (desktopCta) {
-          desktopCta.style.display = 'flex';
-          desktopCta.style.visibility = 'visible';
-          desktopCta.style.opacity = '1';
-        }
-        if (mobileCta) {
-          mobileCta.style.display = 'none';
-        }
-      } else {
-        // Mobile view
-        if (desktopNav) {
-          desktopNav.style.display = 'none';
-        }
-        if (desktopCta) {
-          desktopCta.style.display = 'none';
-        }
-        if (mobileCta) {
-          mobileCta.style.display = 'flex';
-          mobileCta.style.visibility = 'visible';
-          mobileCta.style.opacity = '1';
-        }
-      }
-    };
-
-    // Run on mount and resize
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Remove the complex useEffect that manipulates DOM styles
+  // Tailwind classes handle responsive visibility properly
 
   return (
     <header 
@@ -84,34 +42,12 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation - Hidden on mobile */}
-          <nav 
-            className="hidden lg:flex items-center space-x-6 xl:space-x-8 desktop-nav"
-            style={{
-              display: 'none',
-              visibility: 'hidden',
-              opacity: '0'
-            }}
-          >
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 desktop-nav">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="font-medium transition-colors text-base hover:scale-105 whitespace-nowrap px-3 py-2 rounded-md hover:bg-white/10"
-                style={{
-                  color: '#FFF8DC',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  visibility: 'visible',
-                  opacity: '1'
-                }}
-                onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.color = '#C69F59';
-                  (e.target as HTMLElement).style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.color = '#FFF8DC';
-                  (e.target as HTMLElement).style.backgroundColor = 'transparent';
-                }}
+                className="font-medium transition-colors text-base hover:scale-105 whitespace-nowrap px-3 py-2 rounded-md hover:bg-white/10 text-[#FFF8DC] hover:text-[#C69F59]"
               >
                 {item.name}
               </Link>
@@ -151,17 +87,9 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 transition-colors"
+            className="lg:hidden p-2 transition-colors text-[#FFF8DC] hover:text-[#C69F59] bg-none border-none cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
-            style={{
-              color: '#FFF8DC',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer'
-            }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#C69F59'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFF8DC'}
           >
             {isMenuOpen ? (
               <X className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -195,20 +123,8 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block py-4 px-6 font-medium text-lg border-b transition-colors"
-                      style={{
-                        color: '#FFF8DC',
-                        borderBottomColor: 'rgba(255, 248, 220, 0.2)'
-                      }}
+                      className="block py-4 px-6 font-medium text-lg border-b transition-colors text-[#FFF8DC] hover:text-[#C69F59] hover:bg-white/10 border-b-[rgba(255,248,220,0.2)]"
                       onClick={() => setIsMenuOpen(false)}
-                      onMouseEnter={(e) => {
-                        (e.target as HTMLElement).style.color = '#C69F59';
-                        (e.target as HTMLElement).style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.target as HTMLElement).style.color = '#FFF8DC';
-                        (e.target as HTMLElement).style.backgroundColor = 'transparent';
-                      }}
                     >
                       {item.name}
                     </Link>

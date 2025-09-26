@@ -3,10 +3,10 @@
 import ProviderPage from "@/components/ProviderPage";
 
 const devarajanIyengarData = {
-  name: "Dr. Devarajan P. Iyengar, M.D.",
+  name: "Devarajan P. Iyengar, M.D.",
   title: "Oncology",
   image: "/download.jpeg",
-  imageAlt: "Dr. Devarajan P. Iyengar",
+  imageAlt: "Devarajan P. Iyengar",
   phone: "973-435-6544",
   email: "patient@ihomes.org",
   locations: [

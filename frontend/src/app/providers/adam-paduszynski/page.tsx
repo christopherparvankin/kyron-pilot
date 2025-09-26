@@ -3,10 +3,10 @@
 import ProviderPage from "@/components/ProviderPage";
 
 const adamPaduszynskiData = {
-  name: "Dr. Adam A. Paduszynski, M.D.",
+  name: "Adam A. Paduszynski, M.D.",
   title: "Family Medicine",
   image: "/adam.webp",
-  imageAlt: "Dr. Adam Paduszynski",
+  imageAlt: "Adam Paduszynski",
   phone: "(201) 858-1211",
   email: "patient@ihomes.org",
   locations: [
