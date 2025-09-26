@@ -17,7 +17,13 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-[#123447] to-[#1a4a5c] border-b-2 border-[#C69F59] shadow-lg">
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 w-full shadow-lg"
+      style={{
+        background: 'linear-gradient(to right, #123447, #1a4a5c)',
+        borderBottom: '2px solid #C69F59'
+      }}
+    >
       <div className="container mx-auto px-4">
         {/* Main Header Row */}
         <div className="flex items-center justify-between py-2 sm:py-3">
@@ -38,7 +44,13 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="font-medium transition-colors text-sm hover:scale-105 text-[#FFF8DC] hover:text-[#C69F59] whitespace-nowrap"
+                className="font-medium transition-colors text-sm hover:scale-105 whitespace-nowrap"
+                style={{
+                  color: '#FFF8DC',
+                  textDecoration: 'none'
+                }}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#C69F59'}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFF8DC'}
               >
                 {item.name}
               </Link>
@@ -49,9 +61,12 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="px-3 py-2 xl:px-4 xl:py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 text-xs xl:text-sm whitespace-nowrap text-[#123447] shadow-lg hover:shadow-xl"
+              className="px-3 py-2 xl:px-4 xl:py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 text-xs xl:text-sm whitespace-nowrap shadow-lg hover:shadow-xl"
               style={{
                 background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                color: '#123447',
+                border: 'none',
+                cursor: 'pointer',
                 boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
               }}
             >
@@ -59,9 +74,12 @@ export default function Header() {
             </button>
             <Link
               href="/appointment"
-              className="px-3 py-2 xl:px-4 xl:py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 text-xs xl:text-sm whitespace-nowrap shadow-lg text-[#123447] hover:shadow-xl"
+              className="px-3 py-2 xl:px-4 xl:py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 text-xs xl:text-sm whitespace-nowrap shadow-lg hover:shadow-xl"
               style={{ 
                 background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                color: '#123447',
+                textDecoration: 'none',
+                display: 'inline-block',
                 boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
               }}
             >
@@ -73,9 +91,12 @@ export default function Header() {
           <div className="flex lg:hidden items-center space-x-2">
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="px-2 py-1 rounded text-xs font-semibold text-[#123447]"
+              className="px-2 py-1 rounded text-xs font-semibold"
               style={{
                 background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                color: '#123447',
+                border: 'none',
+                cursor: 'pointer',
                 boxShadow: '0 2px 8px rgba(198, 159, 89, 0.2)'
               }}
             >
@@ -83,9 +104,12 @@ export default function Header() {
             </button>
             <Link
               href="/appointment"
-              className="px-2 py-1 rounded text-xs font-semibold text-[#123447]"
+              className="px-2 py-1 rounded text-xs font-semibold"
               style={{ 
                 background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                color: '#123447',
+                textDecoration: 'none',
+                display: 'inline-block',
                 boxShadow: '0 2px 8px rgba(198, 159, 89, 0.2)'
               }}
             >
@@ -95,9 +119,17 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 text-[#FFF8DC] hover:text-[#C69F59] transition-colors"
+            className="lg:hidden p-2 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
+            style={{
+              color: '#FFF8DC',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#C69F59'}
+            onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#FFF8DC'}
           >
             {isMenuOpen ? (
               <X className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -109,7 +141,13 @@ export default function Header() {
 
         {/* Mobile Navigation - Slide down menu */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-[#C69F59] bg-gradient-to-r from-[#123447] to-[#1a4a5c]">
+          <div 
+            className="lg:hidden"
+            style={{
+              borderTop: '1px solid #C69F59',
+              background: 'linear-gradient(to right, #123447, #1a4a5c)'
+            }}
+          >
             <div className="py-4 px-2">
               {/* Navigation Links */}
               <nav className="flex flex-col space-y-3 mb-4">
@@ -117,8 +155,22 @@ export default function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="font-medium py-3 px-4 rounded-lg transition-colors text-[#FFF8DC] hover:text-[#C69F59] hover:bg-white/10 text-center"
+                    className="font-medium py-3 px-4 rounded-lg transition-colors hover:bg-white/10 text-center"
+                    style={{
+                      color: '#FFF8DC',
+                      textDecoration: 'none'
+                    }}
                     onClick={() => setIsMenuOpen(false)}
+                    onMouseEnter={(e) => {
+                      const target = e.target as HTMLElement;
+                      target.style.color = '#C69F59';
+                      target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      const target = e.target as HTMLElement;
+                      target.style.color = '#FFF8DC';
+                      target.style.backgroundColor = 'transparent';
+                    }}
                   >
                     {item.name}
                   </Link>
@@ -126,15 +178,18 @@ export default function Header() {
               </nav>
 
               {/* Mobile CTA Buttons */}
-              <div className="flex flex-col space-y-3 pt-2 border-t border-white/20">
+              <div className="flex flex-col space-y-3 pt-2" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
                 <button
                   onClick={() => {
                     setIsContactModalOpen(true);
                     setIsMenuOpen(false);
                   }}
-                  className="px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg text-[#123447] hover:shadow-xl"
+                  className="px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{
                     background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                    color: '#123447',
+                    border: 'none',
+                    cursor: 'pointer',
                     boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
                   }}
                 >
@@ -142,9 +197,12 @@ export default function Header() {
                 </button>
                 <Link
                   href="/appointment"
-                  className="px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg text-[#123447] hover:shadow-xl"
+                  className="px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{ 
                     background: 'linear-gradient(135deg, #C69F59 0%, #E8B86D 100%)',
+                    color: '#123447',
+                    textDecoration: 'none',
+                    display: 'block',
                     boxShadow: '0 4px 15px rgba(198, 159, 89, 0.2)'
                   }}
                   onClick={() => setIsMenuOpen(false)}
